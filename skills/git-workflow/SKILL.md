@@ -18,7 +18,33 @@ Best practices for Git version control, branching strategies, and collaborative 
 
 ## Branching Strategies
 
-### GitHub Flow (Simple, Recommended for Most)
+### Trunk-Based Development with Environment Promotion (Monorepo Standard - ADR-0006)
+
+Standard strategy for Google-aligned monorepos and multi-tier homelab environments:
+
+```text
+main (trunk / LOCAL - always deployable)
+  │
+  ├── feat/<project>/<name>   → Squash/FF merge (< 48h)
+  ├── fix/<project>/<name>    → Squash/FF merge (< 24h)
+  ├── infra/<project>/<name>  → Squash/FF merge (< 24h)
+  └── docs/<project>/<name>   → Squash/FF merge (< 24h)
+  │
+  ├── Tag vX.Y.Z-sandbox      → Deployed to SANDBOX (QA)
+  └── Tag vX.Y.Z              → Deployed to LIVE (Production)
+```
+
+**Conventions (ADR-0006):**
+
+- **Branch Naming**: `<type>/<project>/<short-description>` where type is `feat`, `fix`, `infra`, `docs`, `chore`.
+- **Merge Strategy**: Fast-Forward or Squash and Merge only (linear history, zero merge bubbles).
+- **Environment Promotion**:
+  - `LOCAL` (FRACTAL Dev): continuous from trunk `main`.
+  - `SANDBOX` (FRACTAL QA): annotated tag `vX.Y.Z-sandbox` or `vX.Y.Z-rc.N`.
+  - `LIVE` (NEO Producción): immutable semantic tag `vX.Y.Z` validated in Sandbox.
+- **Automation**: `scripts/bin/ecc-agy/git-flow-helper.ps1` and `git-flow-helper.sh`.
+
+### GitHub Flow (Simple)
 
 Best for continuous deployment and small-to-medium teams.
 
