@@ -1,6 +1,6 @@
 ---
 name: doc-updater
-description: Fast documentation, ADR index, and codemap synchronizer for C:\Workspace\projects\home-lab\doc.
+description: Fast documentation, ADR index, and codemap synchronizer for workspace docs.
 tools: Read, Write, Edit, Bash, Grep, Glob
 model: haiku
 ---

@@ -13,7 +13,7 @@
       - cluster    (Fase 4: Python / FastAPI, Testing, Observabilidad, SQL/Postgres)
       - token-hill (Fase 5: Python CLI, Testing, Benchmarking)
 .PARAMETER TargetProject
-    Ruta opcional a un proyecto (ej. C:\Workspace\projects\home-lab\kakebo). Si se omite, actualiza el plugin global ecc-agy.
+    Ruta opcional a un proyecto (ej. C:\Workspace\projects\my-app\backend). Si se omite, actualiza el plugin global ecc-agy.
 .PARAMETER Clean
     Si se especifica, limpia previamente las carpetas skills/ y agents/ del destino antes de sincronizar.
 #>

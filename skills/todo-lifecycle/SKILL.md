@@ -18,7 +18,7 @@ Operational workflow to manage task completion in `TODO.md`, ensuring completed 
 ## Non-Negotiable Rules
 
 1. **Clean TODO.md**: Never leave completed items (`- [x]`) lingering in the primary `TODO.md`.
-2. **Deterministic Archival**: Always delegate to the canonical script `C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\archive-todo.ps1` (Windows) or `archive-todo.sh` (Linux).
+2. **Deterministic Archival**: Always delegate to the canonical script `scripts/bin/ecc-agy/archive-todo.ps1` (Windows) or `archive-todo.sh` (Linux).
 3. **Safe Slugs & Timestamps**: Ensure files in `TODO_DONE/` follow `TODO_<title>_<timestamp>.md`.
 
 ## Commands
@@ -26,13 +26,13 @@ Operational workflow to manage task completion in `TODO.md`, ensuring completed 
 ### Windows 11 (PowerShell)
 ```powershell
 # Archivar todas las tareas completadas en TODO.md
-pwsh -NoProfile -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\archive-todo.ps1 -AllCompleted
+pwsh -NoProfile -File scripts/bin/ecc-agy/archive-todo.ps1 -AllCompleted
 
 # Archivar una tarea específica con notas de entregable
-pwsh -NoProfile -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\archive-todo.ps1 -Complete "Configurar TLS" -Notes "Emitido certificado SAN y verificado en proxy."
+pwsh -NoProfile -File scripts/bin/ecc-agy/archive-todo.ps1 -Complete "Configurar TLS" -Notes "Emitido certificado SAN y verificado en proxy."
 ```
 
 ### Linux / Debian (Bash)
 ```bash
-/mnt/c/Workspace/projects/home-lab/scripts/bin/ecc-agy/archive-todo.sh --all-completed
+scripts/bin/ecc-agy/archive-todo.sh --all-completed
 ```

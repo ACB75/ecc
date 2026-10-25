@@ -7,7 +7,7 @@ metadata:
 
 # Workspace Health Audit
 
-Operational skill to inspect, audit, and clean the active workspace (`C:\Workspace\projects\home-lab`), verify token budgets and frontmatter compliance across global and project-level `.agents/` scaffolds, and enforce deterministic documentation governance.
+Operational skill to inspect, audit, and clean the active workspace, verify token budgets and frontmatter compliance across global and project-level `.agents/` scaffolds, and enforce deterministic documentation governance.
 
 ## When to Use
 
@@ -18,7 +18,7 @@ Operational skill to inspect, audit, and clean the active workspace (`C:\Workspa
 
 ## Non-Negotiable Rules
 
-1. **Delegate Deterministic Work**: Always run the canonical wrapper `C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\audit-workspace.ps1` (or `C:\Workspace\projects\home-lab\scripts\ecc-agy\workspace-audit.py`) rather than writing ad-hoc find/grep commands.
+1. **Delegate Deterministic Work**: Always run the canonical wrapper `scripts/bin/ecc-agy/audit-workspace.ps1` (or `scripts/ecc-agy/workspace-audit.py`) rather than writing ad-hoc find/grep commands.
 2. **Safe Cleanup**: Only pass `-Clean` / `--clean` when the user explicitly requests cleanup or after confirming removable temporary files (`.bak`, `.tmp`, `__pycache__`, `.pytest_cache`).
 3. **Never Swallow Failures**: If any phase reports a violation, state the exact file path and violation reason.
 
@@ -27,7 +27,7 @@ Operational skill to inspect, audit, and clean the active workspace (`C:\Workspa
 ### 1. Read-Only Health Inspection
 Run the audit script in inspection mode:
 ```powershell
-pwsh -NoProfile -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\audit-workspace.ps1
+pwsh -NoProfile -File scripts/bin/ecc-agy/audit-workspace.ps1
 ```
 
 ### 2. Inspect the Three Audit Sections
@@ -38,10 +38,10 @@ pwsh -NoProfile -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\audit-w
   - Verifies that all skills in `~/.gemini/config/plugins/ecc-agy` and `<project>/.agents/skills/` have descriptions $\le 140$ characters.
   - Verifies that all subagents have descriptions $\le 120$ characters, use `model: flash` or `model: inherit`, and revoke write tools on read-only roles (`architect`, `planner`, `reviewer`, `hunter`, `troubleshooter`).
 - **Phase 3: Documentation Governance**:
-  - Runs `audit-docs.py --root C:\Workspace\projects\home-lab\doc --scope full` to ensure all Markdown links resolve, deletion-zone targets are respected, and ADR indices are intact.
+  - Runs `audit-docs.py --root doc --scope full` to ensure all Markdown links resolve, deletion-zone targets are respected, and ADR indices are intact.
 
 ### 3. Cleanup Mode (When Requested)
 When the user asks to clean up or before finishing an operational milestone:
 ```powershell
-pwsh -NoProfile -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\audit-workspace.ps1 -Clean
+pwsh -NoProfile -File scripts/bin/ecc-agy/audit-workspace.ps1 -Clean
 ```

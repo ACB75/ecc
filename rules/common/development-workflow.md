@@ -10,7 +10,7 @@
    - **Zero Unofficial Third-Party Dependencies**: Use native language/framework APIs and official packages already installed. NEVER add non-official third-party libraries unless you warn the user first and receive explicit confirmation.
 
 1. **Mandatory Requirements & Architecture Plan (Per Request)**
-   - Before writing production code for any new feature, bugfix, or refactor, generate a structured analysis based on [plan-template.md](./plan-template.md) (`C:\Workspace\projects\home-lab\doc\TEMPLATE_REQUISITOS_ARQUITECTURA.md`):
+   - Before writing production code for any new feature, bugfix, or refactor, generate a structured analysis based on [plan-template.md](./plan-template.md) (or `doc/TEMPLATE_REQUISITOS_ARQUITECTURA.md`):
      1. **Detailed Requirements & Implementation**: Functional (`RF`), non-functional (`RNF`), edge cases, and verifiable acceptance criteria (`CA`).
      2. **Reuse & Backward Compatibility**: Inventory of reused modules, affected contracts, and rollback strategy.
      3. **Architecture, Design Patterns, Clean Code & Usability Refactors**: Data flow, architectural/GoF patterns, SOLID/KISS/DRY/YAGNI, and proactive UX/DX usability refactoring.

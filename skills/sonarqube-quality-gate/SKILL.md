@@ -13,7 +13,7 @@ Enforces SonarQube static analysis rules and Quality Gate `A` ratings across Jav
 
 - Auditing or refactoring code to pass SonarQube / SonarCloud Quality Gates (`Clean as You Code`).
 - Resolving Cognitive Complexity (`S3776`), duplicated string literals (`S1192`), parameter count (`S107`), or Java/Go/TS/Python code smells before committing.
-- Running pre-commit static verification across the monorepo (`C:\Workspace\projects\home-lab`).
+- Running pre-commit static verification across the workspace.
 
 ## Quality Gate Thresholds (`A` Rating Baseline)
 
@@ -47,12 +47,12 @@ Enforces SonarQube static analysis rules and Quality Gate `A` ratings across Jav
 
 ### 1. Run Multi-Language Static Audit (Windows 11 `pwsh`)
 ```powershell
-pwsh -NoProfile -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\sonar-audit.ps1
+pwsh -NoProfile -File scripts/bin/ecc-agy/sonar-audit.ps1
 ```
 
 ### 2. Run Multi-Language Static Audit (Debian 12 / WSL2 `bash`)
 ```bash
-bash /mnt/c/Workspace/projects/home-lab/scripts/bin/ecc-agy/sonar-audit.sh
+scripts/bin/ecc-agy/sonar-audit.sh
 ```
 
 ### 3. Fix & Re-Verify

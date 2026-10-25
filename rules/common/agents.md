@@ -13,14 +13,14 @@ Invoke subagents via `invoke_subagent(TypeName, Role, Prompt, Model)`:
 | `security-reviewer` | Security vulnerability detection and hardening (OWASP, SSRF, injection, secrets) | `inherit` |
 | `build-error-resolver` | Build and type error resolution with minimal diffs | `flash` / `inherit` |
 | `refactor-cleaner` | Dead code cleanup, deduplication, and usability refactoring | `flash` / `inherit` |
-| `doc-updater` | Documentation, ADR, and `C:\Workspace\projects\home-lab\doc` governance updates | `flash` / `inherit` |
+| `doc-updater` | Documentation, ADR, and workspace doc governance updates | `flash` / `inherit` |
 | `silent-failure-hunter` | Audits code for silent failures, swallowed exceptions, and missing error propagation | `flash` / `inherit` |
 | `research` | Read-only multi-file codebase and documentation exploration | `flash` |
 
-## 2. Repetitive Task Script Automation (`C:\Workspace\projects\home-lab\scripts\bin\<project>`)
+## 2. Repetitive Task Script Automation (`scripts/bin/<project>`)
 
 1. **Extract Repetitive Commands into `/scripts/bin/<project>`**:
-   - Whenever an operational, audit, verification, build, or cleanup task is executed repeatedly ($\ge 2$ times) or is recurring across sessions, create a reusable, idempotent, parameterized script under `C:\Workspace\projects\home-lab\scripts\bin\<project>\` (`ecc-agy`, `cluster`, `kakebo`, `net`, `token-hill`).
+   - Whenever an operational, audit, verification, build, or cleanup task is executed repeatedly ($\ge 2$ times) or is recurring across sessions, create a reusable, idempotent, parameterized script under `scripts/bin/<project>/`.
    - Respect OS/shell conventions: `.ps1` (`$ErrorActionPreference = "Stop"`, `Set-StrictMode -Version Latest`) for Windows 11, `.sh` (`set -euo pipefail`, POSIX `LF` `\n`) for Linux/WSL, or cross-platform `.js`/`.py`.
    - Always invoke the persisted script from `/scripts/bin/<project>` instead of regenerating ad-hoc inline one-liners.
 
@@ -29,7 +29,7 @@ Invoke subagents via `invoke_subagent(TypeName, Role, Prompt, Model)`:
 When a new workflow, domain pattern, or specialized check emerges that can accelerate future requests, synthesize it into the optimal customization artifact:
 
 1. **Choose the Right Artifact Tier (Token & Context Optimization)**:
-   - **Script (`C:\Workspace\projects\home-lab\scripts\bin\<project>\<task>.{ps1,sh,js,py}`)**: Pure deterministic execution (audits, builds, migrations, log parsing). Zero prompt token overhead.
+   - **Script (`scripts/bin/<project>/<task>.{ps1,sh,js,py}`)**: Pure deterministic execution (audits, builds, migrations, log parsing). Zero prompt token overhead.
    - **Skill (`skills/<name>/SKILL.md`)**: Multi-step domain procedures or specialized guidance needed *on-demand*. Because Antigravity lazy-loads `SKILL.md` bodies, only `name` + `description` consume base context tokens:
      - Keep YAML frontmatter `description` single-line ($\le 140$ chars) with exact trigger terms and `DO NOT trigger for` boundaries.
      - Keep `SKILL.md` concise ($\le 120$ lines) and delegate heavy examples to `references/` and deterministic checks to `/scripts/bin/<project>/`.
