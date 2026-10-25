@@ -1,0 +1,27 @@
+{
+  "name": "ecc-agy",
+  "version": "2.2.3",
+  "description": "ECC (Everything Claude Code) adapted for Antigravity and Gemini workflows - skills, agents, rules, and selective installer",
+  "private": true,
+  "license": "MIT",
+  "bin": {
+    "ecc": "scripts/ecc.js",
+    "ecc-install": "scripts/install-apply.js"
+  },
+  "scripts": {
+    "install:agy": "node scripts/install-apply.js --target antigravity",
+    "install:gemini": "node scripts/install-apply.js --target gemini",
+    "sync:status": "pwsh -NoProfile -File ./ecc-agy-sync.ps1 -Phase status",
+    "doctor": "node scripts/doctor.js",
+    "test": "node scripts/doctor.js"
+  },
+  "dependencies": {
+    "@iarna/toml": "2.2.5",
+    "ajv": "8.20.0",
+    "js-yaml": "4.3.2",
+    "sql.js": "1.14.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
