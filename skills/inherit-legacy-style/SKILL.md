@@ -79,6 +79,7 @@ For each strong-signal conflict, present exactly ONE question with 4 options:
 Suspend until the user answers, then proceed to the next conflict. Never stack questions.
 
 **5. Generate `.ai-style-rules.md`** with three mandatory sections:
+
 - **[Golden Files]** — real exemplar paths annotated with what they demonstrate
 - **[Naming & State-Control Rules]** — concrete, checkable conventions
 - **[DONTs]** — anti-patterns that must not propagate

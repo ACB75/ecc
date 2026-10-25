@@ -20,11 +20,13 @@ Suggests manual `/compact` at strategic points in your workflow rather than rely
 ## Why Strategic Compaction?
 
 Auto-compaction triggers at arbitrary points:
+
 - Often mid-task, losing important context
 - No awareness of logical task boundaries
 - Can interrupt complex multi-step operations
 
 Strategic compaction at logical boundaries:
+
 - **After exploration, before execution** — Compact research context, keep implementation plan
 - **After completing a milestone** — Fresh start for next phase
 - **Before major context shifts** — Clear exploration context before different task
@@ -64,6 +66,7 @@ Tool count alone is a weak proxy for window pressure: a few large file reads or 
 ## Configuration
 
 Environment variables:
+
 - `COMPACT_THRESHOLD` — Tool calls before first suggestion (default: 50)
 - `COMPACT_CONTEXT_THRESHOLD` — Context tokens before the context-size suggestion (default: 160000 on a 200k window, 250000 on a 1M window; `0` disables the context signal)
 - `COMPACT_CONTEXT_INTERVAL` — Additional context tokens before the suggestion repeats (default: 60000)
@@ -124,6 +127,7 @@ Understanding what persists helps you compact with confidence:
 ## Token Optimization Patterns
 
 ### Trigger-Table Lazy Loading
+
 Instead of loading full skill content at session start, use a trigger table that maps keywords to skill paths. Skills load only when triggered, reducing baseline context by 50%+:
 
 | Trigger | Skill | Load When |
@@ -133,19 +137,24 @@ Instead of loading full skill content at session start, use a trigger table that
 | "deploy", "ci/cd" | deployment-patterns | Deployment context |
 
 ### Context Composition Awareness
+
 Monitor what's consuming your context window:
+
 - **CLAUDE.md files** — Always loaded, keep lean
 - **Loaded skills** — Each skill adds 1-5K tokens
 - **Conversation history** — Grows with each exchange
 - **Tool results** — File reads, search results add bulk
 
 ### Duplicate Instruction Detection
+
 Common sources of duplicate context:
+
 - Same rules in both `~/.claude/rules/` and project `.claude/rules/`
 - Skills that repeat CLAUDE.md instructions
 - Multiple skills covering overlapping domains
 
 ### Context Optimization Tools
+
 - `token-optimizer` MCP — Automated 95%+ token reduction via content deduplication
 - `context-mode` — Context virtualization (315KB to 5.4KB demonstrated)
 

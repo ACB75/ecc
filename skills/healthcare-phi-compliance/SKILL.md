@@ -96,6 +96,7 @@ COMMENT ON COLUMN doctor_payouts.amount IS 'PII: financial';
 ### Deployment Checklist
 
 Before every deployment:
+
 - No PHI in error messages or stack traces
 - No PHI in console.log/console.error
 - No PHI in URL parameters

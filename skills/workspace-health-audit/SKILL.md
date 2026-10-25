@@ -27,12 +27,15 @@ Operational skill to inspect, audit, and clean the active workspace, verify toke
 ## Audit Workflow
 
 ### 1. Read-Only Health Inspection
+
 Run the audit script in inspection mode:
+
 ```powershell
 pwsh -NoProfile -File scripts/bin/ecc-agy/audit-workspace.ps1
 ```
 
 ### 2. Inspect the Six Audit Phases
+
 - **Phase 1: Workspace Hygiene**: Checks for stray `.bak`, `.tmp`, `.old` files and execution caches (`__pycache__`, `.pytest_cache`).
 - **Phase 2: Token Budget & Frontmatter Compliance**: Evaluates rules characters and verifies that all skills ($\le 140$c) and agents ($\le 120$c, `flash`/`inherit`, least privilege) comply.
 - **Phase 3: Redundancy, Shadow Skills & Dead Artifacts**: Detects local skills that shadow global plugin skills, cross-project duplicates, orphan directories, and invalid agents.
@@ -41,7 +44,9 @@ pwsh -NoProfile -File scripts/bin/ecc-agy/audit-workspace.ps1
 - **Phase 6: SonarQube Quality Gate**: Runs `sonar-audit.py` to verify rating A (zero cognitive/duplication violations).
 
 ### 3. Cleanup & Optimization Mode (When Requested)
+
 When the user asks to clean up or optimize workspace hygiene:
+
 ```powershell
 pwsh -NoProfile -File scripts/bin/ecc-agy/audit-workspace.ps1 -Clean -Optimize
 ```

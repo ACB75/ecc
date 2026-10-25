@@ -65,6 +65,7 @@ The verdict gate (Step 4) maps these to NICE/NAUGHTY: both PASS → NICE, either
 #### Reviewer A: Claude Agent (always runs)
 
 Launch an Agent (subagent_type: `code-reviewer`, model: `opus`) with the full rubric + all files under review. The prompt must include:
+
 - The complete rubric
 - All file contents under review
 - "You are an independent quality reviewer. You have NOT seen any other review. Your job is to find problems, not to approve."
@@ -148,9 +149,11 @@ In all cases, the reviewer must return the same structured JSON verdict as Revie
 1. Display all critical issues from both reviewers
 2. Fix every flagged issue — change only what was flagged, no drive-by refactors
 3. Commit all fixes in a single commit:
+
    ```
    fix: address santa-loop review findings (round N)
    ```
+
 4. Re-run Step 3 with **fresh reviewers** (no memory of previous rounds)
 5. Repeat until both return PASS
 

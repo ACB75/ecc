@@ -87,14 +87,17 @@ kill $(cat /tmp/videodb_ws_pid)
 ```
 
 **Options:**
+
 - `--clear`: Clear the events file before starting. Use when starting a new capture session.
 
 **Output files:**
+
 - `videodb_events.jsonl` - All WebSocket events
 - `videodb_ws_id` - WebSocket connection ID (for `ws_connection_id` parameter)
 - `videodb_ws_pid` - Process ID (for stopping the listener)
 
 **Features:**
+
 - Auto-reconnect with exponential backoff on connection drops
 - Graceful shutdown on SIGINT/SIGTERM
 - PID file for easy process management

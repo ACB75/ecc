@@ -46,15 +46,18 @@ Enforces SonarQube static analysis rules and Quality Gate `A` ratings across Jav
 ## Deterministic Audit Workflow
 
 ### 1. Run Multi-Language Static Audit (Windows 11 `pwsh`)
+
 ```powershell
 pwsh -NoProfile -File scripts/bin/ecc-agy/sonar-audit.ps1
 ```
 
 ### 2. Run Multi-Language Static Audit (Debian 12 / WSL2 `bash`)
+
 ```bash
 scripts/bin/ecc-agy/sonar-audit.sh
 ```
 
 ### 3. Fix & Re-Verify
+
 - Refactor every reported `[CRITICAL]`, `[MAJOR]`, and `[MINOR]` finding at the exact `file:line`.
 - Re-run `sonar-audit.ps1` and the project's unit test suite to confirm `0` issues and `100%` test pass rate.

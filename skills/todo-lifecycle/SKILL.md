@@ -26,6 +26,7 @@ Operational workflow to formulate tasks using the rigorous 7-phase meta-prompt, 
 ## Commands
 
 ### Meta-Prompt Transformation
+
 ```powershell
 # Generar transformación de 7 fases para una tarea
 pwsh -NoProfile -File scripts/bin/ecc-agy/transform-todo.ps1 -Task "Refactor de persistencia en caché Ignite"
@@ -35,6 +36,7 @@ pwsh -NoProfile -File scripts/bin/ecc-agy/transform-todo.ps1 -Validate doc/plan.
 ```
 
 ### Archival of Completed Tasks
+
 ```powershell
 # Archivar todas las tareas completadas en TODO.md
 pwsh -NoProfile -File scripts/bin/ecc-agy/archive-todo.ps1 -AllCompleted
@@ -44,6 +46,7 @@ pwsh -NoProfile -File scripts/bin/ecc-agy/archive-todo.ps1 -Complete "Configurar
 ```
 
 ### Linux / Debian (Bash)
+
 ```bash
 scripts/bin/ecc-agy/transform-todo.sh --task "Refactor de persistencia"
 scripts/bin/ecc-agy/archive-todo.sh --all-completed

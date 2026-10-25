@@ -6,6 +6,7 @@ tools: Read, Grep, Glob, Bash, Write
 ---
 
 ## Tool guardrails
+
 - `Write` may only create `openspec/specs/<capability>/spec.md`.
 - `Bash` must stay read-only (no mutations, installs, network calls, or secret dumps).
 

@@ -44,6 +44,7 @@ git add <determined files>
 ```
 
 After staging, verify:
+
 ```bash
 git diff --cached --stat
 ```
@@ -61,6 +62,7 @@ Craft a single-line commit message in imperative mood:
 ```
 
 Types:
+
 - `feat` — New feature or capability
 - `fix` — Bug fix
 - `refactor` — Code restructuring without behavior change
@@ -71,6 +73,7 @@ Types:
 - `ci` — CI/CD changes
 
 Rules:
+
 - Imperative mood ("add feature" not "added feature")
 - Lowercase after the type prefix
 - No period at the end

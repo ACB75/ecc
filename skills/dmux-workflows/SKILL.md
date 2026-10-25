@@ -19,6 +19,7 @@ Orchestrate parallel AI agent sessions using dmux, a tmux pane manager for agent
 ## What is dmux
 
 dmux is a tmux-based orchestration tool that manages AI agent panes:
+
 - Press `n` to create a new pane with a prompt
 - Press `m` to merge pane output back to the main session
 - Supports: Claude Code, Codex, OpenCode, Cline, Gemini, Qwen
@@ -160,6 +161,7 @@ Example `plan.json`:
 ```
 
 The helper:
+
 - Creates one branch-backed git worktree per worker
 - Optionally overlays selected `seedPaths` from the main checkout into each worker worktree
 - Writes per-worker `task.md`, `handoff.md`, and `status.md` files under `.orchestration/<session>/`

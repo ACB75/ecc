@@ -58,6 +58,7 @@ Each layer has a specific job. Do not skip layers. Do not try to make one tool d
 ## Layer 1: Capture (Screen Studio / Raw Footage)
 
 Collect the source material:
+
 - **Screen Studio**: polished screen recordings for app demos, coding sessions, browser workflows
 - **Raw camera footage**: vlog footage, interviews, event recordings
 - **Desktop capture via VideoDB**: session recording with real-time context (see `videodb` skill)
@@ -67,6 +68,7 @@ Output: raw files ready for organization.
 ## Layer 2: Organization (Claude / Codex)
 
 Use Claude Code or Codex to:
+
 - **Transcribe and label**: generate transcript, identify topics and themes
 - **Plan structure**: decide what stays, what gets cut, what order works
 - **Identify dead sections**: find pauses, tangents, repeated takes
@@ -216,6 +218,7 @@ with open("voiceover.mp3", "wb") as f:
 ### Music and SFX with fal.ai
 
 Use the `fal-ai-media` skill for:
+
 - Background music generation
 - Sound effects (ThinkSound model for video-to-audio)
 - Transition sounds
@@ -223,6 +226,7 @@ Use the `fal-ai-media` skill for:
 ### Generated visuals with fal.ai
 
 Use for insert shots, thumbnails, or b-roll that doesn't exist:
+
 ```
 generate(app_id: "fal-ai/nano-banana-pro", input_data: {
   "prompt": "professional thumbnail for tech vlog, dark background, code on screen",
@@ -233,6 +237,7 @@ generate(app_id: "fal-ai/nano-banana-pro", input_data: {
 ### VideoDB generative audio
 
 If VideoDB is configured:
+
 ```python
 voiceover = coll.generate_voice(text="Narration here", voice="alloy")
 music = coll.generate_music(prompt="lo-fi background for coding vlog", duration=120)
@@ -242,6 +247,7 @@ sfx = coll.generate_sound_effect(prompt="subtle whoosh transition")
 ## Layer 6: Final Polish (Descript / CapCut)
 
 The last layer is human. Use a traditional editor for:
+
 - **Pacing**: adjust cuts that feel too fast or slow
 - **Captions**: auto-generated, then manually cleaned
 - **Color grading**: basic correction and mood
@@ -299,6 +305,7 @@ ffmpeg -i input.mp4 -af silencedetect=noise=-30dB:d=2 -f null - 2>&1 | grep sile
 ### Highlight extraction
 
 Use Claude to analyze transcript + scene timestamps:
+
 ```
 "Given this transcript with timestamps and these scene change points,
 identify the 5 most engaging 30-second clips for social media."

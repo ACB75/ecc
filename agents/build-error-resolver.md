@@ -39,12 +39,15 @@ npx eslint . --ext .ts,.tsx,.js,.jsx
 ## Workflow
 
 ### 1. Collect All Errors
+
 - Run `npx tsc --noEmit --pretty` to get all type errors
 - Categorize: type inference, missing types, imports, config, dependencies
 - Prioritize: build-blocking first, then type errors, then warnings
 
 ### 2. Fix Strategy (MINIMAL CHANGES)
+
 For each error:
+
 1. Read the error message carefully — understand expected vs actual
 2. Find the minimal fix (type annotation, null check, import fix)
 3. Verify fix doesn't break other code — rerun tsc
@@ -66,6 +69,7 @@ For each error:
 ## DO and DON'T
 
 **DO:**
+
 - Add type annotations where missing
 - Add null checks where needed
 - Fix imports/exports
@@ -74,6 +78,7 @@ For each error:
 - Fix configuration files
 
 **DON'T:**
+
 - Refactor unrelated code
 - Change architecture
 - Rename variables (unless causing error)

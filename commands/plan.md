@@ -19,6 +19,7 @@ Run inline by default. Do not call the Task tool or any subagent by default. Thi
 ## When to Use
 
 Use `/plan` when:
+
 - Starting a new feature
 - Making significant architectural changes
 - Working on complex refactoring
@@ -179,6 +180,7 @@ Assistant:
 **CRITICAL**: This command will **NOT** write any code until you explicitly confirm the plan with "yes" or "proceed" or similar affirmative response.
 
 If you want changes, respond with:
+
 - "modify: [your changes]"
 - "different approach: [alternative]"
 - "skip phase 2 and do phase 3 first"
@@ -186,6 +188,7 @@ If you want changes, respond with:
 ## Integration with Other Commands
 
 After planning:
+
 - Use `/plan-canvas` to run the confirmation gate visually in the browser (annotate + approve)
 - Use the `tdd-workflow` skill to implement with test-driven development
 - Use `/build-fix` if build errors occur

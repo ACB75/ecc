@@ -13,13 +13,16 @@ Review staged git diffs and draft commit messages that strictly follow the works
 ## Standard Commit Format
 
 ### 1. Title Structure: `[type]+[projects]: <title>`
+
 - **`[type]`**: Conventional Commit type: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `perf`, `build`, `ci`, `sec` (or `security`).
 - **`+`**: Mandatory delimiter between type and affected projects.
 - **`[projects]`**: One or more affected projects or modules: `[cluster]`, `[kakebo]`, `[whoiam]`, `[net]`, `[scripts]`, `[ecc-agy]`, `[doc]` (or comma-separated `[cluster,net]` for cross-cutting changes).
 - **`: <title>`**: Colon followed by a concise, imperative title in lowercase without a trailing period.
 
 ### 2. Mandatory Explanatory Body Comment (`msg comment`)
+
 Single-line commits are strictly prohibited. Every commit must include an explanatory body comment detailing:
+
 1. **Motivation & Context**: Why this change is necessary and what problem it solves.
 2. **Affected Components**: Modules, contracts, or configuration files touched.
 3. **Architectural Decisions**: Trade-offs, design patterns, or hardening applied.

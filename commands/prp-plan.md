@@ -62,6 +62,7 @@ From the input (PRD phase or free-form description), identify:
 ### User Story
 
 Format as:
+
 ```
 As a [type of user],
 I want [capability],
@@ -163,6 +164,7 @@ If the feature uses only well-understood internal patterns, skip this phase and 
 Document the before/after user experience:
 
 **Before:**
+
 ```
 ┌─────────────────────────────┐
 │  [Current user experience]  │
@@ -172,6 +174,7 @@ Document the before/after user experience:
 ```
 
 **After:**
+
 ```
 ┌─────────────────────────────┐
 │  [New user experience]      │
@@ -208,6 +211,7 @@ Define the implementation approach:
 Write the full plan document using the template below. Save to `.claude/PRPs/plans/{kebab-case-feature-name}.plan.md`.
 
 Create the directory if it doesn't exist:
+
 ```bash
 mkdir -p .claude/PRPs/plans
 ```

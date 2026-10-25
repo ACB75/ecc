@@ -72,6 +72,7 @@ This is the same dynamic as GANs (Generative Adversarial Networks): the Generato
 **Role:** Product manager — expands a brief prompt into a full product specification.
 
 **Key behaviors:**
+
 - Takes a one-line prompt and produces a 16-feature, multi-sprint specification
 - Defines user stories, technical requirements, and visual design direction
 - Is deliberately **ambitious** — conservative planning leads to underwhelming results
@@ -84,6 +85,7 @@ This is the same dynamic as GANs (Generative Adversarial Networks): the Generato
 **Role:** Developer — implements features according to the spec.
 
 **Key behaviors:**
+
 - Works in structured sprints (or continuous mode with newer models)
 - Negotiates a "sprint contract" with the Evaluator before writing code
 - Uses full-stack tooling: React, FastAPI/Express, databases, CSS
@@ -97,6 +99,7 @@ This is the same dynamic as GANs (Generative Adversarial Networks): the Generato
 **Role:** QA engineer — tests the live running application, not just code.
 
 **Key behaviors:**
+
 - Uses **Playwright MCP** to interact with the live application
 - Clicks through features, fills forms, tests API endpoints
 - Scores against four criteria (configurable):
@@ -198,18 +201,21 @@ claude -p --model sonnet "You are a Generator. Read spec.md and feedback-001.md.
 The harness should simplify as models improve. Following Anthropic's evolution:
 
 ### Stage 1 — Weaker Models (Sonnet-class)
+
 - Full sprint decomposition required
 - Context resets between sprints (avoid context anxiety)
 - 2-agent minimum: Initializer + Coding Agent
 - Heavy scaffolding compensates for model limitations
 
 ### Stage 2 — Capable Models (Opus 4.5-class)
+
 - Full 3-agent harness: Planner + Generator + Evaluator
 - Sprint contracts before each implementation phase
 - 10-sprint decomposition for complex apps
 - Context resets still useful but less critical
 
 ### Stage 3 — Frontier Models (Opus 4.6-class)
+
 - Simplified harness: single planning pass, continuous generation
 - Evaluation reduced to single end-pass (model is smarter)
 - No sprint structure needed

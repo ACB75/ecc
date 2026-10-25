@@ -46,12 +46,15 @@ ng serve
 To proxy API requests during development (e.g., rerouting `/api` to a local Node server):
 
 1. Create `src/proxy.conf.json`:
+
    ```json
    {
      "/api/**": {"target": "http://localhost:3000", "secure": false}
    }
    ```
+
 2. Update `angular.json` under the `serve` target:
+
    ```json
    "serve": {
      "builder": "@angular/build:dev-server",

@@ -20,8 +20,9 @@ See `AGENTS.md` / `~/.gemini/config/plugins/ecc-agy/rules/AGENTS.md` for the uni
 7. **Mandatory /portal Synchronization on Infra/Net Changes**: Any change to Docker services, Traefik routes, CoreDNS records, or network ports requires updating the `/portal` catalog in `cluster/cmd/server/main.go` and verifying zero drift with `sync-portal.ps1 -Audit`.
 8. **Zero Unofficial Third-Party Dependencies**: Never add non-official third-party libraries without warning the user and receiving explicit confirmation first.
 9. **Centralized Docs**: Store all project documentation, diagrams, reports, and artifacts in `doc/` (organized by project `doc/<project>/` and governed via `.governance/docs-map.json`).
-10. **Mandatory Commit Format (`[type]+[projects]: <title>` + Body Comment)**: All commits must follow `[type]+[projects]: <title>` and include an explanatory body comment detailing motivation, changes, and tests. Single-line commits are prohibited. Never commit/push autonomously without user authorization.
-11. **Stack Standards (ECC-AGY Authority)**:
+10. **Standard Markdown Formatting (DavidAnson markdownlint)**: All `.md` files must comply with DavidAnson `markdownlint` (`.markdownlint.json`, blanks around headings/lists/fences, zero trailing spaces, single EOF newline, verified with `lint-markdown.ps1`).
+11. **Mandatory Commit Format (`[type]+[projects]: <title>` + Body Comment)**: All commits must follow `[type]+[projects]: <title>` and include an explanatory body comment detailing motivation, changes, and tests. Single-line commits are prohibited. Never commit/push autonomously without user authorization.
+12. **Stack Standards (ECC-AGY Authority)**:
    - **Java 25 / Spring Boot 4**: `record` DTOs, constructor injection, sealed types, JUnit 5 + AssertJ + Mockito + Testcontainers.
    - **Angular 21+ / TS**: Standalone + `OnPush`, `inject()`, Signals (`signal`, `computed`, `linkedSignal`, `resource`), `@if`/`@for`, functional guards/interceptors, native TS/Angular validation, Vitest/Jest + Playwright.
    - **Python / FastAPI**: PEP 8 + type hints, `async def` with async I/O drivers, `Depends()` DI, Pydantic `response_model`, `pytest`.

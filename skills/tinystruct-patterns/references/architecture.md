@@ -63,6 +63,7 @@ By default, the framework assumes a view template is required. If `templateRequi
 ## Examples
 
 ### Minimal Application Initialization
+
 ```java
 @Override
 public void init() {
@@ -72,13 +73,16 @@ public void init() {
 ```
 
 ### Action Definition and CLI Invocation
+
 ```java
 @Action("hello")
 public String hello() {
     return "Hello, tinystruct!";
 }
 ```
+
 **Execution via Dispatcher:**
+
 ```bash
 bin/dispatcher hello
 bin/dispatcher greet/James
@@ -86,7 +90,9 @@ bin/dispatcher echo --words "Hello" --import com.example.HelloApp
 ```
 
 ### Configuration Access
+
 Located at `src/main/resources/application.properties`:
+
 ```java
 String port = this.getConfiguration("server.port");
 ```

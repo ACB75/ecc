@@ -53,6 +53,7 @@ Gather raw signals about the project without reading every file. Run these check
 From the reconnaissance data, identify:
 
 **Tech Stack**
+
 - Language(s) and version constraints
 - Framework(s) and major libraries
 - Database(s) and ORMs
@@ -60,6 +61,7 @@ From the reconnaissance data, identify:
 - CI/CD platform
 
 **Architecture Pattern**
+
 - Monolith, monorepo, microservices, or serverless
 - Frontend/backend split or full-stack
 - API style: REST, GraphQL, gRPC, tRPC
@@ -79,6 +81,7 @@ scripts/         → Build and deployment scripts
 
 **Data Flow**
 Trace one request from entry to response:
+
 - Where does a request enter? (router, handler, controller)
 - How is it validated? (middleware, schemas, guards)
 - Where is business logic? (services, models, use cases)
@@ -89,17 +92,20 @@ Trace one request from entry to response:
 Identify patterns the codebase already follows:
 
 **Naming Conventions**
+
 - File naming: kebab-case, camelCase, PascalCase, snake_case
 - Component/class naming patterns
 - Test file naming: `*.test.ts`, `*.spec.ts`, `*_test.go`
 
 **Code Patterns**
+
 - Error handling style: try/catch, Result types, error codes
 - Dependency injection or direct imports
 - State management approach
 - Async patterns: callbacks, promises, async/await, channels
 
 **Git Conventions**
+
 - Branch naming from recent branches
 - Commit message style from recent commits
 - PR workflow (squash, merge, rebase)
@@ -219,16 +225,19 @@ Generate or update a project-specific CLAUDE.md based on detected conventions. I
 ## Examples
 
 ### Example 1: First time in a new repo
+
 **User**: "Onboard me to this codebase"
 **Action**: Run full 4-phase workflow → produce Onboarding Guide + Starter CLAUDE.md
 **Output**: Onboarding Guide printed directly to the conversation, plus a `CLAUDE.md` written to the project root
 
 ### Example 2: Generate CLAUDE.md for existing project
+
 **User**: "Generate a CLAUDE.md for this project"
 **Action**: Run Phases 1-3, skip Onboarding Guide, produce only CLAUDE.md
 **Output**: Project-specific `CLAUDE.md` with detected conventions
 
 ### Example 3: Enhance existing CLAUDE.md
+
 **User**: "Update the CLAUDE.md with current project conventions"
 **Action**: Read existing CLAUDE.md, run Phases 1-3, merge new findings
 **Output**: Updated `CLAUDE.md` with additions clearly marked

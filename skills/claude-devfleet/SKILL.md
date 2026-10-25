@@ -17,6 +17,7 @@ The DevFleet server is a separate project, not bundled with ECC. Install and
 run it from its repository first: <https://github.com/LEC-AI/claude-devfleet>
 
 Then connect the running instance via MCP:
+
 ```bash
 claude mcp add devfleet --transport http http://localhost:18801/mcp
 ```

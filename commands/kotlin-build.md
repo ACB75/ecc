@@ -17,6 +17,7 @@ This command invokes the **kotlin-build-resolver** agent to incrementally fix Ko
 ## When to Use
 
 Use `/kotlin-build` when:
+
 - `./gradlew build` fails with errors
 - Kotlin compiler reports errors
 - `./gradlew detekt` reports violations
@@ -157,6 +158,7 @@ Build Status: PASS: SUCCESS
 ## Stop Conditions
 
 The agent will stop and report if:
+
 - Same error persists after 3 attempts
 - Fix introduces more errors
 - Requires architectural changes

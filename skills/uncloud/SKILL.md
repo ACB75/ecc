@@ -12,6 +12,7 @@ Reference for the `uc` CLI — a decentralised self-hosting platform using Docke
 ## When to Activate
 
 Use this skill when working with Uncloud clusters, especially when:
+
 - Bootstrapping or joining machines with `uc machine`
 - Deploying services from Compose files with `uc deploy`
 - Publishing HTTP, HTTPS, TCP, or UDP ports through Uncloud
@@ -170,6 +171,7 @@ services:
 ```
 
 Template functions available inside `x-caddy`:
+
 - `{{upstreams [service] [port]}}` — healthy container IPs
 - `{{.Name}}` — service name
 - `{{.Upstreams}}` — map of all services → IPs
@@ -310,12 +312,14 @@ image: myapp:{{gitsha 7}}.${GITHUB_RUN_ID:-local}
 ## Common Workflows
 
 **Deploy from source:**
+
 ```bash
 uc deploy                          # Build + push + deploy
 uc build --push && uc deploy --no-build   # Separate steps
 ```
 
 **Inspect a service:**
+
 ```bash
 uc inspect web
 uc logs -f web
@@ -327,6 +331,7 @@ uc exec web /bin/sh -c "env"       # Run specific command
 **Zero-downtime deploys** happen automatically; Uncloud waits for health checks before terminating old containers.
 
 **Force recreate:**
+
 ```bash
 uc deploy --recreate
 ```

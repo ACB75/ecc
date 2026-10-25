@@ -20,6 +20,7 @@ Generate PNG icon imagesets for Xcode asset catalogs from two sources.
 ## Core Principles
 
 ### 1. Two Sources, One Output Format
+
 Both sources produce identical Xcode-compatible imagesets. Choose based on need:
 
 | Source | Icons | Requires | Best for |
@@ -28,9 +29,11 @@ Both sources produce identical Xcode-compatible imagesets. Choose based on need:
 | **SF Symbols** | 5,000+ Apple symbols | macOS only | Apple-native style, offline use |
 
 ### 2. Always Match Existing Style
+
 Before generating, check the project's existing icons for size, color, and weight consistency.
 
 ### 3. Output Structure
+
 Both methods produce a complete Xcode imageset:
 
 ```
@@ -48,6 +51,7 @@ Both methods produce a complete Xcode imageset:
 Determine icon needs: what the icon represents, preferred style, target color, and size.
 
 If the project already has icons, check existing style:
+
 ```bash
 # Check dimensions of existing icon
 sips -g pixelWidth -g pixelHeight path/to/existing@2x.png
@@ -56,6 +60,7 @@ sips -g pixelWidth -g pixelHeight path/to/existing@2x.png
 ### Step 2: Search for Icons
 
 **Iconify API (recommended for wide selection):**
+
 ```bash
 # Search all collections
 $SKILL_DIR/scripts/iconify_gen.sh search "receipt"
@@ -89,6 +94,7 @@ $SKILL_DIR/scripts/iconify_gen.sh preview mdi:receipt-text-outline
 ### Step 4: Generate
 
 **Iconify API:**
+
 ```bash
 # Basic generation
 $SKILL_DIR/scripts/iconify_gen.sh mdi:receipt-text-outline editTool_expenseReport
@@ -100,6 +106,7 @@ $SKILL_DIR/scripts/iconify_gen.sh mdi:receipt-text-outline myIcon --color 007AFF
 Options: `--size <pt>` (default: 68), `--color <hex>` (default: 8E8E93), `--output <dir>` (default: /tmp/icons)
 
 **SF Symbols:**
+
 ```bash
 # Basic generation
 swift $SKILL_DIR/scripts/generate_icons.swift doc.text.below.ecg editTool_expenseReport
@@ -114,9 +121,11 @@ Options: `--size <pt>` (default: 68), `--color <hex>` (default: 8E8E93), `--weig
 
 1. Read the generated @2x PNG to verify visually
 2. Copy to asset catalog if not output there directly:
+
    ```bash
    cp -r /tmp/icons/<name>.imageset path/to/Assets.xcassets/<group>/
    ```
+
 3. Build the project to verify Xcode picks up the new assets
 
 ## Popular Iconify Collections

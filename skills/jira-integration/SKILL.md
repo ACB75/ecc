@@ -25,6 +25,7 @@ Retrieve, analyze, and update Jira tickets directly from your AI coding workflow
 Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your AI agent.
 
 **Requirements:**
+
 - Python 3.10+
 - `uvx` (from `uv`), installed via your package manager or the official `uv` installation documentation
 
@@ -48,6 +49,7 @@ Install the `mcp-atlassian` MCP server. This exposes Jira tools directly to your
 > **Security:** Never hardcode secrets. Prefer setting `JIRA_URL`, `JIRA_EMAIL`, and `JIRA_API_TOKEN` in your system environment (or a secrets manager). Only use the MCP `env` block for local, uncommitted config files.
 
 **To get a Jira API token:**
+
 1. Go to <https://id.atlassian.com/manage-profile/security/api-tokens>
 2. Click **Create API token**
 3. Copy the token — store it in your environment, never in source code
@@ -169,6 +171,7 @@ jira_curl -G \
 When retrieving a ticket for development or test automation, extract:
 
 ### 1. Testable Requirements
+
 - **Functional requirements** — What the feature does
 - **Acceptance criteria** — Conditions that must be met
 - **Testable behaviors** — Specific actions and expected outcomes
@@ -177,12 +180,14 @@ When retrieving a ticket for development or test automation, extract:
 - **Integration points** — APIs, services, or systems involved
 
 ### 2. Test Types Needed
+
 - **Unit tests** — Individual functions and utilities
 - **Integration tests** — API endpoints and service interactions
 - **E2E tests** — User-facing UI flows
 - **API tests** — Endpoint contracts and error handling
 
 ### 3. Edge Cases & Error Scenarios
+
 - Invalid inputs (empty, too long, special characters)
 - Unauthorized access
 - Network failures or timeouts
@@ -238,12 +243,14 @@ Dependencies:
 ### Comment Templates
 
 **Starting Work:**
+
 ```
 Starting implementation for this ticket.
 Branch: feat/PROJ-1234-feature-name
 ```
 
 **Tests Implemented:**
+
 ```
 Automated tests implemented:
 
@@ -258,6 +265,7 @@ All tests passing locally. Coverage: XX%
 ```
 
 **PR Created:**
+
 ```
 Pull request created:
 [PR Title](https://github.com/org/repo/pull/XXX)
@@ -266,6 +274,7 @@ Ready for review.
 ```
 
 **Work Complete:**
+
 ```
 Implementation complete.
 

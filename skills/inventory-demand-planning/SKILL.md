@@ -159,6 +159,7 @@ The textbook formula is `SS = Z × σ_d × √(LT + RP)` where Z is the service 
 ### Slow-Mover Kill Decision
 
 Evaluate quarterly. Flag for discontinuation when ALL of the following are true:
+
 - Weeks of supply > 26 at current sell-through rate
 - Last 13-week sales velocity < 50% of the item's first 13 weeks (lifecycle declining)
 - No promotional activity planned in the next 8 weeks

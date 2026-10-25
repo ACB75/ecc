@@ -176,6 +176,7 @@ For MEDIUM+ tasks, always start with /plan. For EPIC tasks, use blueprint skill.
 **Multi-prompt splitting** (for HIGH/EPIC scope):
 
 For tasks that exceed a single session, split into sequential prompts:
+
 - Prompt 1: Research + Plan (use search-first skill, then /plan)
 - Prompt 2-N: Implement one phase per prompt (each ends with /verify)
 - Final Prompt: Integration test + /code-review across all phases
@@ -214,6 +215,7 @@ If Phase 0 auto-detected the answer, state it instead of asking.
 
 Present the complete optimized prompt inside a single fenced code block.
 The prompt must be self-contained and ready to copy-paste. Include:
+
 - Clear task description with context
 - Tech stack (detected or specified)
 - /command invocations at the right workflow stages
@@ -264,6 +266,7 @@ A compact version for experienced ECC users. Vary by intent type:
 ### Example 1: Vague Chinese Prompt (Project Detected)
 
 **User input:**
+
 ```
 帮我写一个用户登录页面
 ```
@@ -271,6 +274,7 @@ A compact version for experienced ECC users. Vary by intent type:
 **Phase 0 detects:** `package.json` with Next.js 15, TypeScript, Tailwind CSS
 
 **Optimized Prompt (Full):**
+
 ```
 使用项目现有技术栈（Next.js 15 + TypeScript + Tailwind CSS）实现用户登录页面。
 
@@ -307,6 +311,7 @@ A compact version for experienced ECC users. Vary by intent type:
 ### Example 2: Moderate English Prompt
 
 **User input:**
+
 ```
 Add a REST API endpoint for user profile updates with validation
 ```
@@ -314,6 +319,7 @@ Add a REST API endpoint for user profile updates with validation
 **Phase 0 detects:** `go.mod` with Go 1.22, Chi router
 
 **Optimized Prompt (Full):**
+
 ```
 Add a REST API endpoint for user profile updates (PATCH /api/users/:id).
 
@@ -344,11 +350,13 @@ Do not:
 ### Example 3: EPIC Project
 
 **User input:**
+
 ```
 Migrate our monolith to microservices
 ```
 
 **Optimized Prompt (Full):**
+
 ```
 Use the blueprint skill to plan: "Migrate monolith to microservices architecture"
 

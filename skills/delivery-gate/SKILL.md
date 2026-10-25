@@ -11,6 +11,7 @@ metadata:
 A **Stop hook** that checks three things before Claude can finish a session, using only **deterministic checks** — file modification timestamps, disk usage, and regex patterns on the transcript text. No AI inference.
 
 This is distinct from reasoning gates (like `self-audit`): delivery-gate checks machine-verifiable facts; self-audit checks output quality across four reasoning dimensions. Together they form defense in depth:
+
 - **delivery-gate**: "Was the learning library touched today? Is disk space safe?"
 - **self-audit**: "Is the file content correct, complete, and honest?"
 
@@ -43,6 +44,7 @@ cp skills/delivery-gate/hooks/quality-gate.py ~/.claude/scripts/
 ```
 
 Add to `~/.claude/settings.json`:
+
 ```json
 {
   "hooks": {
@@ -87,22 +89,26 @@ Edit `quality-gate.py`:
 ## Examples
 
 **Simple session — allowed:**
+
 ```
 edit_count=1 (< 3, not complex) → exit 0
 ```
 
 **Complex task, learning captured — allowed:**
+
 ```
 edit_count=5 (complex) → checks LIBS → growth-log updated today → exit 0
 ```
 
 **Complex task, no learning — BLOCKED:**
+
 ```
 edit_count=4 (complex) → checks LIBS → all 5 stale → exit 2
 stderr: "Blocked: complex task completed but no learning captured today."
 ```
 
 **Low disk space — BLOCKED:**
+
 ```
 disk_free=12GB < 15GB critical → exit 2
 stderr: "Blocked: disk space at 12GB (threshold: 15GB)."

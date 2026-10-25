@@ -121,6 +121,7 @@ Incoterms define the transfer of costs, risk, and responsibility between buyer a
 ### Penalties and Compliance
 
 **US penalty framework under 19 USC § 1592:**
+
 - **Negligence:** 2× unpaid duties or 20% of dutiable value for first violation. Reduced to 1× or 10% with mitigation. Most common assessment.
 - **Gross negligence:** 4× unpaid duties or 40% of dutiable value. Harder to mitigate — requires showing systemic compliance measures.
 - **Fraud:** Full domestic value of the merchandise. Criminal referral possible. No mitigation without extraordinary cooperation.

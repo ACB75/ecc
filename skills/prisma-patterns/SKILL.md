@@ -16,6 +16,7 @@ Production patterns and non-obvious traps for Prisma ORM in TypeScript backends.
 > ```
 >
 > Notable API differences across versions:
+>
 > - `relationJoins` can load relations via JOIN rather than separate queries, but may cause row explosion on large 1:N relations or deep `include` — benchmark both approaches
 > - `omit` field modifier and `prisma.$extends` Client Extensions API were added
 > - **Newer installs**: the package may be named `prisma` instead of `@prisma/client`; `PrismaClient` may require a driver adapter (e.g. `@prisma/adapter-pg`); `datasource.url` may live in `prisma.config.ts` instead of `schema.prisma`

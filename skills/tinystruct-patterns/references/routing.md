@@ -9,6 +9,7 @@ Use the `@Action` annotation in your applications to define routes for both CLI 
 The `ActionRegistry` parses `@Action` annotations to build a routing table. For parameterized methods, the framework automatically maps Java parameter types to corresponding regex segments.
 
 ### Regex Generation Rules
+
 - `getUser(int id)` → pattern: `^/?user/(-?\d+)$`
 - `search(String query)` → pattern: `^/?search/([^/]+)$`
 
@@ -31,6 +32,7 @@ Supported parameter types: `String`, `int/Integer`, `long/Long`, `float/Float`, 
 ## Examples
 
 ### Basic Action Declaration
+
 ```java
 @Action(
     value = "path/subpath",          // required: URI segment or CLI command
@@ -42,6 +44,7 @@ public String myAction(int id) { ... }
 ```
 
 ### Parameterized Paths
+
 ```java
 @Action("user/{id}")
 public String getUser(int id) { ... }
@@ -50,6 +53,7 @@ public String getUser(int id) { ... }
 ```
 
 ### Dependency Injection
+
 `ActionRegistry` automatically injects `Request` and/or `Response` from `Context` if they are parameters:
 
 ```java
@@ -61,4 +65,5 @@ public String upload(Request<?, ?> req, Response<?, ?> res) throws ApplicationEx
 ```
 
 ### Path Matching Priority
+
 If two methods share the same path, the framework uses the first match in the `ActionRegistry`. Use explicit `Mode` values to disambiguate (e.g., separating a GET for a form and a POST for submission).

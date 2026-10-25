@@ -17,6 +17,7 @@ This command runs the Flutter test suite and reports results. When failures occu
 ## When to Use
 
 Use `/flutter-test` when:
+
 - After implementing a feature to verify nothing broke
 - After running `/flutter-build` to ensure tests pass
 - To check test coverage on new code

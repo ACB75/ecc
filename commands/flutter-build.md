@@ -17,6 +17,7 @@ This command invokes the **dart-build-resolver** agent to incrementally fix Dart
 ## When to Use
 
 Use `/flutter-build` when:
+
 - `flutter analyze` reports errors
 - `flutter build` fails for any platform
 - `dart pub get` / `flutter pub get` fails with version conflicts
@@ -147,6 +148,7 @@ Build Status: PASS ✓
 ## Stop Conditions
 
 The agent will stop and report if:
+
 - Same error persists after 3 attempts
 - Fix introduces more errors
 - Requires architectural changes

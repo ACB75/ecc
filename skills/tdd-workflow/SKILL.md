@@ -38,9 +38,11 @@ Do not treat the plan as permission to skip TDD. The plan supplies intent and ta
 ## Core Principles
 
 ### 1. Tests BEFORE Code
+
 ALWAYS write tests first, then implement code to make tests pass.
 
 ### 2. Coverage Requirements
+
 - Minimum 80% coverage (unit + integration + E2E)
 - All edge cases covered
 - Error scenarios tested
@@ -49,24 +51,28 @@ ALWAYS write tests first, then implement code to make tests pass.
 ### 3. Test Types
 
 #### Unit Tests
+
 - Individual functions and utilities
 - Component logic
 - Pure functions
 - Helpers and utilities
 
 #### Integration Tests
+
 - API endpoints
 - Database operations
 - Service interactions
 - External API calls
 
 #### E2E Tests (Playwright)
+
 - Critical user flows
 - Complete workflows
 - Browser automation
 - UI interactions
 
 ### 4. Git Checkpoints
+
 - If the repository is under Git, create a checkpoint commit after each TDD stage
 - Do not squash or rewrite these checkpoint commits until the workflow is complete
 - Each checkpoint commit message must describe the stage and the exact evidence captured
@@ -123,6 +129,7 @@ so that I can find relevant markets even without exact keywords.
 ```
 
 ### Step 2: Generate Test Cases
+
 For each user journey, create comprehensive test cases:
 
 ```typescript
@@ -146,6 +153,7 @@ describe('Semantic Search', () => {
 ```
 
 ### Step 3: Run Tests (They Should Fail)
+
 ```bash
 <test>
 # Tests should fail - we haven't implemented yet
@@ -154,6 +162,7 @@ describe('Semantic Search', () => {
 This step is mandatory and is the RED gate for all production changes.
 
 Before modifying business logic or other production code, you must verify a valid RED state via one of these paths:
+
 - Runtime RED:
   - The relevant test target compiles successfully
   - The new or changed test is actually executed
@@ -170,11 +179,13 @@ Do not edit production code until this RED state is confirmed.
 
 If the repository is under Git, create a checkpoint commit immediately after this stage is validated.
 Recommended commit message format:
+
 - `test: add reproducer for <feature or bug>`
 - This commit may also serve as the RED validation checkpoint if the reproducer was compiled and executed and failed for the intended reason
 - Verify that this checkpoint commit is on the current active branch before continuing
 
 ### Step 4: Implement Code
+
 Write minimal code to make tests pass:
 
 ```typescript
@@ -187,6 +198,7 @@ export async function searchMarkets(query: string) {
 If the repository is under Git, stage the minimal fix now but defer the checkpoint commit until GREEN is validated in Step 5.
 
 ### Step 5: Run Tests Again
+
 ```bash
 <test>
 # Tests should now pass
@@ -198,12 +210,15 @@ Only after a valid GREEN result may you proceed to refactor.
 
 If the repository is under Git, create a checkpoint commit immediately after GREEN is validated.
 Recommended commit message format:
+
 - `fix: <feature or bug>`
 - The fix commit may also serve as the GREEN validation checkpoint if the same relevant test target was rerun and passed
 - Verify that this checkpoint commit is on the current active branch before continuing
 
 ### Step 6: Refactor
+
 Improve code quality while keeping tests green:
+
 - Remove duplication
 - Improve naming
 - Optimize performance
@@ -211,10 +226,12 @@ Improve code quality while keeping tests green:
 
 If the repository is under Git, create a checkpoint commit immediately after refactoring is complete and tests remain green.
 Recommended commit message format:
+
 - `refactor: clean up after <feature or bug> implementation`
 - Verify that this checkpoint commit is on the current active branch before considering the TDD cycle complete
 
 ### Step 7: Verify Coverage
+
 ```bash
 <coverage>
 # Verify 80%+ coverage achieved
@@ -252,14 +269,15 @@ If the repository already uses Claude-specific local artifacts, the `.claude/tdd
 | 2 | API rejects invalid limit values with HTTP 400 | `src/api/markets/route.test.ts:validates query parameters` | integration | PASS | `npm test -- route.test.ts` |
 ```
 
-5. **Coverage and known gaps** - include the coverage command/result when available and explain any intentional gaps, skipped tests, or untested follow-ups.
-6. **Merge evidence** - if checkpoint commits will be squashed, copy the final RED/GREEN/refactor summary here and into the PR body or squash commit body.
+1. **Coverage and known gaps** - include the coverage command/result when available and explain any intentional gaps, skipped tests, or untested follow-ups.
+2. **Merge evidence** - if checkpoint commits will be squashed, copy the final RED/GREEN/refactor summary here and into the PR body or squash commit body.
 
 Keep the report factual. Quote actual commands and outcomes; do not invent PASS results for tests that were not run.
 
 ## Testing Patterns
 
 ### Unit Test Pattern (Jest/Vitest)
+
 ```typescript
 import { render, screen, fireEvent } from '@testing-library/react'
 import { Button } from './Button'
@@ -316,6 +334,7 @@ bun test --coverage   # coverage report
 - Configure coverage thresholds in `bunfig.toml` under `[test]` (e.g. `coverageThreshold`) rather than the Jest `coverageThresholds` config block.
 
 ### API Integration Test Pattern
+
 ```typescript
 import { NextRequest } from 'next/server'
 import { GET } from './route'
@@ -347,6 +366,7 @@ describe('GET /api/markets', () => {
 ```
 
 ### E2E Test Pattern (Playwright)
+
 ```typescript
 import { test, expect } from '@playwright/test'
 
@@ -425,6 +445,7 @@ src/
 ## Mocking External Services
 
 ### Supabase Mock
+
 ```typescript
 jest.mock('@/lib/supabase', () => ({
   supabase: {
@@ -441,6 +462,7 @@ jest.mock('@/lib/supabase', () => ({
 ```
 
 ### Redis Mock
+
 ```typescript
 jest.mock('@/lib/redis', () => ({
   searchMarketsByVector: jest.fn(() => Promise.resolve([
@@ -451,6 +473,7 @@ jest.mock('@/lib/redis', () => ({
 ```
 
 ### OpenAI Mock
+
 ```typescript
 jest.mock('@/lib/openai', () => ({
   generateEmbedding: jest.fn(() => Promise.resolve(
@@ -462,11 +485,13 @@ jest.mock('@/lib/openai', () => ({
 ## Test Coverage Verification
 
 ### Run Coverage Report
+
 ```bash
 <coverage>
 ```
 
 ### Coverage Thresholds
+
 ```json
 {
   "jest": {
@@ -485,24 +510,28 @@ jest.mock('@/lib/openai', () => ({
 ## Common Testing Mistakes to Avoid
 
 ### FAIL: WRONG: Testing Implementation Details
+
 ```typescript
 // Don't test internal state
 expect(component.state.count).toBe(5)
 ```
 
 ### PASS: CORRECT: Test User-Visible Behavior
+
 ```typescript
 // Test what users see
 expect(screen.getByText('Count: 5')).toBeInTheDocument()
 ```
 
 ### FAIL: WRONG: Brittle Selectors
+
 ```typescript
 // Breaks easily
 await page.click('.css-class-xyz')
 ```
 
 ### PASS: CORRECT: Semantic Selectors
+
 ```typescript
 // Resilient to changes
 await page.click('button:has-text("Submit")')
@@ -510,6 +539,7 @@ await page.click('[data-testid="submit-button"]')
 ```
 
 ### FAIL: WRONG: No Test Isolation
+
 ```typescript
 // Tests depend on each other
 test('creates user', () => { /* ... */ })
@@ -517,6 +547,7 @@ test('updates same user', () => { /* depends on previous test */ })
 ```
 
 ### PASS: CORRECT: Independent Tests
+
 ```typescript
 // Each test sets up its own data
 test('creates user', () => {
@@ -533,18 +564,21 @@ test('updates user', () => {
 ## Continuous Testing
 
 ### Watch Mode During Development
+
 ```bash
 <test-watch>
 # Tests run automatically on file changes
 ```
 
 ### Pre-Commit Hook
+
 ```bash
 # Runs before every commit
 <test> && <lint>
 ```
 
 ### CI/CD Integration
+
 ```yaml
 # GitHub Actions
 - name: Run Tests

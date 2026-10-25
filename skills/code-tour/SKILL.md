@@ -10,6 +10,7 @@ metadata:
 Create **CodeTour** `.tour` files for codebase walkthroughs that open directly to real files and line ranges. Tours live in `.tours/` and are meant for the CodeTour format, not ad hoc Markdown notes.
 
 A good tour is a narrative for a specific reader:
+
 - what they are looking at
 - why it matters
 - what path they should follow next
@@ -19,12 +20,14 @@ Only create `.tour` JSON files. Do not modify source code as part of this skill.
 ## When to Use
 
 Use this skill when:
+
 - the user asks for a code tour, onboarding tour, architecture walkthrough, or PR tour
 - the user says "explain how X works" and wants a reusable guided artifact
 - the user wants a ramp-up path for a new engineer or reviewer
 - the task is better served by a guided sequence than a flat summary
 
 Examples:
+
 - onboarding a new maintainer
 - architecture tour for one service or package
 - PR-review walk-through anchored to changed files
@@ -45,6 +48,7 @@ Examples:
 ### 1. Discover
 
 Explore the repo before writing anything:
+
 - README and package/app entry points
 - folder structure
 - relevant config files
@@ -70,6 +74,7 @@ Decide the persona and depth from the request.
 ### 3. Read and verify anchors
 
 Every file path and line anchor must be real:
+
 - confirm the file exists
 - confirm the line numbers are in range
 - if using a selection, verify the exact block
@@ -90,6 +95,7 @@ Keep the path deterministic and readable.
 ### 5. Validate
 
 Before finishing:
+
 - every referenced path exists
 - every line or selection is valid
 - the first step is anchored to a real file or directory
@@ -175,6 +181,7 @@ Use for PRs, issues, or docs when helpful:
 ## Writing Rule: SMIG
 
 Each description should answer:
+
 - **Situation**: what the reader is looking at
 - **Mechanism**: how it works
 - **Implication**: why it matters for this persona
@@ -185,6 +192,7 @@ Keep descriptions compact, specific, and grounded in the actual code.
 ## Narrative Shape
 
 Use this arc unless the task clearly needs something different:
+
 1. orientation
 2. module map
 3. core execution path

@@ -9,6 +9,7 @@ provides different levels of support for that skill.
 Output ONLY valid YAML (no markdown fences, no commentary):
 
 scenarios:
+
   - id: <kebab-case>
     level: 1
     level_name: supportive
@@ -38,6 +39,7 @@ scenarios:
       - <setup commands>
 
 Rules:
+
 - Level 1 (supportive): Prompt explicitly instructs the agent to follow the skill
   e.g. "Use TDD to implement..."
 - Level 2 (neutral): Prompt describes the task normally, no mention of the skill
@@ -52,11 +54,13 @@ Rules:
 Skill content:
 
 ---
+
 {skill_content}
 ---
 
 Expected behavioral sequence:
 
 ---
+
 {spec_yaml}
 ---

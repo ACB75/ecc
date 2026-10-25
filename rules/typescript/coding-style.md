@@ -178,6 +178,7 @@ async function loadUser(userId: string): Promise<User> {
 ## Input Validation
 
 Validate all external inputs at system boundaries using native TypeScript type guards (`unknown` + narrowing) or official framework validators (e.g., Angular `Validators` / Signal forms).
+
 - **Third-Party Dependency Rule**: NEVER add non-official third-party validation or utility libraries (such as `zod`, `yup`, etc.) without first warning the user and receiving explicit confirmation.
 
 ```typescript

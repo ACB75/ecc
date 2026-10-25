@@ -14,6 +14,7 @@ The core insight: a single agent reviewing its own output shares the same biases
 ## When to Activate
 
 Invoke this skill when:
+
 - Output will be published, deployed, or consumed by end users
 - Compliance, regulatory, or brand constraints must be enforced
 - Code ships to production without human review
@@ -139,18 +140,21 @@ The rubric is the most important input. Vague rubrics produce vague reviews. Eve
 #### Domain-Specific Rubric Extensions
 
 **Content/Marketing:**
+
 - Brand voice adherence
 - SEO requirements met (keyword density, meta tags, structure)
 - No competitor trademark misuse
 - CTA present and correctly linked
 
 **Code:**
+
 - Type safety (no `any` leaks, proper null handling)
 - Error handling coverage
 - Security (no secrets in code, input validation, injection prevention)
 - Test coverage for new paths
 
 **Compliance-Sensitive (regulated, legal, financial):**
+
 - No outcome guarantees or unsubstantiated claims
 - Required disclaimers present
 - Approved terminology only

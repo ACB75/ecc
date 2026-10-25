@@ -456,6 +456,7 @@ cargo test -- --ignored           # Run ignored tests
 ## Best Practices
 
 **DO:**
+
 - Write tests FIRST (TDD)
 - Use `#[cfg(test)]` modules for unit tests
 - Test behavior, not implementation
@@ -465,6 +466,7 @@ cargo test -- --ignored           # Run ignored tests
 - Keep tests independent — no shared mutable state
 
 **DON'T:**
+
 - Use `#[should_panic]` when you can test `Result::is_err()` instead
 - Mock everything — prefer integration tests when feasible
 - Ignore flaky tests — fix or quarantine them

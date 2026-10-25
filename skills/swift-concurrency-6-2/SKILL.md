@@ -163,6 +163,7 @@ processedPhotos[item.id] = await processor.extractSticker(data: data, with: item
 ```
 
 To use `@concurrent`:
+
 1. Mark the containing type as `nonisolated`
 2. Add `@concurrent` to the function
 3. Add `async` if not already asynchronous

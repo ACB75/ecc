@@ -97,6 +97,7 @@ Understanding how different carrier types operate changes your resolution strate
 Assess every exception on three axes and take the highest severity:
 
 **Financial Impact:**
+
 - Level 1 (Low): < $1,000 product value, no expedite needed
 - Level 2 (Moderate): $1,000 - $5,000 or minor expedite costs
 - Level 3 (Significant): $5,000 - $25,000 or customer penalty risk
@@ -104,12 +105,14 @@ Assess every exception on three axes and take the highest severity:
 - Level 5 (Critical): > $100,000 or regulatory/safety implications
 
 **Customer Impact:**
+
 - Standard customer, no SLA at risk → does not elevate
 - Key account with SLA at risk → elevate by 1 level
 - Enterprise customer with penalty clauses → elevate by 2 levels
 - Customer's production line or retail launch at risk → automatic Level 4+
 
 **Time Sensitivity:**
+
 - Standard transit with buffer → does not elevate
 - Delivery needed within 48 hours, no alternative sourced → elevate by 1
 - Same-day or next-day critical (production shutdown, event deadline) → automatic Level 4+

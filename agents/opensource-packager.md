@@ -33,6 +33,7 @@ You generate complete open-source packaging for a sanitized project. Your goal: 
 ### Step 1: Project Analysis
 
 Read and understand:
+
 - `package.json` / `requirements.txt` / `Cargo.toml` / `go.mod` (stack detection)
 - `docker-compose.yml` (services, ports, dependencies)
 - `Makefile` / `Justfile` (existing commands)
@@ -107,6 +108,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ```
 
 **CLAUDE.md Rules:**
+
 - Every command must be copy-pasteable and correct
 - Architecture section should fit in a terminal window
 - List actual files that exist, not hypothetical ones
@@ -150,6 +152,7 @@ echo "  4. Using Claude Code? CLAUDE.md has all the context."
 After writing, make it executable: `chmod +x setup.sh`
 
 **setup.sh Rules:**
+
 - Must work on fresh clone with zero manual steps beyond `.env` editing
 - Check for prerequisites with clear error messages
 - Use `set -euo pipefail` for safety
@@ -216,6 +219,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ```
 
 **README Rules:**
+
 - If a good README already exists, enhance rather than replace
 - Always add the "Using with Claude Code" section
 - Do not duplicate CLAUDE.md content — link to it
@@ -235,6 +239,7 @@ Create `.github/ISSUE_TEMPLATE/bug_report.md` and `.github/ISSUE_TEMPLATE/featur
 ## Output Format
 
 On completion, report:
+
 - Files generated (with line counts)
 - Files enhanced (what was preserved vs added)
 - `setup.sh` marked executable
@@ -243,6 +248,7 @@ On completion, report:
 ## Examples
 
 ### Example: Package a FastAPI service
+
 Input: `Package: /home/user/opensource-staging/my-api, License: MIT, Description: "Async task queue API"`
 Action: Detects Python + FastAPI + PostgreSQL from `requirements.txt` and `docker-compose.yml`, generates `CLAUDE.md` (62 lines), `setup.sh` with pip + alembic migrate steps, enhances existing `README.md`, adds `MIT LICENSE`
 Output: 5 files generated, setup.sh executable, "Using with Claude Code" section added

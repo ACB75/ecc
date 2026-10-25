@@ -38,6 +38,7 @@ Text("Hello, World!")
 ```
 
 Key customization options:
+
 - `.regular` — standard glass effect
 - `.tint(Color)` — add color tint for prominence
 - `.interactive()` — react to touch and pointer interactions

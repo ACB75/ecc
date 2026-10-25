@@ -39,6 +39,7 @@ The LaraPlugins MCP provides two primary tools:
 Search packages by keyword, health score, vendor, and version compatibility.
 
 **Parameters:**
+
 - `text_search` (string, optional): Keyword to search (e.g. "permission", "admin", "api")
 - `health_score` (string, optional): Filter by health band — `Healthy`, `Medium`, `Unhealthy`, or `Unrated`
 - `laravel_compatibility` (string, optional): Filter by Laravel version — `"5"`, `"6"`, `"7"`, `"8"`, `"9"`, `"10"`, `"11"`, `"12"`, `"13"`
@@ -51,6 +52,7 @@ Search packages by keyword, health score, vendor, and version compatibility.
 Fetch detailed metrics, readme content, and version history for a specific package.
 
 **Parameters:**
+
 - `package` (string, required): Full Composer package name (e.g. "spatie/laravel-permission")
 - `include_versions` (boolean, optional): Include version history in response
 
@@ -95,6 +97,7 @@ SearchPluginTool({
 ```
 
 Returns packages matching "authentication" with healthy status:
+
 - spatie/laravel-permission
 - laravel/breeze
 - laravel/passport
@@ -121,6 +124,7 @@ GetPluginDetailsTool({
 ```
 
 Returns:
+
 - Health score and last activity
 - Laravel/PHP version support
 - Vendor reputation (risk score)
@@ -183,6 +187,7 @@ SearchPluginTool({
 ### Search Results
 
 Each result includes:
+
 - Package name (e.g. `spatie/laravel-permission`)
 - Brief description
 - Health status indicator
@@ -191,6 +196,7 @@ Each result includes:
 ### Package Details
 
 The detailed response includes:
+
 - **Health Score**: Numeric or band indicator
 - **Last Activity**: When the package was last updated
 - **Laravel Support**: Version compatibility matrix

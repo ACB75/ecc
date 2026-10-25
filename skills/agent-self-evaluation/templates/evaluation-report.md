@@ -71,6 +71,7 @@ VERDICT: [Deliver as-is / Fix N issues then deliver / Redo from scratch]
 ## When to Skip
 
 Skip the evaluation if:
+
 - Task was a single tool call (e.g., "read this file" — nothing to evaluate)
 - User explicitly says "don't evaluate" or "just do it"
 - Task is purely conversational (greeting, small talk)

@@ -194,6 +194,7 @@ audio_index = rtstream.index_audio(
 | `"time"` | seconds | Segment every N seconds |
 
 Examples:
+
 ```python
 {"type": "word", "value": 50}      # every 50 words
 {"type": "sentence", "value": 5}   # every 5 sentences
@@ -269,6 +270,7 @@ Results arrive on the `scene_index` WebSocket channel.
 | **Visual** | `"time"` only | seconds | `frame_count` |
 
 Examples:
+
 ```python
 # Audio: every 50 words
 {"type": "word", "value": 50}
@@ -497,6 +499,7 @@ scene_index.enable_alert(alert_id)
 ## WebSocket Integration
 
 All real-time AI results are delivered via WebSocket. Pass `ws_connection_id` to:
+
 - `rtstream.start_transcript()`
 - `rtstream.index_audio()`
 - `rtstream.index_visuals()`

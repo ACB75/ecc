@@ -12,10 +12,12 @@ metadata:
 ## When to use / not
 
 **Use it when:**
+
 - You want to hand a repeating task to an agent that runs over and over (write→test, test→fix, fix→verify…).
 - You already have a loop and worry it spins, cheats, or runs a wrong answer to completion.
 
 **Don't use it for:**
+
 - A one-off task → just do it; don't wrap a loop around it.
 - A plain timer / poll → use `/loop`; no design needed.
 - *How to wire the loop architecture* (pipelines → DAGs, long-run recovery) → that's the mechanism layer; see `autonomous-loops` / `continuous-agent-loop`. **This skill only covers "is the goal right, and will it run away" — it does not re-explain mechanism.**
@@ -49,6 +51,7 @@ The whole loop rides on the comparator's "is it done yet?" **The comparator can 
 - Good: Decidable ("all 96 unit tests green AND a change-list is produced," "module-02 fields filled, pytest passes, business logic untouched") → one check settles it; the loop converges cleanly.
 
 **Five-point goal framework:**
+
 1. **Done-criterion is machine-verifiable.**
 2. **Boundary conditions defined alongside the done-criterion** ("what it must NOT do") — anti-Goodhart; missing boundaries = a license to cheat.
 3. **Has a failure fallback** — retry cap N + escalate to a human when exceeded.
@@ -107,6 +110,7 @@ Retry cap, hard stop, human flips the last switch = damping. **Negative feedback
 | 5 | Bloated CLAUDE.md + stale memory → **the faster it loops, the more it errs** | Are the docs/memory it depends on fresh? Who maintains them? | Layered memory + periodic lint |
 
 **Plus three red lines (violate any = not allowed to go automatic):**
+
 - **Keep judgment with the human.** Acceptance / the "done" cell is flipped by a human; the loop is not the acceptance officer.
 - **Responsibility doesn't transfer.** Anything whose failure you can't afford (merge the wrong PR / publish the wrong thing / misallocate money) → **don't hand over the authority automatically.**
 - **Counter-intuitive warning.** The more "self-improving / rewrites-its-own-rules" a loop is, the **stricter the human review it needs** (to see what it rewrote the rules into) — not looser. The machine is too fast to intercept after the fact, so the human's judgment must sit **before the action** (a hard gate), not as a post-hoc patch.
@@ -123,6 +127,7 @@ You want a loop that runs every night and fixes whatever tests are failing.
 - **Skeleton:** plan/build/judge — the **judge is CI run independently**, never the fixing agent (Step 3).
 
 Now run the **review checklist**, and it catches what the naive version would have missed:
+
 - **#3 hit** → the naive "all tests pass" lets the agent delete a failing test to "win." Fixed by the boundary "no test file deleted/weakened."
 - **#2 hit** → if the fixing agent also judged its own fix, it would pass itself. Fixed by "judge = independent CI, deterministic."
 - **#4 hit** → if a fix is ambiguous, the agent won't stop to ask at 2 a.m.; it'll commit a guess. Fixed by front-loading: ambiguous fixes are left for the human, not guessed.

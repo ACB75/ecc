@@ -372,6 +372,7 @@ No bug in /api/user/notifications  → Don't write test (yet)
 ## DO / DON'T
 
 **DO:**
+
 - Write tests immediately after finding a bug (before fixing it if possible)
 - Test the API response shape, not the implementation
 - Run tests as the first step of every bug-check
@@ -379,6 +380,7 @@ No bug in /api/user/notifications  → Don't write test (yet)
 - Name tests after the bug they prevent (e.g., "BUG-R1 regression")
 
 **DON'T:**
+
 - Write tests for code that has never had a bug
 - Trust AI self-review as a substitute for automated tests
 - Skip sandbox path testing because "it's just mock data"

@@ -31,6 +31,7 @@ main (protected, always deployable)
 ```
 
 **Rules:**
+
 - `main` is always deployable
 - Create feature branches from `main`
 - Open Pull Request when ready for review
@@ -50,6 +51,7 @@ main (trunk)
 ```
 
 **Rules:**
+
 - Everyone commits to `main` or very short-lived branches
 - Feature flags hide incomplete work
 - CI must pass before merge
@@ -73,6 +75,7 @@ main (production releases)
 ```
 
 **Rules:**
+
 - `main` contains production-ready code only
 - `develop` is the integration branch
 - Feature branches from `develop`, merge back to `develop`
@@ -165,6 +168,7 @@ git merge feature/user-auth
 ```
 
 **Use when:**
+
 - Merging feature branches into `main`
 - You want to preserve exact history
 - Multiple people worked on the branch
@@ -183,6 +187,7 @@ git rebase main
 ```
 
 **Use when:**
+
 - Updating your local feature branch with latest `main`
 - You want a linear, clean history
 - The branch is local-only (not pushed)

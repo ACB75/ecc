@@ -16,6 +16,7 @@
 ### "If the brand were a person, how would they walk into a room?"
 
 ### Archetype instinct (which of the 12 resonates immediately, and why?)
+>
 > Creator · Caregiver · Ruler · Jester · Regular Person · Lover · Hero ·
 > Outlaw · Magician · Innocent · Sage · Explorer
 
@@ -52,6 +53,7 @@
 
 1.
 2.
+
 3. ### What the brand must never sound or look like (the anti-personality)
 
 ### Open questions / tensions with Module 50 Voice

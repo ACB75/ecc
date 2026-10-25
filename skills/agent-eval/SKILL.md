@@ -79,6 +79,7 @@ agent-eval run --task tasks/add-retry-logic.yaml --agent claude-code --agent aid
 ```
 
 Each run:
+
 1. Creates a fresh git worktree from the specified commit
 2. Hands the prompt to the agent
 3. Runs the judge criteria

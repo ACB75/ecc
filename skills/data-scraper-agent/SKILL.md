@@ -97,6 +97,7 @@ Ask the user:
 5. **Frequency:** "How often should it run? Every hour, daily, weekly?"
 
 Common examples to prompt:
+
 - Job boards → score relevance to resume
 - Product prices → alert on drops
 - GitHub repos → summarise new releases
@@ -194,6 +195,7 @@ def _normalise(raw: dict) -> dict:
 ```
 
 **HTML fetch pattern:**
+
 ```python
 soup = BeautifulSoup(resp.text, "lxml")
 for card in soup.select("[class*='listing']"):
@@ -204,6 +206,7 @@ for card in soup.select("[class*='listing']"):
 ```
 
 **RSS feed pattern:**
+
 ```python
 import xml.etree.ElementTree as ET
 root = ET.fromstring(resp.text)
@@ -636,12 +639,14 @@ ai:
 ## Common Scraping Patterns
 
 ### Pattern 1: REST API (easiest)
+
 ```python
 resp = requests.get(url, params={"q": query}, headers=HEADERS, timeout=15)
 items = resp.json().get("results", [])
 ```
 
 ### Pattern 2: HTML Scraping
+
 ```python
 soup = BeautifulSoup(resp.text, "lxml")
 for card in soup.select(".listing-card"):
@@ -650,6 +655,7 @@ for card in soup.select(".listing-card"):
 ```
 
 ### Pattern 3: RSS Feed
+
 ```python
 import xml.etree.ElementTree as ET
 root = ET.fromstring(resp.text)
@@ -660,6 +666,7 @@ for item in root.findall(".//item"):
 ```
 
 ### Pattern 4: Paginated API
+
 ```python
 page = 1
 while True:
@@ -676,6 +683,7 @@ while True:
 ```
 
 ### Pattern 5: JS-Rendered Pages (Playwright)
+
 ```python
 from playwright.sync_api import sync_playwright
 

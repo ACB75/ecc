@@ -14,38 +14,45 @@ argument-hint: "[task description]"
 ## When to use
 
 ### Desktop Perception
+
 - Start/stop a **desktop session** capturing **screen, mic, and system audio**
 - Stream **live context** and store **episodic session memory**
 - Run **real-time alerts/triggers** on what's spoken and what's happening on screen
 - Produce **session summaries**, a searchable timeline, and **playable evidence links**
 
 ### Video ingest + stream
+
 - Ingest a **file or URL** and return a **playable web stream link**
 - Transcode/normalize: **codec, bitrate, fps, resolution, aspect ratio**
 
 ### Index + search (timestamps + evidence)
+
 - Build **visual**, **spoken**, and **keyword** indexes
 - Search and return exact moments with **timestamps** and **playable evidence**
 - Auto-create **clips** from search results
 
 ### Timeline editing + generation
+
 - Subtitles: **generate**, **translate**, **burn-in**
 - Overlays: **text/image/branding**, motion captions
 - Audio: **background music**, **voiceover**, **dubbing**
 - Programmatic composition and exports via **timeline operations**
 
 ### Live streams (RTSP) + monitoring
+
 - Connect **RTSP/live feeds**
 - Run **real-time visual and spoken understanding** and emit **events/alerts** for monitoring workflows
 
 ## How it works
 
 ### Common inputs
+
 - Local **file path**, public **URL**, or **RTSP URL**
 - Desktop capture request: **start / stop / summarize session**
 - Desired operations: get context for understanding, transcode spec, index spec, search query, clip ranges, timeline edits, alert rules
 
 ### Common outputs
+
 - **Stream URL**
 - Search results with **timestamps** and **evidence links**
 - Generated assets: subtitles, audio, images, clips
@@ -65,6 +72,7 @@ conn = videodb.connect()
 ```
 
 This reads `VIDEO_DB_API_KEY` from:
+
 1. Environment (if already exported)
 2. Project's `.env` file in current directory
 
@@ -199,6 +207,7 @@ except InvalidRequestError as e:
 ### Timeline editing
 
 **Important:** Always validate timestamps before building a timeline:
+
 - `start` must be >= 0 (negative values are silently accepted but produce broken output)
 - `start` must be < `end`
 - `end` must be <= `video.length`
@@ -232,6 +241,7 @@ job_id = conn.transcode(
 
 **Warning:** `reframe()` is a slow server-side operation. For long videos it can take
 several minutes and may time out. Best practices:
+
 - Always limit to a short segment using `start`/`end` when possible
 - For full-length videos, use `callback_url` for async processing
 - Trim the video on a `Timeline` first, then reframe the shorter result
@@ -291,6 +301,7 @@ except InvalidRequestError as e:
 ## Examples
 
 ### Canonical prompts
+
 - "Start desktop capture and alert when a password field appears."
 - "Record my session and produce an actionable summary when it ends."
 - "Ingest this file and return a playable stream link."

@@ -110,6 +110,7 @@ First extract structured Blender state, then use viewport screenshots or renders
 Scenario: a retargeted character appears to skate during a walk cycle, but the front camera angle makes the foot contact hard to judge.
 
 Apply the workflow:
+
 - Inventory the scene: character mesh `HeroBody`, armature `HeroRig`, ground plane `Floor`, no hidden proxy meshes.
 - Identify the skeleton: semantic feet are `foot.L` and `foot.R`; hips are `pelvis`; root bone is `root`.
 - Sample animation frames: inspect frames 1, 18, 24, 30, 42, and 48 around planted-foot moments.
@@ -130,6 +131,7 @@ Verdict: fail for render readiness. The motion needs foot-lock cleanup or retarg
 Scenario: a character looks correct in a still frame, but the animation moves opposite the expected travel direction.
 
 Apply the workflow:
+
 - Determine forward, up, and side axes: compare head, chest, feet, and root motion.
 - Sample animation frames: inspect frame 1 and the midpoint of the travel path.
 - Report facts before opinions: include the root heading and model-facing direction separately.

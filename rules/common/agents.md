@@ -45,6 +45,7 @@ When a new workflow, domain pattern, or specialized check emerges that can accel
 ## 4. Delegation Completion Contract
 
 Applies to every agent at every depth:
+
 1. **Your final message IS the deliverable**: Never end a turn while background subagents are running.
 2. **If you delegate, you own collection**: Wait for subagent notifications, integrate their findings, and return a unified result.
 3. **Decompose only when work exceeds single-context efficiency**: Use parallel subagents for independent heavy tasks, not trivial single-file lookups.

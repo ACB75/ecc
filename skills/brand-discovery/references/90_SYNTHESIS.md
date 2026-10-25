@@ -72,6 +72,7 @@
 > **Secondary archetype** (if present):
 >
 > **Aaker brand identity** — four dimensions:
+>
 > - *Brand as product:*
 > - *Brand as organisation:*
 > - *Brand as person (personality):*

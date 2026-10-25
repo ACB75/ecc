@@ -186,6 +186,7 @@ flutter clean && cd ios && pod deintegrate && pod install && cd ..
 ## Stop Conditions
 
 Stop and report if:
+
 - Same error persists after 3 fix attempts
 - Fix introduces more errors than it resolves
 - Requires architectural changes or package upgrades that change behavior

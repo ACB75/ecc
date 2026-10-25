@@ -29,6 +29,7 @@ metadata:
 ## Skill 目录约定
 
 **Agent Execution**:
+
 1. Determine this SKILL.md file's directory path as `SKILL_DIR`
 2. Replace all `${SKILL_DIR}` in this document with the actual path
 
@@ -48,15 +49,18 @@ metadata:
 头像图片生成是**可选增强能力**，由当前环境中**已审核并已安装**的生图 skill 提供。
 
 **判断逻辑**：
+
 - 如果当前环境已安装并允许使用的生图 skill → Step 5 中调用它自动生图
 - 如果未安装 → Step 5 输出完整的提示词文本，用户可复制到 Gemini / ChatGPT / Midjourney 手动生成
 
 **调用方式**（仅在已安装且已审核时）：
+
 1. 先将龙虾名字规整为安全片段：仅保留字母、数字和连字符，其余字符统一替换为 `-`
 2. 将提示词写入临时文件 `/tmp/openclaw-<safe-name>-prompt.md`
 3. 使用当前环境允许的生图 skill，传入提示词文件和输出路径
 
 **接口约定**：
+
 - 参数：`<prompt-file> <output-path>`
 - 提示词文件：UTF-8 Markdown 文本，包含完整英文生图提示词
 - 成功：退出码 `0`，并在输出路径生成图片文件
@@ -101,6 +105,7 @@ metadata:
 | 10 | 身份错乱 | 梦到自己是龙虾后醒不过来的人——庄周梦蝶 | 恍惚哲学 |
 
 > 每类还有 3 个备选方向。用户可以：
+>
 > - 选编号 → 展开该类的全部 4 个方向
 > - 说出自己的想法 → 匹配最合适的类型和方向
 > - 混搭（如"2号的无聊感 + 7号的老江湖"）
@@ -279,6 +284,7 @@ python3 ${SKILL_DIR}/gacha.py [次数]
 ## 兼容性
 
 本 Skill 遵循 Markdown 指令注入标准：
+
 - **Claude Code / Claude.ai**：原生支持
 - **OpenClaw Agent**：通过 SOUL.md 注入
 - **其他 Agent**：支持 SKILL.md 格式的框架均可使用

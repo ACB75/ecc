@@ -12,6 +12,7 @@ source_rule: <file path provided>
 version: "1.0"
 
 steps:
+
   - id: <snake_case>
     description: <what the agent should do>
     required: true|false
@@ -24,6 +25,7 @@ scoring:
   threshold_promote_to_hook: 0.6
 
 Rules:
+
 - detector.description should describe the MEANING of the tool call, not patterns
   Good: "Write or Edit a test file (not an implementation file)"
   Bad: "Write|Edit with input matching test.*\\.py"
@@ -38,5 +40,6 @@ Rules:
 Skill file to analyze:
 
 ---
+
 {skill_content}
 ---

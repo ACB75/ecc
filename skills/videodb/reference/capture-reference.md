@@ -35,6 +35,7 @@ Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump even
 ### Event Structures
 
 **Transcript event:**
+
 ```json
 {
   "channel": "transcript",
@@ -50,6 +51,7 @@ Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump even
 ```
 
 **Visual index event:**
+
 ```json
 {
   "channel": "visual_index",
@@ -64,6 +66,7 @@ Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump even
 ```
 
 **Audio index event:**
+
 ```json
 {
   "channel": "audio_index",
@@ -78,6 +81,7 @@ Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump even
 ```
 
 **Session active event:**
+
 ```json
 {
   "event": "capture_session.active",
@@ -94,6 +98,7 @@ Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump even
 ```
 
 **Session exported event:**
+
 ```json
 {
   "event": "capture_session.exported",
@@ -136,11 +141,13 @@ VIDEODB_EVENTS_DIR=/path/to/output python scripts/ws_listener.py --clear &
 The script outputs `WS_ID=<connection_id>` on the first line, then listens indefinitely.
 
 **Get the ws_id:**
+
 ```bash
 cat "${VIDEODB_EVENTS_DIR:-$HOME/.local/state/videodb}/videodb_ws_id"
 ```
 
 **Stop the listener:**
+
 ```bash
 kill "$(cat "${VIDEODB_EVENTS_DIR:-$HOME/.local/state/videodb}/videodb_ws_pid")"
 ```
@@ -153,11 +160,13 @@ kill "$(cat "${VIDEODB_EVENTS_DIR:-$HOME/.local/state/videodb}/videodb_ws_pid")"
 | RTStream methods | See [rtstream-reference.md](rtstream-reference.md) |
 
 **Output files** (in output directory, default `${XDG_STATE_HOME:-$HOME/.local/state}/videodb`):
+
 - `videodb_ws_id` - WebSocket connection ID
 - `videodb_events.jsonl` - All events
 - `videodb_ws_pid` - Process ID for easy termination
 
 **Features:**
+
 - `--clear` flag to clear events file on start (use for new sessions)
 - Auto-reconnect with exponential backoff on connection drops
 - Graceful shutdown on SIGINT/SIGTERM

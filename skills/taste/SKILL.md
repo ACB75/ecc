@@ -72,6 +72,7 @@ accent — i.e. holy light and crystalline bloom, punctuated by chrome and neon.
 Distilled directly from the strongest reference reels. This is the concrete grade.
 
 ### Palette
+
 - **Base:** near-black void (#05060a) and bone white (#f4f1ea). Most frames are one or the other.
 - **Divine accent:** molten gold / ember orange (#ffb24d → #ff7a18) — the *one warm light* in the dark.
 - **Crystalline accent:** iridescent violet→cyan→magenta bokeh (#8a6bff, #4fc3ff, #ff6ad5) — the
@@ -84,6 +85,7 @@ Rule: **one accent per shot.** Gold lives in dark frames; iridescence lives in l
 never both in one shot.
 
 ### Light & texture
+
 - Darkness pierced by a single warm source (ember bloom, divine shaft). High contrast, deep blacks.
 - Crystalline / glitter bokeh, lens flares, bloom, light leaks — *heavenly*, not dirty.
 - Film grain + subtle chromatic aberration on the dark frames; clean gloss on the bright frames.
@@ -91,6 +93,7 @@ never both in one shot.
 - Subjects: winged figures, clouds, halos, angels, crystalline structures, candy-cyber portraits.
 
 ### Motion
+
 - Slow, floating, weightless camera (drift, slow push, slow orbit) — *cloud* trance.
 - Bursts of speed only at the drop. Otherwise everything breathes.
 - Particles rising (embers, dust, glitter) — upward motion = ascension.
@@ -155,6 +158,7 @@ The current track is **138 BPM, B minor**. Constants:
 - `8-bar phrase      = 13.913s`  →  the loop length from the track
 
 In Remotion, snap every `from={}` to a beat:
+
 ```ts
 const FPS = 30;
 const BPM = 138;
@@ -240,6 +244,7 @@ export const AngelcoreMV: React.FC = () => (
   </AbsoluteFill>
 );
 ```
+
 Render: `npx remotion render src/index.ts AngelcoreMV out.mp4`. See `remotion-video-creation`
 for project setup, audio track binding, and render flags.
 

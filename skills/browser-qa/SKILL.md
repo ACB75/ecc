@@ -28,6 +28,7 @@ URL. Use seeded **test credentials**, never real production logins, and **redact
 credentials/tokens/PII before saving any screenshot.
 
 ### Phase 1: Smoke Test
+
 ```
 1. Navigate to target URL
 2. Check for console errors (filter noise: analytics, third-party)
@@ -38,6 +39,7 @@ credentials/tokens/PII before saving any screenshot.
 ```
 
 ### Phase 2: Interaction Test
+
 ```
 1. Click every nav link — verify no dead links
 2. Submit forms with valid data — verify success state
@@ -49,6 +51,7 @@ credentials/tokens/PII before saving any screenshot.
 ```
 
 ### Phase 3: Visual Regression
+
 ```
 1. Screenshot key pages at 3 breakpoints (375px, 768px, 1440px)
 2. Compare against committed baseline screenshots
@@ -58,6 +61,7 @@ credentials/tokens/PII before saving any screenshot.
 ```
 
 ### Phase 4: Accessibility
+
 ```
 1. Run axe-core or equivalent on each page
 2. Flag WCAG 2.2 AA violations (contrast, labels, focus order)
@@ -98,6 +102,7 @@ credentials/tokens/PII before saving any screenshot.
 ## Integration
 
 Works with any browser MCP:
+
 - `mChild__claude-in-chrome__*` tools (preferred — uses your actual Chrome)
 - Playwright via `mcp__browserbase__*`
 - Direct Puppeteer scripts

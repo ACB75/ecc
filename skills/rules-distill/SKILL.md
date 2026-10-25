@@ -57,6 +57,7 @@ Group skills into **thematic clusters** based on their descriptions. Analyze eac
 #### Cross-batch Merge
 
 After all batches complete, merge candidates across batches:
+
 - Deduplicate candidates with the same or overlapping principles
 - Re-check the "2+ skills" requirement using evidence from **all** batches combined — a principle found in 1 skill per batch but 2+ skills total is valid
 
@@ -166,6 +167,7 @@ Skills scanned: {N} | Rules: {M} files | Candidates: {K}
 #### User Actions
 
 User responds with numbers to:
+
 - **Approve**: Apply draft to rules as-is
 - **Modify**: Edit draft before applying
 - **Skip**: Do not apply this candidate

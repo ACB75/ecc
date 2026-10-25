@@ -44,6 +44,7 @@ For each error:
 ## Step 4: Guardrails
 
 Stop and ask the user if:
+
 - Fix introduces more errors than it resolves
 - Same error persists after 3 attempts
 - Error requires adding new dependencies or changing module structure
@@ -53,6 +54,7 @@ Stop and ask the user if:
 ## Step 5: Summary
 
 Report:
+
 - Errors fixed (module, file, description)
 - Errors remaining
 - New errors introduced (should be zero)

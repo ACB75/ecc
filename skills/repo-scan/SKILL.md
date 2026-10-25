@@ -153,6 +153,7 @@ Installation completes only the bootstrap. Reload your agent harness, then invok
 ## Examples
 
 On a 50,000-file C++ monorepo:
+
 - Found FFmpeg 2.x (2015 vintage) still in production
 - Discovered the same SDK wrapper duplicated 3 times
 - Identified 636 MB of committed Debug/ipch/obj build artifacts

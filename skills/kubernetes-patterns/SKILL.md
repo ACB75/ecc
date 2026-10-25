@@ -724,6 +724,7 @@ spec:
 ## Best Practices Checklist
 
 ### Security
+
 - [ ] Container runs as non-root (`runAsNonRoot: true`, `runAsUser` set)
 - [ ] `readOnlyRootFilesystem: true` with `emptyDir` for writable paths
 - [ ] `allowPrivilegeEscalation: false`
@@ -734,6 +735,7 @@ spec:
 - [ ] Secrets managed via Sealed Secrets or External Secrets Operator
 
 ### Reliability
+
 - [ ] All 3 probe types configured (startup + liveness + readiness)
 - [ ] Resource requests AND limits set on every container
 - [ ] `minReplicas: 2+` for any production workload
@@ -742,6 +744,7 @@ spec:
 - [ ] HPA configured for variable-load services
 
 ### Observability
+
 - [ ] App exposes `/health` (liveness) and `/ready` (readiness) endpoints
 - [ ] Structured JSON logging (no PII in logs)
 - [ ] Resource labels: `app`, `version`, `environment`

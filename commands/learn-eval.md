@@ -77,7 +77,7 @@ and description to decide when the body is relevant, so a generic summary like
 "best practices for X" is less likely to activate at the right time. Keep the
 directory name and frontmatter `name:` identical.
 
-5. **Quality gate — Checklist + Holistic verdict**
+1. **Quality gate — Checklist + Holistic verdict**
 
    ### 5a. Required checklist (verify by actually reading files)
 
@@ -106,18 +106,18 @@ directory name and frontmatter `name:` identical.
 - **Uniqueness**: Provides value not covered by existing skills (informed by checklist results)
 - **Reusability**: Realistic trigger scenarios exist in future sessions
 
-6. **Verdict-specific confirmation flow**
+1. **Verdict-specific confirmation flow**
 
 - **Improve then Save**: Present the required improvements + revised draft + updated checklist/verdict after one re-evaluation; if the revised verdict is **Save**, save after user confirmation, otherwise follow the new verdict
 - **Save**: Present save path + checklist results + 1-line verdict rationale + full draft → save after user confirmation
 - **Absorb into [X]**: Present target path + additions (diff format) + checklist results + verdict rationale → append after user confirmation
 - **Drop**: Show checklist results + reasoning only (no confirmation needed)
 
-7. Save / Absorb to the determined location. For **Save**, write
+1. Save / Absorb to the determined location. For **Save**, write
    `<location>/<pattern-name>/SKILL.md`; for **Absorb**, update the existing
    skill's `SKILL.md`.
 
-8. **Verify discoverability after writing** (Save only): confirm the path is
+2. **Verify discoverability after writing** (Save only): confirm the path is
    `<name>/SKILL.md`, the `---`-delimited frontmatter parses as valid YAML,
    `name:` matches the directory, and `description:` is non-empty and begins
    with `Use when`. If any check fails, report the specific failure, remove or

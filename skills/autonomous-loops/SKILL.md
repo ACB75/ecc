@@ -77,6 +77,7 @@ claude -p "Create a conventional commit for all staged changes. Use 'feat: add O
 ### Variations
 
 **With model routing:**
+
 ```bash
 # Research with Opus (deep reasoning)
 claude -p --model opus "Analyze the codebase architecture and write a plan for adding caching..."
@@ -89,6 +90,7 @@ claude -p --model opus "Review all changes for security issues, race conditions,
 ```
 
 **With environment context:**
+
 ```bash
 # Pass context via files, not prompt length
 echo "Focus areas: auth module, API rate limiting" > .claude-context.md
@@ -97,6 +99,7 @@ rm .claude-context.md
 ```
 
 **With `--allowedTools` restrictions:**
+
 ```bash
 # Read-only analysis pass
 claude -p --allowedTools "Read,Grep,Glob" "Audit this codebase for security vulnerabilities..."
@@ -190,6 +193,7 @@ PHASE 5 (infinite mode): Loop in waves of 3-5 until context is low.
 ```
 
 **Invoke:**
+
 ```bash
 /project:infinite specs/component-spec.md src/ 5
 /project:infinite specs/component-spec.md src/ infinite
@@ -282,6 +286,7 @@ Claude reads this file at iteration start and updates it at iteration end. This 
 ### CI Failure Recovery
 
 When PR checks fail, Continuous Claude automatically:
+
 1. Fetches the failed run ID via `gh run list`
 2. Spawns a new `claude -p` with CI fix context
 3. Claude inspects logs via `gh run view`, fixes code, commits, pushes
@@ -322,6 +327,7 @@ Three consecutive iterations signaling completion stops the loop, preventing was
 ### The Problem
 
 When you ask an LLM to implement with TDD, it takes "write tests" too literally:
+
 - Tests that verify TypeScript's type system works (testing `typeof x === 'string'`)
 - Overly defensive runtime checks for things the type system already guarantees
 - Tests for framework behavior rather than business logic
@@ -330,6 +336,7 @@ When you ask an LLM to implement with TDD, it takes "write tests" too literally:
 ### Why Not Negative Instructions?
 
 Adding "don't test type systems" or "don't add unnecessary checks" to the Implementer prompt has downstream effects:
+
 - The model becomes hesitant about ALL testing
 - It skips legitimate edge case tests
 - Quality degrades unpredictably
@@ -427,12 +434,14 @@ interface WorkUnit {
 ```
 
 **Decomposition Rules:**
+
 - Prefer fewer, cohesive units (minimize merge risk)
 - Minimize cross-unit file overlap (avoid conflicts)
 - Keep tests WITH implementation (never separate "implement X" + "test X")
 - Dependencies only where real code dependency exists
 
 The dependency DAG determines execution order:
+
 ```
 Layer 0: [unit-a, unit-b]     ← no deps, run in parallel
 Layer 1: [unit-c]             ← depends on unit-a
@@ -486,6 +495,7 @@ Unit branch
 ```
 
 **File Overlap Intelligence:**
+
 - Non-overlapping units land speculatively in parallel
 - Overlapping units land one-by-one, rebasing each time
 
@@ -516,6 +526,7 @@ evictionContext ─────────────────────�
 ### Worktree Isolation
 
 Every unit runs in an isolated worktree (uses jj/Jujutsu, not git):
+
 ```
 /tmp/workflow-wt-{unit-id}/
 ```
@@ -572,6 +583,7 @@ These patterns compose well:
 3. **Any loop + Verification** — Use ECC's `/verify` command or `verification-loop` skill as a gate before commits.
 
 4. **Ralphinho's tiered approach in simpler loops** — Even in a sequential pipeline, you can route simple tasks to Haiku and complex tasks to Opus:
+
    ```bash
    # Simple formatting fix
    claude -p --model haiku "Fix the import ordering in src/utils.ts"

@@ -61,6 +61,7 @@ let followUp = try await session.respond(to: "What about a vegetarian option?")
 ```
 
 Key points for instructions:
+
 - Define the model's role ("You are a mentor")
 - Specify what to do ("Help extract calendar events")
 - Set style preferences ("Respond as briefly as possible")

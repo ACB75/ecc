@@ -113,6 +113,7 @@ Routing is handled by the `ActionRegistry`, which automatically maps path segmen
 ## Examples
 
 ### Basic Application (MyService)
+
 ```java
 public class MyService extends AbstractApplication {
     @Override
@@ -136,6 +137,7 @@ public class MyService extends AbstractApplication {
 ```
 
 ### HTTP Mode Disambiguation (login)
+
 ```java
 @Action(value = "login", mode = Mode.HTTP_POST)
 public String doLogin(Request<?, ?> request) throws ApplicationException {
@@ -145,6 +147,7 @@ public String doLogin(Request<?, ?> request) throws ApplicationException {
 ```
 
 ### Native JSON Data Handling (Builder + Builders)
+
 ```java
 import org.tinystruct.data.component.Builder;
 import org.tinystruct.data.component.Builders;
@@ -165,6 +168,7 @@ public String getData() throws ApplicationException {
 ```
 
 ### SSE (Server-Sent Events)
+
 ```java
 import org.tinystruct.http.SSEPushManager;
 
@@ -185,6 +189,7 @@ SSEPushManager.getInstance().broadcast(msg);
 ```
 
 ### File Upload
+
 ```java
 import org.tinystruct.data.FileEntity;
 
@@ -201,7 +206,9 @@ public String upload(Request<?, ?> request) throws ApplicationException {
 ```
 
 ### Database Metadata Operations
+
 `DatabaseOperator` provides direct access to connection-level catalog, schema, and metadata:
+
 ```java
 import org.tinystruct.data.DatabaseOperator;
 
@@ -220,6 +227,7 @@ try {
 
 tinystruct provides native support for the Model Context Protocol (MCP) starting with SDK version **`1.7.0`**.
 The MCP APIs (e.g., `org.tinystruct.mcp.MCPTool`, `org.tinystruct.mcp.MCPServer`, `org.tinystruct.mcp.MCPException`) are included directly in the core dependency:
+
 ```xml
 <dependency>
     <groupId>org.tinystruct</groupId>
@@ -232,6 +240,7 @@ The MCP APIs (e.g., `org.tinystruct.mcp.MCPTool`, `org.tinystruct.mcp.MCPServer`
 > Tool return values are fed directly back into the AI model's context window. You **MUST** validate and sanitize all caller-supplied arguments before including them in the tool's return string. Failure to sanitize inputs can allow an attacker to inject adversarial instructions (Prompt Injection) that override the model's behavior. Always validate length, character sets, and nullity.
 
 **To create an MCP Tool:**
+
 1. Extend `org.tinystruct.mcp.MCPTool`.
 2. Annotate operations with `@Action` and declare parameters using `@Argument` within the `arguments` array.
 3. Accept parameters as explicit method arguments matching the keys in `@Argument`. (Do **not** use `getContext().getAttribute(...)` for tool arguments).
@@ -266,6 +275,7 @@ public class MyCustomTool extends MCPTool {
 ```
 
 **To deploy an MCP Server:**
+
 1. Extend `org.tinystruct.mcp.MCPServer`.
 2. Override `init()` and register your tools using `this.registerTool()`. The framework automatically scans and maps the `@Action` methods.
 
@@ -287,12 +297,15 @@ public class MyMCPServer extends MCPServer {
 ```
 
 Run the server via the dispatcher:
+
 ```bash
 bin/dispatcher start --import org.tinystruct.system.HttpServer --import com.example.MyMCPServer
 ```
 
 ### Overloaded Tool Methods
+
 tinystruct supports overloaded methods for the same tool name in `MCPTool` (sharing the same tool name but accepting different parameter signatures).
+
 - **Schema Merging**: Input schemas of all overloads with the same name are dynamically merged into a unified JSON schema. Properties are unioned, and required properties are intersected (only fields required across *all* overloads remain marked mandatory).
 - **Execution Routing**: When executing a tool, the server iterates sequentially through the available overloaded methods, attempting execution. Each method's schema validation is performed first, and the first overload that validates against the provided arguments successfully executes. If no signature matches or succeeds, the framework throws an appropriate exception.
 
@@ -329,6 +342,7 @@ org.tinystruct.level=FINE
 ```
 
 Access config values in your application:
+
 ```java
 String port = this.getConfiguration("server.port");
 ```

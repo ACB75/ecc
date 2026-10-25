@@ -21,10 +21,12 @@ Agent-powered lead intelligence pipeline that finds, scores, and reaches high-va
 ## Tool Requirements
 
 ### Required
+
 - **Exa MCP** — Deep web search for people, companies, and signals (`web_search_exa`)
 - **X API** — Follower/following graph, mutual analysis, recent activity (`X_BEARER_TOKEN`, plus write-context credentials such as `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`)
 
 ### Optional (enhance results)
+
 - **LinkedIn** — Direct API if available, otherwise browser control for search, profile inspection, and drafting
 - **Apollo/Clay API** — For enrichment cross-reference if user has access
 - **GitHub MCP** — For developer-centric lead qualification
@@ -131,6 +133,7 @@ R(m) = B_ext(m) · (1 + β · engagement(m))
 ```
 
 Interpretation:
+
 - Tier 1: high `R(m)` and direct bridge paths -> warm intro asks
 - Tier 2: medium `R(m)` and one-hop bridge paths -> conditional intro asks
 - Tier 3: no viable bridge -> direct cold outreach using the same lead record
@@ -166,6 +169,7 @@ You ──[met at]──> Event ──[also attended]──> Target Person
 ```
 
 ### Path Types (ordered by warmth)
+
 1. **Direct mutual** — You both follow/know the same person
 2. **Portfolio connection** — Mutual invested in or advises target's company
 3. **Co-worker/alumni** — Mutual worked at same company or attended same school
@@ -183,6 +187,7 @@ For each qualified lead, pull:
 - Recent company events (product launch, funding round, hiring)
 
 ### Enrichment Sources
+
 - Exa: company data, news, blog posts
 - X API: recent tweets, bio, followers
 - GitHub: open source contributions (for developer-centric leads)

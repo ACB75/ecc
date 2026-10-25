@@ -30,6 +30,7 @@
 ## Synthesis
 
 ### Positioning statement draft (Dunford template)
+>
 > For **[target client]** who **[situation / JTBD]**, **[brand name]** is the
 > **[category]** that **[unique value]**. Unlike **[alternatives]**, we
 > **[key differentiator]**.
@@ -37,6 +38,7 @@
 ### Alternative framings (vary the category or the differentiator)
 
 1.
+
 2. ### White-space hypothesis (what no competitor is claiming that this brand could own)
 
 ### Open questions / ambiguities

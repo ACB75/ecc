@@ -37,17 +37,20 @@ npx jsdoc2md src/**/*.ts                # Extract JSDoc
 ## Codemap Workflow
 
 ### 1. Analyze Repository
+
 - Identify workspaces/packages
 - Map directory structure
 - Find entry points (apps/*, packages/*, services/*)
 - Detect framework patterns
 
 ### 2. Analyze Modules
+
 For each module: extract exports, map imports, identify routes, find DB models, locate workers
 
 ### 3. Generate Codemaps
 
 Output structure:
+
 ```
 docs/CODEMAPS/
 ├── INDEX.md          # Overview of all areas

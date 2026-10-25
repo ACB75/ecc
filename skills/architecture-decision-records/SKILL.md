@@ -119,12 +119,14 @@ docs/
 Watch for these patterns in conversation that indicate an architectural decision:
 
 **Explicit signals**
+
 - "Let's go with X"
 - "We should use X instead of Y"
 - "The trade-off is worth it because..."
 - "Record this as an ADR"
 
 **Implicit signals** (suggest recording an ADR — do not auto-create without user confirmation)
+
 - Comparing two frameworks or libraries and reaching a conclusion
 - Making a database schema design choice with stated rationale
 - Choosing between architectural patterns (monolith vs microservices, REST vs GraphQL)
@@ -134,6 +136,7 @@ Watch for these patterns in conversation that indicate an architectural decision
 ## What Makes a Good ADR
 
 ### Do
+
 - **Be specific** — "Use Prisma ORM" not "use an ORM"
 - **Record the why** — the rationale matters more than the what
 - **Include rejected alternatives** — future developers need to know what was considered
@@ -142,6 +145,7 @@ Watch for these patterns in conversation that indicate an architectural decision
 - **Use present tense** — "We use X" not "We will use X"
 
 ### Don't
+
 - Record trivial decisions — variable naming or formatting choices don't need ADRs
 - Write essays — if the context section exceeds 10 lines, it's too long
 - Omit alternatives — "we just picked it" is not a valid rationale

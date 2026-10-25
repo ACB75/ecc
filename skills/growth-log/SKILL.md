@@ -47,6 +47,7 @@ Every entry must answer: *"Next time I face a similar situation, what do I do di
 If you can't write that sentence, you haven't extracted the pattern yet.
 
 **How to extract a pattern from a concrete event:**
+
 1. State what happened in one sentence
 2. Ask "why?" iteratively until you reach root cause (usually 3-5 whys)
 3. Generalize: "What class of problem is this?" (not "Chrome 128 bug" but "browser default change breaking existing behavior")
@@ -109,6 +110,7 @@ Before finalizing a growth log entry:
 ## Storage
 
 Store entries wherever you keep notes. Common patterns:
+
 - Markdown files in a `growth-log/` directory (one file per day: `YYYY-MM-DD.md`)
 - A dedicated section in Notion, Obsidian, or your note-taking app
 - Plain text files with a consistent naming convention

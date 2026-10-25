@@ -52,8 +52,8 @@ When the ECC checkout is available, use `config/project-stack-mappings.json` as 
 node scripts/install-apply.js --target <target> --dry-run --json <language-or-profile-args>
 ```
 
-5. Summarize detected stacks, selected modules/components/skills, target paths, skipped unsupported modules, and files that would be changed.
-6. Ask for approval before applying the non-dry-run command.
+1. Summarize detected stacks, selected modules/components/skills, target paths, skipped unsupported modules, and files that would be changed.
+2. Ask for approval before applying the non-dry-run command.
 
 ## Output Contract
 

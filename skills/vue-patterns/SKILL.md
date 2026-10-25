@@ -11,6 +11,7 @@ Comprehensive guide for Vue.js 3 development using Composition API (`<script set
 ## When to Activate
 
 Activate this skill when:
+
 - The project uses Vue.js (any version), Nuxt, Vite + Vue, or Pinia.
 - The user asks about Vue component architecture, composables, reactivity, or state management.
 - Reviewing Vue Single-File Components (`.vue` files).
@@ -152,6 +153,7 @@ export function useDebounce<T>(value: MaybeRef<T>, delay: number): Ref<T> {
 ### vs Mixins
 
 Composables replace Vue 2 mixins entirely:
+
 - **Mixins**: Opaque data flow, source-of-truth collisions, name conflicts.
 - **Composables**: Explicit imports, clear return values, composable and tree-shakable.
 

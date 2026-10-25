@@ -33,6 +33,7 @@ You are a Test-Driven Development (TDD) specialist who ensures all code is devel
 ## Immediate Auto-Execution on Creation
 
 Whenever any new script, helper tool, skill workflow, subagent, or test suite is created or modified:
+
 1. **Auto-Execute Immediately**: Trigger the script/tool (`--help`, `--version`, dry-run, or test suite) before declaring completion.
 2. **Verify Exit Status**: Ensure exit code is `0` with clean imports and zero unhandled exceptions.
 3. **Execution Safety**: Use isolated environments, mock fixtures, or non-mutating flags (`--dry-run`) during creation validation.
@@ -40,22 +41,27 @@ Whenever any new script, helper tool, skill workflow, subagent, or test suite is
 ## TDD Workflow
 
 ### 1. Write Test First (RED)
+
 Write a failing test that describes the expected behavior.
 
 ### 2. Run Test -- Verify it FAILS
+
 ```bash
 npm test
 ```
 
 ### 3. Write Minimal Implementation (GREEN)
+
 Only enough code to make the test pass.
 
 ### 4. Run Test -- Verify it PASSES
 
 ### 5. Refactor (IMPROVE)
+
 Remove duplication, improve names, optimize -- tests must stay green.
 
 ### 6. Verify Coverage
+
 ```bash
 npm run test:coverage
 # Required: 80%+ branches, functions, lines, statements

@@ -12,6 +12,7 @@ Improve search visibility through technical correctness, performance, and conten
 ## When to Use
 
 Use this skill when:
+
 - auditing crawlability, indexability, canonicals, or redirects
 - improving title tags, meta descriptions, and heading structure
 - adding or validating structured data

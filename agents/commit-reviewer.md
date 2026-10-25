@@ -84,6 +84,7 @@ Action: read diff + log, classify as `fix`, infer scope `cart` from the
 directory, draft subject at the observed length.
 
 Output:
+
 ```
 Suggested commit message:
 
@@ -104,6 +105,7 @@ typo in a comment.
 Action: flag the mix rather than merging it into one message.
 
 Output:
+
 ```
 This diff mixes two unrelated changes:
 1. Renaming `MAX_RETRY` -> `MAX_RETRIES` in config/retry.ts

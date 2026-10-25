@@ -47,6 +47,7 @@ Sync documentation with the codebase, generating from source-of-truth files.
 ## Step 4: Update Contributing Guide
 
 Generate or update `docs/CONTRIBUTING.md` with:
+
 - Development environment setup (prerequisites, install steps)
 - Available scripts and their purposes
 - Testing procedures (how to run, how to write new tests)
@@ -56,6 +57,7 @@ Generate or update `docs/CONTRIBUTING.md` with:
 ## Step 5: Update Runbook
 
 Generate or update `docs/RUNBOOK.md` with:
+
 - Deployment procedures (step-by-step)
 - Health check endpoints and monitoring
 - Common issues and their fixes

@@ -17,6 +17,7 @@ This command invokes the **cpp-build-resolver** agent to incrementally fix C++ b
 ## When to Use
 
 Use `/cpp-build` when:
+
 - `cmake --build build` fails with errors
 - Linker errors (undefined references, multiple definitions)
 - Template instantiation failures
@@ -130,6 +131,7 @@ All tests passed.
 | Remaining issues | 0 |
 
 Build Status: PASS: SUCCESS
+
 ```
 
 ## Common Errors Fixed

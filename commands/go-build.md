@@ -17,6 +17,7 @@ This command invokes the **go-build-resolver** agent to incrementally fix Go bui
 ## When to Use
 
 Use `/go-build` when:
+
 - `go build ./...` fails with errors
 - `go vet ./...` reports issues
 - `golangci-lint run` shows warnings
@@ -141,6 +142,7 @@ ok      project/internal/handler   0.023s
 | Remaining issues | 0 |
 
 Build Status: PASS: SUCCESS
+
 ```
 
 ## Common Errors Fixed

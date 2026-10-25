@@ -11,6 +11,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 ## Families and members
 
 ### Ethereal / divine — *weightless, holy, glowing, soft*
+
 - **spiritualism** — religious iconography, halos, god-rays, devotional
 - **glacial folk** — cold blue + bone white, crystalline, minimal, calm
 - **beacons** — single light source in darkness, signal, hope
@@ -19,6 +20,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 - **cozy blanket** — warm, tactile, soft-focus comfort
 
 ### Hyperpop / Y2K-cyber — *glossy, chrome, neon, kawaii-cyber*
+
 - **cyberdelia** — psychedelic cyber, saturated, melting digital
 - **acid house** — rave graphics, smileys, high-saturation acid color
 - **acid nora** — acid-toned painterly, warped
@@ -27,6 +29,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 - **8-bit / pixel** — retro game pixels, dithered, lo-fi digital
 
 ### Dark / occult — *high-contrast, ominous, grain*
+
 - **dark academia** — moody scholarly, sepia, candlelit, gothic
 - **smoke nostalgia** — hazy, smoky, faded memory
 - **communist core** — red star, propaganda poster, bold red/black
@@ -34,6 +37,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 - **microzoathic** — strange organic-dark microscopic forms
 
 ### Retro / print — *flat, graphic, halftone, nostalgic*
+
 - **retro surfers** — 60s–70s surf, sun-faded, beachy
 - **art deco** — geometric gold, 1920s elegance, symmetry
 - **adventure pulp** — pulp comic covers, dramatic, vintage
@@ -46,6 +50,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 - **2026 austurbano** — near-future urban editorial
 
 ### Organic / textural — *tactile, macro, woven, wet*
+
 - **microbiology core** — cells, micro-organic, petri textures
 - **weaving patterns** — woven fiber, textile, interlace
 - **fruitage retro** — fruit/produce, saturated, glossy still-life
@@ -54,6 +59,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 - **colour fusion** — blended gradients, color-field
 
 ### Systemic / data — *gridded, generative, schematic*
+
 - **numbers** — numeric typography, ledgers, counting
 - **mazes** — labyrinth, path, grid puzzle
 - **code web** — node graphs, network, connections
@@ -63,6 +69,7 @@ Use this as a picker. Choose **one primary** genre and **at most one accent**. T
 - **scrapbooking** — assembled keepsakes, layered ephemera
 
 ### Cultural / kitsch — *loud, specific, referential*
+
 - **catholic kitsch** — devotional kitsch, gilded saints
 - **mexendero / megadero / cubanista** — Latin-American vernacular graphic
 - **asian chic / asian store** — East-Asian retail/pop vernacular
