@@ -16,9 +16,10 @@ See `AGENTS.md` / `~/.gemini/config/plugins/ecc-agy/rules/AGENTS.md` for the uni
    - **Subagents (`agents/*.md`)**: Context-isolated workers; keep `description` $\le 120$ chars, least-privilege `tools`, cost-optimal `model` (`flash`/`inherit`), and strict output contracts.
    - **Rules (`AGENTS.md` / `.agents/rules/*.md`)**: Strictly for always-on global or project invariants; reuse/extend `ecc-agy` catalog first.
 5. **Immediate Auto-Execution on Creation (`Smoke-Test on Synthesis`)**: Every newly created or refactored script, skill, subagent, tool, or rule must be immediately auto-executed (smoke-test, `--help`, unit tests, or dry-run) to verify runtime viability before completing the task.
-6. **Zero Unofficial Third-Party Dependencies**: Never add non-official third-party libraries without warning the user and receiving explicit confirmation first.
-7. **Centralized Docs**: Store all project documentation, diagrams, reports, and artifacts in `C:\Workspace\projects\home-lab\doc` (organized by project `<project>/` and governed via `.governance/docs-map.json`).
-8. **Stack Standards (ECC-AGY Authority)**:
+6. **Mandatory /portal Synchronization on Infra/Net Changes**: Any change to Docker services, Traefik routes, CoreDNS records, or network ports requires updating the `/portal` catalog in `cluster/cmd/server/main.go` and verifying zero drift with `sync-portal.ps1 -Audit`.
+7. **Zero Unofficial Third-Party Dependencies**: Never add non-official third-party libraries without warning the user and receiving explicit confirmation first.
+8. **Centralized Docs**: Store all project documentation, diagrams, reports, and artifacts in `C:\Workspace\projects\home-lab\doc` (organized by project `<project>/` and governed via `.governance/docs-map.json`).
+9. **Stack Standards (ECC-AGY Authority)**:
    - **Java 25 / Spring Boot 4**: `record` DTOs, constructor injection, sealed types, JUnit 5 + AssertJ + Mockito + Testcontainers.
    - **Angular 21+ / TS**: Standalone + `OnPush`, `inject()`, Signals (`signal`, `computed`, `linkedSignal`, `resource`), `@if`/`@for`, functional guards/interceptors, native TS/Angular validation, Vitest/Jest + Playwright.
    - **Python / FastAPI**: PEP 8 + type hints, `async def` with async I/O drivers, `Depends()` DI, Pydantic `response_model`, `pytest`.
