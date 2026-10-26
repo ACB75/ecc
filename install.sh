@@ -1,42 +1,50 @@
 #!/usr/bin/env bash
-# install.sh — Legacy shell entrypoint for the ECC installer.
-#
-# This wrapper resolves the real repo/package root when invoked through a
-# symlinked npm bin, then delegates to the Node-based installer runtime.
-
-# Re-exec under bash if invoked via a POSIX sh (e.g. `sh install.sh`), since
-# the rest of this script relies on bash features (`set -o pipefail`, `[[`).
-# Probe actual shell capability instead of trusting $BASH_VERSION, which is
-# just an environment variable and could be inherited/spoofed under sh.
-if ! (eval '[[ 1 == 1 ]]' >/dev/null 2>&1); then
-    exec bash "$0" "$@"
-fi
+# ==============================================================================
+# ECC-AECB Multi-Distribution Installer (Linux / WSL / macOS)
+# Targets: claude | agy | homelab
+# ==============================================================================
 
 set -euo pipefail
 
-SCRIPT_PATH="$0"
-while [ -L "$SCRIPT_PATH" ]; do
-    link_dir="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
-    SCRIPT_PATH="$(readlink "$SCRIPT_PATH")"
-    [[ "$SCRIPT_PATH" != /* ]] && SCRIPT_PATH="$link_dir/$SCRIPT_PATH"
-done
-SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TARGET="${1:-agy}"
+DESTINATION="${2:-}"
 
-# Auto-install Node dependencies when running from a git clone.
-# SECURITY: --ignore-scripts blocks preinstall/postinstall RCE from a
-# compromised dependency. ECC deps are pure JS (no native build step).
-if [ ! -d "$SCRIPT_DIR/node_modules" ]; then
-    echo "[ECC] Installing dependencies..."
-    (cd "$SCRIPT_DIR" && npm install --ignore-scripts --no-audit --no-fund --loglevel=error)
-fi
+echo "================================================================="
+echo "             ECC-AECB MASTER MULTI-DISTRIBUTION INSTALLER         "
+echo "================================================================="
+echo "Target distribution: ${TARGET}"
 
-# On MSYS2/Git Bash, convert the POSIX path to a Windows path so Node.js
-# (a native Windows binary) receives a valid path instead of a doubled one
-# like G:\g\projects\... that results from Git Bash's auto path conversion.
-if command -v cygpath >/dev/null 2>&1; then
-    NODE_SCRIPT="$(cygpath -w "$SCRIPT_DIR/scripts/install-apply.js")"
-else
-    NODE_SCRIPT="$SCRIPT_DIR/scripts/install-apply.js"
-fi
+case "${TARGET}" in
+  claude)
+    SOURCE_DIR="${SCRIPT_DIR}/ecc-claude"
+    DEST="${DESTINATION:-$(pwd)}"
+    echo "[+] Deploying Claude Code boilerplates to: ${DEST}"
+    cp -f "${SOURCE_DIR}/CLAUDE.md" "${DEST}/"
+    cp -rf "${SOURCE_DIR}/.claude" "${DEST}/"
+    echo "[✓] Claude Code boilerplates installed successfully."
+    ;;
+  agy)
+    SOURCE_DIR="${SCRIPT_DIR}/ecc-agy"
+    DEST="${DESTINATION:-${HOME}/.gemini/config/plugins/ecc-agy}"
+    echo "[+] Deploying agnostic Antigravity plugin to: ${DEST}"
+    mkdir -p "${DEST}"
+    cp -rf "${SOURCE_DIR}"/* "${DEST}/"
+    echo "[✓] Agnostic ecc-agy plugin installed successfully."
+    ;;
+  homelab)
+    SOURCE_DIR="${SCRIPT_DIR}/ecc-agy-homelab"
+    DEST="${DESTINATION:-${HOME}/.gemini/config/plugins/ecc-agy}"
+    echo "[+] Deploying specialized Home-Lab fork to: ${DEST}"
+    mkdir -p "${DEST}"
+    cp -rf "${SOURCE_DIR}"/* "${DEST}/"
+    echo "[✓] Specialized ecc-agy-homelab installed successfully."
+    ;;
+  *)
+    echo "Error: Unknown target '${TARGET}'. Use 'claude', 'agy', or 'homelab'." >&2
+    exit 1
+    ;;
+esac
 
-exec node "$NODE_SCRIPT" "$@"
+echo "================================================================="
+echo "Installation complete."

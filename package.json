@@ -1,26 +1,20 @@
 {
-  "name": "ecc-agy",
-  "version": "2.2.3",
-  "description": "ECC (Everything Claude Code) adapted for Antigravity and Gemini workflows - skills, agents, rules, and selective installer",
+  "name": "ecc-aecb",
+  "version": "3.0.0",
+  "description": "ECC-AECB Master Ecosystem: Multi-distribution architecture hosting ecc-claude, ecc-agy, and ecc-agy-homelab",
   "private": true,
   "license": "MIT",
-  "bin": {
-    "ecc": "scripts/ecc.js",
-    "ecc-install": "scripts/install-apply.js"
-  },
   "scripts": {
-    "install:agy": "node scripts/install-apply.js --target antigravity",
-    "install:gemini": "node scripts/install-apply.js --target gemini",
-    "sync:status": "pwsh -NoProfile -File ./ecc-agy-sync.ps1 -Phase status",
-    "doctor": "node scripts/doctor.js",
-    "test": "node scripts/doctor.js"
+    "install:claude": "pwsh -NoProfile -File ./install.ps1 -Target claude",
+    "install:agy": "pwsh -NoProfile -File ./install.ps1 -Target agy",
+    "install:homelab": "pwsh -NoProfile -File ./install.ps1 -Target homelab",
+    "doctor": "node scripts/doctor.js"
   },
-  "dependencies": {
-    "@iarna/toml": "2.2.5",
-    "ajv": "8.20.0",
-    "js-yaml": "4.3.2",
-    "sql.js": "1.14.2"
-  },
+  "workspaces": [
+    "ecc-claude",
+    "ecc-agy",
+    "ecc-agy-homelab"
+  ],
   "engines": {
     "node": ">=18"
   }
