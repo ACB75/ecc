@@ -46,7 +46,7 @@ ALLOWED_TYPES: frozenset[str] = frozenset({
 
 ALLOWED_PROJECTS: frozenset[str] = frozenset({
     "cluster", "kakebo", "whoiam", "net", "scripts", "ecc", "ecc-agy", "ecc-aecb", "ecc-claude", "ecc-agy-homelab", "doc",
-    "docs", "infra", "portal", "token-hill", "uoc", "all",
+    "docs", "infra", "portal", "token-hill", "uoc", "sdk", "home-lab-sdk", "all",
 })
 
 

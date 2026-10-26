@@ -39,6 +39,9 @@
   1. *Title Format*: `[type]+[scope]: <title>` where `[type]` is a valid Conventional Commit type (`feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `perf`, `build`, `ci`, `sec`), followed by `-`, the affected project/module scope (`[backend]`, `[frontend]`, `[core]`, `[infra]`, etc.), and an imperative title.
   2. *Mandatory Explanatory Body Comment (`msg comment`)*: Single-line commits are strictly prohibited. Every commit must include an explanatory body detailing motivation, affected modules, architectural decisions, and verification tests executed.
   3. *Prohibition of Autonomous Commits/Pushes*: NEVER execute `git commit` or `git push` autonomously without explicit confirmation from the user.
+- **Mandatory Automated Pull Request Creation Post Commit & Push**:
+  - Immediately following user authorization and execution of git commit and git push on any isolated feature or task branch (eat/*, ix/*, efactor/*, chore/*, infra/*), the agent MUST automatically and immediately create the corresponding Pull Request against main (using gh pr create --fill or scripts/bin/ecc-agy/git-flow-helper.ps1 -Action create-pr), without waiting for an extra manual command from the user.
+  - The Pull Request title must inherit the structured commit header ([type]-[projects]: <title>), and its body must inherit the explanatory commit message (*msg comment*), affected components, and verification results.
 - **Trunk-Based Branching, Isolated PRs & Multi-Tier Promotion (ADR-0006)**: Adopt Trunk-Based Development (TBD) with canonical trunk `main` (always green, compilable, deployable). Every task, bugfix, or refactor must be developed in an isolated short-lived branch (<24-48h: `<type>/<project>/<name>`) and integrated exclusively via an isolated Pull Request (PR) to enforce **Fast-Failure** and **Fast-Rollback**.
 - **Immediate Auto-Execution on Creation (`Smoke-Test on Synthesis`)**: Whenever a new script (`scripts/bin/...`), skill (`skills/...`), subagent (`agents/...`), tool, or automated rule is created or adjusted, it MUST be auto-executed immediately upon creation to prove real-world runtime viability (exit code `0`, clean imports) before declaring the task finished.
 - **Code Quality & SonarQube Quality Gate (`Clean as You Code`)**: Prefer KISS/DRY/YAGNI, immutable transformations, focused files (200-400 lines, 800 max), early returns (<4 nesting levels), and explicit error handling. Strictly enforce SonarQube Quality Gate `A` ratings across all stacks: Cognitive Complexity $\le 15$ (`S3776`), $\le 7$ parameters per function/method (`S107`), zero duplicated string literals $\ge 3$ times (`S1192`), zero empty catch/nested blocks (`S108`), $\ge 80\%$ test coverage, and $\le 3\%$ duplication.
@@ -72,4 +75,5 @@
 - **Style & Typing**: PEP 8, explicit type annotations on all functions, immutable `@dataclass(frozen=True)` or Pydantic v2 models, `ruff`/`black` formatting, and `logging` instead of `print()`.
 - **FastAPI**: Separate request/response Pydantic schemas, inject DB/auth via `Depends()`, and use `async def` with async I/O drivers.
 - **Testing**: `pytest` with 80%+ coverage.
+
 
