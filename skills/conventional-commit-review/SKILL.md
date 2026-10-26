@@ -1,6 +1,6 @@
 ---
 name: conventional-commit-review
-description: Draft and review git commits following [type]+[projects]: <title> format with mandatory explanatory body comments.
+description: Draft and review git commits following [type]-[projects]: <title> format with mandatory explanatory body comments.
 metadata:
   origin: ECC-AGY
 ---
@@ -8,11 +8,11 @@ metadata:
 # Conventional Commit & Message Review
 
 Review staged git diffs and draft commit messages that strictly follow the workspace standard:
-`[type]+[projects]: <title>` accompanied by a mandatory explanatory body comment (`msg comment`).
+`[type]-[projects]: <title>` accompanied by a mandatory explanatory body comment (`msg comment`).
 
 ## Standard Commit Format
 
-### 1. Title Structure: `[type]+[projects]: <title>`
+### 1. Title Structure: `[type]-[projects]: <title>`
 
 - **`[type]`**: Conventional Commit type: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `perf`, `build`, `ci`, `sec` (or `security`).
 - **`+`**: Mandatory delimiter between type and affected projects.
@@ -32,14 +32,14 @@ Single-line commits are strictly prohibited. Every commit must include an explan
 
 1. Run `git diff --staged` (or `git diff` if nothing staged) to inspect changes.
 2. Identify the commit type and impacted project(s).
-3. Draft the title: `[type]+[projects]: <title>`.
+3. Draft the title: `[type]-[projects]: <title>`.
 4. Draft the structured explanatory body comment.
 5. Present the drafted message for user review. Never commit or push without explicit confirmation.
 
 ## Canonical Examples
 
 ```gitcommit
-feat+[cluster]: implement tenant storage manager and quota enforcement
+feat-[cluster]: implement tenant storage manager and quota enforcement
 
 Introduce isolated storage telemetry and directory quotas per tenant.
 - Package cluster/internal/storage with multi-OS support (Linux/Windows).
@@ -59,5 +59,5 @@ Fix cryptographic key decoding failure under RFC 7517 verification.
 ## Anti-Patterns
 
 - Single-line commits without an explanatory body.
-- Using standard parentheses `feat(scope):` instead of `[type]+[projects]: <title>`.
+- Using standard parentheses `feat(scope):` instead of `[type]-[projects]: <title>`.
 - Executing `git commit` or `git push` autonomously without explicit user confirmation.

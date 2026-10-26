@@ -1,18 +1,18 @@
-# Ecosistema ECC-AECB (`ecc-aecb`)
+# Ecosistema ECC (`ecc`)
 
 > **Distribución Maestra Multi-Harness: Claude Code + Antigravity Agnóstico + Fork Home-Lab**  
-> Repositorio Principal: [`ACB75/ecc-aecb`](https://github.com/ACB75/ecc-aecb)
+> Repositorio Principal: [`ACB75/ecc`](https://github.com/ACB75/ecc)
 
 ---
 
 ## 1. Visión y Arquitectura
 
-`ecc-aecb` es el repositorio raíz y núcleo de orquestación que unifica y desacopla las diferentes adaptaciones de **Everything Claude Code (ECC)** según el motor de IA y el contexto de despliegue:
+`ecc` es el repositorio raíz y núcleo de orquestación que unifica y desacopla las diferentes adaptaciones de **Everything Claude Code (ECC)** según el motor de IA y el contexto de despliegue:
 
 ```mermaid
 flowchart TD
-    subgraph Core["Ecosistema Maestro ecc-aecb"]
-        Root["ecc-aecb (Orquestador y Repositorio Principal)"]
+    subgraph Core["Ecosistema Maestro ecc"]
+        Root["ecc (Orquestador y Repositorio Principal)"]
     end
 
     subgraph Flavors["Distribuciones Especializadas"]
@@ -75,5 +75,5 @@ pwsh -File install.ps1 -Target homelab
 
 ## 4. Repositorios GitHub Asociados
 
-- **Repositorio Principal**: [`https://github.com/ACB75/ecc-aecb`](https://github.com/ACB75/ecc-aecb)
+- **Repositorio Principal**: [`https://github.com/ACB75/ecc`](https://github.com/ACB75/ecc)
 - **Fork Home-Lab**: [`https://github.com/ACB75/ecc-agy-homelab`](https://github.com/ACB75/ecc-agy-homelab)

@@ -1,6 +1,6 @@
 {
-  "name": "ecc-aecb",
-  "displayName": "ECC-AECB Master Ecosystem",
+  "name": "ecc",
+  "displayName": "ECC Master Ecosystem",
   "version": "3.0.0",
   "description": "Unified Multi-Harness Architecture: Claude Code boilerplates (ecc-claude), Agnostic Antigravity distribution (ecc-agy), and Home-Lab specialized fork (ecc-agy-homelab).",
   "author": "ACB75",

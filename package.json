@@ -1,7 +1,7 @@
 {
-  "name": "ecc-aecb",
+  "name": "ecc",
   "version": "3.0.0",
-  "description": "ECC-AECB Master Ecosystem: Multi-distribution architecture hosting ecc-claude, ecc-agy, and ecc-agy-homelab",
+  "description": "ECC Master Ecosystem: Multi-distribution architecture hosting ecc-claude, ecc-agy, and ecc-agy-homelab",
   "private": true,
   "license": "MIT",
   "scripts": {
