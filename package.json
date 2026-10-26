@@ -1,19 +1,17 @@
 {
   "name": "ecc",
   "version": "3.0.0",
-  "description": "ECC Master Ecosystem: Multi-distribution architecture hosting ecc-claude, ecc-agy, and ecc-agy-homelab",
+  "description": "ECC Master Ecosystem: Multi-distribution architecture hosting ecc-claude and ecc-agy",
   "private": true,
   "license": "MIT",
   "scripts": {
     "install:claude": "pwsh -NoProfile -File ./install.ps1 -Target claude",
     "install:agy": "pwsh -NoProfile -File ./install.ps1 -Target agy",
-    "install:homelab": "pwsh -NoProfile -File ./install.ps1 -Target homelab",
     "doctor": "node scripts/doctor.js"
   },
   "workspaces": [
     "ecc-claude",
-    "ecc-agy",
-    "ecc-agy-homelab"
+    "ecc-agy"
   ],
   "engines": {
     "node": ">=18"

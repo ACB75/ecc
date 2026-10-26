@@ -2,7 +2,7 @@
   "name": "ecc",
   "displayName": "ECC Master Ecosystem",
   "version": "3.0.0",
-  "description": "Unified Multi-Harness Architecture: Claude Code boilerplates (ecc-claude), Agnostic Antigravity distribution (ecc-agy), and Home-Lab specialized fork (ecc-agy-homelab).",
+  "description": "Unified Multi-Harness Architecture: Claude Code boilerplates (ecc-claude) and Unified Google Antigravity & Gemini distribution (ecc-agy).",
   "author": "ACB75",
   "distributions": {
     "ecc-claude": {
@@ -15,13 +15,7 @@
       "path": "ecc-agy",
       "target": "antigravity",
       "harness": "Google Antigravity / Gemini",
-      "description": "Pure, project-agnostic Google Antigravity distribution with 16 skills, 12 agents, and SRE baseline reusable across N projects."
-    },
-    "ecc-agy-homelab": {
-      "path": "ecc-agy-homelab",
-      "target": "homelab",
-      "harness": "Google Antigravity (Home-Lab Specialized)",
-      "description": "Specialized fork containing home-lab governance, portal sync, cluster, kakebo, whoiam, and multi-tier promotion."
+      "description": "Unified Google Antigravity distribution with 315+ skills, 73+ agents, commands, schemas, and SRE baseline."
     }
   }
 }
