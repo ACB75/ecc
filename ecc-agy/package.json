@@ -1,18 +1,27 @@
 {
   "name": "ecc-agy",
-  "displayName": "ECC for Google Antigravity (ecc-agy)",
-  "version": "2.2.3-agnostic.1",
-  "description": "Pure, project-agnostic ECC distribution for Google Antigravity. Enterprise-grade agents, skills, SRE baseline, and quality gates reusable across any project or company.",
+  "version": "2.2.3",
+  "description": "ECC-AGY: Unified Google Antigravity & Gemini distribution with SRE baseline, 315+ skills, 73+ agents, and automated rules",
+  "private": true,
   "license": "MIT",
-  "main": "plugin.json",
-  "scripts": {
-    "test": "echo \"ECC-AGY agnostic distribution ready.\""
+  "bin": {
+    "ecc": "scripts/ecc.js",
+    "ecc-install": "scripts/install-apply.js"
   },
-  "keywords": [
-    "antigravity",
-    "gemini",
-    "ecc",
-    "agentic-engineering",
-    "sre"
-  ]
+  "scripts": {
+    "install:agy": "node scripts/install-apply.js --target antigravity",
+    "install:gemini": "node scripts/install-apply.js --target gemini",
+    "sync:status": "pwsh -NoProfile -File ./ecc-agy-sync.ps1 -Phase status",
+    "doctor": "node scripts/doctor.js",
+    "test": "node scripts/doctor.js"
+  },
+  "dependencies": {
+    "@iarna/toml": "2.2.5",
+    "ajv": "8.20.0",
+    "js-yaml": "4.3.2",
+    "sql.js": "1.14.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }

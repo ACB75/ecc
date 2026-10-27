@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# ECC-AECB Multi-Distribution Installer (Linux / WSL / macOS)
-# Targets: claude | agy | homelab
+# ECC Multi-Distribution Installer (Linux / WSL / macOS)
+# Targets: claude | agy | homelab (alias to agy)
 # ==============================================================================
 
 set -euo pipefail
@@ -11,9 +11,14 @@ TARGET="${1:-agy}"
 DESTINATION="${2:-}"
 
 echo "================================================================="
-echo "             ECC-AECB MASTER MULTI-DISTRIBUTION INSTALLER         "
+echo "                ECC MASTER MULTI-DISTRIBUTION INSTALLER          "
 echo "================================================================="
 echo "Target distribution: ${TARGET}"
+
+if [ "${TARGET}" = "homelab" ]; then
+  echo "[i] Note: 'homelab' has been unified into 'ecc-agy'. Deploying ecc-agy..."
+  TARGET="agy"
+fi
 
 case "${TARGET}" in
   claude)
@@ -27,21 +32,13 @@ case "${TARGET}" in
   agy)
     SOURCE_DIR="${SCRIPT_DIR}/ecc-agy"
     DEST="${DESTINATION:-${HOME}/.gemini/config/plugins/ecc-agy}"
-    echo "[+] Deploying agnostic Antigravity plugin to: ${DEST}"
+    echo "[+] Deploying unified Antigravity plugin to: ${DEST}"
     mkdir -p "${DEST}"
     cp -rf "${SOURCE_DIR}"/* "${DEST}/"
-    echo "[✓] Agnostic ecc-agy plugin installed successfully."
-    ;;
-  homelab)
-    SOURCE_DIR="${SCRIPT_DIR}/ecc-agy-homelab"
-    DEST="${DESTINATION:-${HOME}/.gemini/config/plugins/ecc-agy}"
-    echo "[+] Deploying specialized Home-Lab fork to: ${DEST}"
-    mkdir -p "${DEST}"
-    cp -rf "${SOURCE_DIR}"/* "${DEST}/"
-    echo "[✓] Specialized ecc-agy-homelab installed successfully."
+    echo "[✓] Unified ecc-agy plugin installed successfully."
     ;;
   *)
-    echo "Error: Unknown target '${TARGET}'. Use 'claude', 'agy', or 'homelab'." >&2
+    echo "Error: Unknown target '${TARGET}'. Use 'claude' or 'agy'." >&2
     exit 1
     ;;
 esac
