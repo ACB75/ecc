@@ -1,0 +1,26 @@
+flowchart TD
+    Start(["Inspección de Cambios Staged (git diff)"]) --> DraftTitle["Generar Título Estructurado:<br/>[type]+[projects]: &lt;title&gt;"]
+
+    subgraph TitleStructure["Estructura del Título [type]+[projects]: &lt;title&gt;"]
+        Type["[type]: feat | fix | refactor | chore | docs | test | perf | build | ci | sec"]
+        Plus["+ : Delimitador Obligatorio"]
+        Projects["[projects]: cluster | kakebo | whoiam | net | scripts | ecc-agy"]
+        Colon[": &lt;title&gt; en Modo Imperativo"]
+    end
+
+    DraftTitle --> Type
+    Type --> Plus
+    Plus --> Projects
+    Projects --> Colon
+
+    Colon --> DraftBody["Redactar Cuerpo Explicativo Obligatorio (msg comment):<br/>• Motivación y Contexto del Cambio<br/>• Módulos y Archivos Afectados<br/>• Decisiones de Arquitectura / Trade-offs<br/>• Verificaciones y Tests Ejecutados (Exit 0)"]
+
+    DraftBody --> ValidationGate{"¿Cumple [type]+[projects]: &lt;title&gt;<br/>y Cuerpo Explicativo Presente?"}
+
+    ValidationGate -->|"No"| FixFormat["Ajustar Formato y Añadir Explicación"]
+    FixFormat --> ValidationGate
+
+    ValidationGate -->|"Sí"| UserReview["Presentar al Usuario para Revisión"]
+    UserReview --> UserConfirm{"¿Confirmación Explícita<br/>del Usuario?"}
+    UserConfirm -->|"Autorizado"| ExecCommit(["Ejecutar git commit y git push"])
+    UserConfirm -->|"No"| Standby(["En Espera de Confirmación"])

@@ -1,0 +1,18 @@
+flowchart TD
+    Start(["Inicio: Creación / Modificación de Artefacto"]) --> IdentifyType{"Tipo de Artefacto"}
+
+    IdentifyType -->|"Script CLI (.py/.ps1/.sh)"| ExecScript["Auto-Ejecución Inmediata:<br/>Ejecutar con --help o input de prueba"]
+    IdentifyType -->|"Skill (SKILL.md)"| ExecSkill["Auto-Ejecución Inmediata:<br/>Invocar workflow / scripts asociados"]
+    IdentifyType -->|"Subagente (agents/*.md)"| ExecAgent["Auto-Ejecución Inmediata:<br/>Dry-run / Invocación de prueba"]
+    IdentifyType -->|"Regla / Workflow"| ExecRule["Auto-Ejecución Inmediata:<br/>Verificación sintáctica y de presupuesto"]
+
+    ExecScript --> CheckResult{"¿Código de Salida 0 y Sin Errores?"}
+    ExecSkill --> CheckResult
+    ExecAgent --> CheckResult
+    ExecRule --> CheckResult
+
+    CheckResult -->|"No (Fallo / Error)"| AutoRepair["Auto-Corrección Inmediata:<br/>Ajustar sintaxis, dependencias o tipos"]
+    AutoRepair --> IdentifyType
+
+    CheckResult -->|"Sí (Éxito)"| VerificationLoop["Pase a Verification Loop<br/>(Fase 1..6 y Quality Gates)"]
+    VerificationLoop --> Completed(["Artefacto Validado y Listo"])

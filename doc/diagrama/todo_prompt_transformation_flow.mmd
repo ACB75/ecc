@@ -1,0 +1,23 @@
+flowchart TD
+    Start(["Petición del Usuario / Tarea en Bruto"]) --> MetaPrompt["Transformación con Meta-Prompt de 7 Fases"]
+
+    subgraph MetaPromptFramework["Metodología de 7 Fases (Anti-Respuestas Genéricas)"]
+        R01["01 – ROLE:<br/>3-5 Mayores Expertos Globales"]
+        R02["02 – CONTEXT:<br/>Placeholders [IN BRACKETS]<br/>(Sector, Tipo de Dato, Objetivo, Restricciones)"]
+        R03["03 – FASE 1 (ANÁLISIS):<br/>Patrones, Errores Comunes y Contexto Teórico"]
+        R04["04 – FASE 2 (ESTRATEGIA):<br/>3 Enfoques de Pensamiento Lateral"]
+        R05["05 – FASE 3 (EJECUCIÓN):<br/>Resolución Paso a Paso"]
+        R06["06 – FASE 4 (CRÍTICA):<br/>Abogado del Diablo (Búsqueda de Fallos/Fugas)"]
+        R07["07 – FASE 5 (FORMATO):<br/>Salida Estricta (Tabla, Markdown, JSON)"]
+    end
+
+    MetaPrompt --> R01
+    R01 --> R02
+    R02 --> R03
+    R03 --> R04
+    R04 --> R05
+    R05 --> R06
+    R06 --> R07
+
+    R07 --> GoldenRule["GOLDEN RULE:<br/>Rigor Intelectual ('Sudar'), Cero Respuestas Genéricas"]
+    GoldenRule --> TodoItem(["Ítem TODO Formulado y Registrado en TODO.md"])
