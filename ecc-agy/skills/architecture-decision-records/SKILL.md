@@ -77,29 +77,30 @@ When a decision moment is detected:
 3. **Gather context** — what problem prompted this? What constraints exist?
 4. **Document alternatives** — what other options were considered? Why were they rejected?
 5. **State consequences** — what are the trade-offs? What becomes easier/harder?
-6. **Assign a number** — scan existing ADRs in `<project>/doc/adr/ (or doc/adr/)` and increment
-7. **Confirm and write** — present the draft ADR to the user for review. Only write to `<project>/doc/adr/ (or doc/adr/)NNNN-decision-title.md` after explicit approval. If the user declines, discard the draft without writing any files.
-8. **Update the index** — append to `<project>/doc/adr/ (or doc/adr/)README.md`
+6. **Assign a number** — scan existing ADRs in `<project>/doc/adr/` (or `<repo-root>/doc/adr/`) and increment
+7. **Confirm and write** — present the draft ADR to the user for review. Only write to `<project>/doc/adr/NNNN-decision-title.md` (or `<repo-root>/doc/adr/`) after explicit approval. If the user declines, discard the draft without writing any files.
+8. **Update the index** — append to `<project>/doc/adr/README.md` (or `<repo-root>/doc/adr/README.md`)
 
 ### Reading Existing ADRs
 
 When a user asks "why did we choose X?":
 
-1. Check if `<project>/doc/adr/ (or doc/adr/)` exists — if not, respond: "No ADRs found in this project. Would you like to start recording architectural decisions?"
-2. If it exists, scan `<project>/doc/adr/ (or doc/adr/)README.md` index for relevant entries
+1. Check if `<project>/doc/adr/` (or `<repo-root>/doc/adr/`) exists — if not, respond: "No ADRs found in this project. Would you like to start recording architectural decisions?"
+2. If it exists, scan `<project>/doc/adr/README.md` index for relevant entries
 3. Read matching ADR files and present the Context and Decision sections
 4. If no match is found, respond: "No ADR found for that decision. Would you like to record one now?"
 
 ### ADR Directory Structure
 
 ```
-docs/
-└── adr/
-    ├── README.md              ← index of all ADRs
-    ├── 0001-use-nextjs.md
-    ├── 0002-postgres-over-mongo.md
-    ├── 0003-rest-over-graphql.md
-    └── template.md            ← blank template for manual use
+<project>/
+└── doc/
+    └── adr/
+        ├── README.md              ← index of all ADRs
+        ├── 0001-use-nextjs.md
+        ├── 0002-postgres-over-mongo.md
+        ├── 0003-rest-over-graphql.md
+        └── template.md            ← blank template for manual use
 ```
 
 ### ADR Index Format
