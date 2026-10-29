@@ -1,0 +1,19 @@
+flowchart TD
+    Start(["Inicio: Ejecución Recurrente de Higiene\n(audit-workspace.ps1 / .sh)"]) --> P1["Fase 1: Escaneo de Higiene del Sistema\n- Detección de .bak, .old, .tmp, .swp\n- Limpieza de cachés (__pycache__, pytest, ruff)\n- Detección de carpetas vacías"]
+
+    P1 --> P2["Fase 2: Presupuesto de Tokens & Frontmatter\n- Skills: description <= 140 chars\n- Agents: description <= 120 chars, model in {flash, inherit}\n- Least privilege: read-only sin write_tools\n- Cálculo de coste de contexto (~chars / 3.8)"]
+
+    P2 --> P3["Fase 3: Auditoría de Redundancias & Duplicados\n- Detección de skills globales shadowed en .agents/\n- Detección de agentes/skills duplicados inter-proyectos\n- Detección de artefactos muertos/huérfanos\n- Flag --optimize / --prune: poda segura"]
+
+    P3 --> P4["Fase 4: Consistencia de Reglas & Conflictos\n- Comparación AGENTS.md vs .agents/rules/\n- Verificación de los 5 Pilares de Google\n- Detección de contradicciones en directivas"]
+
+    P4 --> P5["Fase 5: Gobernanza Documental (audit-docs.py)\n- Validación de la columna vertebral (AGENTS, INDEX, STATUS, LOG)\n- Enlaces rotos Markdown\n- Integridad de índices de ADRs"]
+
+    P5 --> P6["Fase 6: Quality Gate SonarQube (sonar-audit.py)\n- S3776 (Cognitive Complexity <= 15)\n- S1192 (Duplicated string literals < 3)\n- S107, S112, S108, S1452, etc."]
+
+    P6 --> DecCheck{"¿Violaciones detectadas?"}
+    DecCheck -- Sí --> FailReport["Generar Reporte de Violaciones\nCódigo de Salida != 0"]
+    DecCheck -- No --> PassReport["Reporte de Éxito\nRating A / Higiene 100%\nCódigo de Salida 0"]
+
+    FailReport --> End(["Fin"])
+    PassReport --> End

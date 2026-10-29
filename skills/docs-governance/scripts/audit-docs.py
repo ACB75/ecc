@@ -69,12 +69,20 @@ def diagnostic(value: object) -> str:
 
 
 def resolved_within_root(root: Path, path: Path) -> Path | None:
+    import os
     try:
-        candidate = path.resolve()
+        norm = Path(os.path.normpath(str(path)))
     except (OSError, ValueError, RuntimeError):
         return None
-    if root == candidate or root in candidate.parents:
-        return candidate
+    repo_root = Path(os.path.normpath(str(root.parent if root.name in ('doc', 'docs') else root)))
+    if repo_root == norm or repo_root in norm.parents:
+        return norm
+    try:
+        candidate = path.resolve()
+        if repo_root == candidate or repo_root in candidate.parents:
+            return candidate
+    except (OSError, ValueError, RuntimeError):
+        pass
     return None
 
 
@@ -233,7 +241,14 @@ def run_git(
 
 
 def resolve_within_root(root: Path, base: Path, target: str) -> Path | None:
-    return resolved_within_root(root, base / target)
+    first_try = base / target
+    if first_try.exists() or first_try.is_symlink():
+        return resolved_within_root(root, first_try)
+    repo_root = root.parent if root.name in ('doc', 'docs') else root
+    second_try = repo_root / target
+    if second_try.exists() or second_try.is_symlink():
+        return resolved_within_root(root, second_try)
+    return resolved_within_root(root, first_try)
 
 
 def resolve_target(root: Path, source: Path, target: str) -> Path | None:
@@ -726,7 +741,8 @@ def main() -> int:
     parser.add_argument("--log-threshold", type=int, default=200)
     args = parser.parse_args()
 
-    root = args.root.resolve()
+    import os
+    root = Path(os.path.abspath(args.root))
     if not root.is_dir():
         print(f"Not a directory: {diagnostic(root)}", file=sys.stderr)
         return 2

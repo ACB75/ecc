@@ -1,0 +1,32 @@
+flowchart TD
+    Start(["Inicio: Limpia, actualiza y sincroniza"]) --> P1["1. Purga de Residuos Muertos"]
+    
+    subgraph Purga["Fase 1: Limpieza Quirúrgica"]
+        P1 --> D1["docker builder prune -f (Build Cache)"]
+        D1 --> D2["docker volume prune -f (Volúmenes Huérfanos)"]
+        D2 --> FS1["Purga Caches (__pycache__, .pytest_cache)"]
+        FS1 --> FS2["Purga Archivos Temporales (.bak, .tmp, .old)"]
+    end
+
+    Purga --> P2["2. Sincronización Documental"]
+
+    subgraph Documentacion["Fase 2: Documentación Viva"]
+        P2 --> DOC1["Actualizar doc/STATUS.md (Salud y Notas)"]
+        DOC1 --> DOC2["Registrar Hito en doc/LOG.md"]
+        DOC2 --> DOC3["Sincronizar doc/INDEX.md y doc/scripts/README.md"]
+    end
+
+    Documentacion --> P3["3. Alineación y Verificación"]
+
+    subgraph Verificacion["Fase 3: Auditoría y Verificación"]
+        P3 --> V1["sync-portal.ps1 -Audit (0 Drift en /portal)"]
+        V1 --> V2["audit-workspace.ps1 (Higiene, Tokens, Docs, SonarQube)"]
+        V2 --> V3["Pruebas Unitarias (go test, pytest)"]
+    end
+
+    Verificacion --> P4["4. Propuesta de Commit"]
+
+    subgraph Commit["Fase 4: Consolidación"]
+        P4 --> C1["format-commit.ps1 (Estructura canónica)"]
+        C1 --> End(["Fin: Presentación al Usuario (Confirmación)"])
+    end

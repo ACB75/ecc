@@ -1,0 +1,25 @@
+flowchart LR
+    subgraph Customizations["1. ECC-AGY Customizations Tier"]
+        R["Rule: AGENTS.md<br/>(Universal SonarQube Invariants)"]
+        S["Skill: sonarqube-quality-gate<br/>(Clean as You Code Catalog)"]
+        A["Subagent: code-reviewer<br/>(Read-Only Sonar Auditor)"]
+    end
+
+    subgraph Codebase["2. Home-Lab Monorepo Codebase"]
+        GO["Go 1.24<br/>(cluster, whoiam)"]
+        JAVA["Java 25 / Spring Boot 4<br/>(kakebo-backend)"]
+        TS["Angular 21 / TypeScript<br/>(kakebo-frontend)"]
+        PY["Python 3.12<br/>(scripts, token-hill, doc-viewer)"]
+    end
+
+    subgraph Gate["3. Automated SonarQube Quality Gate"]
+        SA["scripts/ecc-agy/sonar-audit.py<br/>(S3776, S107, S1192, S108, S1452, S2696, S1068)"]
+        WA["workspace-audit.js<br/>(Phase [4/4] Sonar Audit)"]
+        SP["sonar-project.properties<br/>(Multi-Module SonarScanner Config)"]
+    end
+
+    Customizations --> Codebase
+    Codebase --> SA
+    SA --> WA
+    SP --> SA
+    WA -->|"0 Issues + >=80% Tests"| PASS(["Quality Gate: A Rating (GREEN)"])

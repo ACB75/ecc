@@ -1,0 +1,30 @@
+flowchart TD
+    subgraph Planificacion["1. Gestión de Tareas Activas"]
+        A["TODO.md (Tareas Activas / Pendientes)"]
+        B["Selección y Ejecución de Tarea (- [ ] -> - [x])"]
+        A --> B
+    end
+
+    subgraph Finalizacion["2. Verificación y Finalización"]
+        C["Bucle de Verificación / TDD / Revisión"]
+        B --> C
+    end
+
+    subgraph Archivo["3. Pipeline de Archivo Automático"]
+        D["Invocación de archive-todo (.ps1/.sh/archive_todo.py)"]
+        C --> D
+        E["Sanitización de Título & Generación de Timestamp"]
+        D --> E
+        F["Persistencia en /TODO_DONE/TODO_&lt;title&gt;_&lt;TS&gt;.md"]
+        E --> F
+        G["Poda y Actualización Limpia de TODO.md"]
+        E --> G
+    end
+
+    classDef primary fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff;
+    classDef success fill:#1c4532,stroke:#276749,stroke-width:2px,color:#fff;
+    classDef output fill:#234e52,stroke:#285e61,stroke-width:2px,color:#fff;
+
+    class A,B primary;
+    class C success;
+    class D,E,F,G output;
