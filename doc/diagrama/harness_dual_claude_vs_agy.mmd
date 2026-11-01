@@ -1,0 +1,38 @@
+flowchart LR
+    subgraph ECCMaster["Repositorio Maestro ECC (ACB75/ecc)"]
+        direction TB
+        ECCR["ecc.json / install.ps1 / install.sh"]
+    end
+
+    subgraph ClaudeHarness["Harness A: Anthropic Claude Code (ecc-claude)"]
+        direction TB
+        C_ENTRY["CLI en Terminal (claude)"]
+        C_CONFIG["Configuracion: CLAUDE.md + .claude/"]
+        C_TOOLS["Herramientas CLI: Bash, Glob, Grep, Edit, Replace"]
+        C_HOOKS["Hooks de Ciclo de Vida: pre-commit, post-tool"]
+        C_COMM["Slash Commands (/prp-plan, /compact, /review)"]
+        C_COMM --> C_CONFIG --> C_ENTRY --> C_TOOLS --> C_HOOKS
+    end
+
+    subgraph AGYHarness["Harness B: Google Antigravity & Gemini (ecc-agy)"]
+        direction TB
+        A_ENTRY["IDE / Engine Antigravity (Local / Enterprise Platform)"]
+        A_CONFIG["Reglas Jerarquicas: rules/AGENTS.md + GEMINI.md"]
+        A_SKILLS["Skills On-Demand (315+ skills con metadata <=140c)"]
+        A_SUB["Subagentes Aislados (73+ agents en inherit/branch/share)"]
+        A_WAKEUP["Reactive Wakeup Event Loop (Sin Polling)"]
+        A_MCP["Protocolo MCP Eager + Lazy (gemini-docs, context7)"]
+        A_ARTIFACTS["Directorio de Artefactos Estructurados (.brain/<id>)"]
+        A_CONFIG --> A_ENTRY --> A_SKILLS --> A_SUB --> A_WAKEUP --> A_MCP --> A_ARTIFACTS
+    end
+
+    ECCR -->|"Target: claude"| ClaudeHarness
+    ECCR -->|"Target: agy"| AGYHarness
+
+    classDef master fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    classDef claude fill:#fff3e0,stroke:#e65100,stroke-width:1px;
+    classDef agy fill:#e1f5fe,stroke:#0277bd,stroke-width:1px;
+
+    class ECCMaster,ECCR master;
+    class ClaudeHarness,C_ENTRY,C_CONFIG,C_TOOLS,C_HOOKS,C_COMM claude;
+    class AGYHarness,A_ENTRY,A_CONFIG,A_SKILLS,A_SUB,A_WAKEUP,A_MCP,A_ARTIFACTS agy;

@@ -1,0 +1,53 @@
+flowchart TD
+    subgraph InputPhase["1. Fase de Entrada y Contexto"]
+        UserGoal["Objetivo / Prompt del Usuario"]
+        SysPrompt["System Prompt Invariante"]
+        ActiveRules["Reglas Siempre Activas (AGENTS.md)"]
+        SkillsCatalog["Catalogo de Skills (Progressive Disclosure)"]
+        UserGoal --> ContextAssembly["Ensamblador de Contexto"]
+        SysPrompt --> ContextAssembly
+        ActiveRules --> ContextAssembly
+        SkillsCatalog --> ContextAssembly
+    end
+
+    subgraph LLMPhase["2. Razonamiento del Modelo (LLM Core)"]
+        ContextAssembly --> LLMCore["LLM (Gemini 2.5 / Claude 3.7)"]
+        LLMCore --> ThoughtStream["Thinking Stream / Cadena de Razonamiento"]
+        ThoughtStream --> DecisionPoint{"Requiere Herramienta?"}
+    end
+
+    subgraph HarnessExecution["3. Ejecucion del Harness (Action Space)"]
+        DecisionPoint -- "Si (Tool Call)" --> ActionDispatcher["Despachador de Acciones"]
+        ActionDispatcher --> PolicyCheck{"Politica de Seguridad / Sandbox Check"}
+        PolicyCheck -- "Aprobado" --> ToolRunner["Ejecutor de Herramienta (run_command, edit_file, etc.)"]
+        PolicyCheck -- "Denegado / Inseguro" --> SecurityError["Error de Seguridad Tipado"]
+    end
+
+    subgraph ObservationPhase["4. Espacio de Observaciones (Observation Space)"]
+        ToolRunner --> TruncationGuard["Truncation Guard (Max Bytes / Line Limit)"]
+        TruncationGuard --> StructuredObs["Observacion Estructurada (status, summary, artifacts)"]
+        SecurityError --> StructuredObs
+        StructuredObs --> HistoryLog["Registro en Transcript (transcript.jsonl)"]
+        HistoryLog --> FeedbackGate{"Tarea Completada?"}
+    end
+
+    subgraph CompletionPhase["5. Salida y Recuperacion"]
+        DecisionPoint -- "No (Respuesta Directa)" --> FinalResponse["Respuesta al Usuario"]
+        FeedbackGate -- "No / Requiere Iteracion" --> LLMCore
+        FeedbackGate -- "Si" --> VerificationGate["Compuerta de Verificacion (Tests / Linter)"]
+        VerificationGate -- "Exito" --> FinalResponse
+        VerificationGate -- "Fallo" --> ErrorContract["Contrato de Error (Root Cause + Hint)"]
+        ErrorContract --> LLMCore
+    end
+
+    classDef input fill:#e3f2fd,stroke:#1565c0,stroke-width:1px;
+    classDef llm fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px;
+    classDef harness fill:#fff3e0,stroke:#e65100,stroke-width:1px;
+    classDef obs fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px;
+    classDef output fill:#fbe9e7,stroke:#d84315,stroke-width:1px;
+
+    class UserGoal,SysPrompt,ActiveRules,SkillsCatalog,ContextAssembly input;
+    class LLMCore,ThoughtStream,DecisionPoint llm;
+    class ActionDispatcher,PolicyCheck,ToolRunner,SecurityError harness;
+    class TruncationGuard,StructuredObs,HistoryLog,FeedbackGate obs;
+    class FinalResponse,VerificationGate,ErrorContract output;
