@@ -84,6 +84,7 @@ EOF",
 ```
 
 **Model Parameter Notes**:
+
 - No extra model flag is needed for `--backend antigravity` or `--backend codex`; `codeagent-wrapper` picks each backend's default model.
 
 **Role Prompts**:
@@ -102,6 +103,7 @@ TaskOutput({ task_id: "<task_id>", block: true, timeout: 600000 })
 ```
 
 **IMPORTANT**:
+
 - Must specify `timeout: 600000`, otherwise default 30 seconds will cause premature timeout
 - If still incomplete after 10 minutes, continue polling with `TaskOutput`, **NEVER kill the process**
 - If waiting is skipped due to timeout, **MUST call `AskUserQuestion` to ask user whether to continue waiting or kill task**
@@ -154,17 +156,20 @@ mcp__ace-tool__search_context({
 ```
 
 **Retrieval Strategy**:
+
 - Extract target paths from plan's "Key Files" table
 - Build semantic query covering: entry files, dependency modules, related type definitions
 - If results insufficient, add 1-2 recursive retrievals
 
 **If ace-tool MCP is NOT available**, use Claude Code built-in tools as fallback:
+
 1. **Glob**: Find target files from plan's "Key Files" table (e.g., `Glob("src/components/**/*.tsx")`)
 2. **Grep**: Search for key symbols, function names, type definitions across the codebase
 3. **Read**: Read the discovered files to gather complete context
 4. **Task (Explore agent)**: For broader exploration, use `Task` with `subagent_type: "Explore"`
 
 **After Retrieval**:
+
 - Organize retrieved code snippets
 - Confirm complete context for implementation
 - Proceed to Phase 3

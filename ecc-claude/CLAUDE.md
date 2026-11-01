@@ -68,6 +68,7 @@ The project is organized into several core components:
 ## Contributing
 
 Follow the formats in CONTRIBUTING.md:
+
 - Agents: Markdown with frontmatter (name, description, tools, model)
 - Skills: Clear sections (When to Use, How It Works, Examples)
 - Commands: Markdown with description frontmatter

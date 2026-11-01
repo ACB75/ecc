@@ -93,8 +93,10 @@ flowchart TD
 ## 4. Análisis de Costes de la Decisión Arquitectónica
 
 ### 4.1. Costes Visibles
+
 - **Esfuerzo de Implementación**: ~15 minutos.
 - **Longitud del Historial Git**: Mensajes de commit más ricos y estructurados (mayor trazabilidad en `git log`).
 
 ### 4.2. Costes Ocultos
+
 - **Mantenimiento**: Nulo. Aporta un valor incalculable para arqueología de código, bisección de errores y auditoría regulatoria de cambios.

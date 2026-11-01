@@ -10,6 +10,7 @@
 El conjunto de reglas, subagentes, skills y automatizaciones desarrolladas en el marco del Home-Lab ha alcanzado un grado de madurez y rigor de nivel industrial (SRE Baseline, SonarQube Rating A, Trunk-Based PRs, 7-phase meta-prompts).
 
 Sin embargo, para poder **utilizar este sistema en cualquier empresa externa, cliente o nuevo proyecto independiente**, es imprescindible desacoplar todas las dependencias específicas del Home-Lab (nombres de servicios, servidores locales, dominios DNS domésticos y reglas de portal), garantizando que:
+
 1. No exista **fuga de datos personales ni infraestructura privada**.
 2. Las reglas globales sean **100% agnósticas** al dominio de negocio.
 3. El sistema se pueda instanciar en segundos en un nuevo proyecto mediante un **modelo de extensibilidad en 2 niveles**.
@@ -59,6 +60,7 @@ flowchart TD
 ```
 
 ### Nivel 1: Core Global (`ecc-agy`)
+
 - Instalado una sola vez en el sistema (`~/.gemini/config/plugins/ecc-agy/`).
 - Aplica a todas las sesiones de Antigravity.
 - Define únicamente estándares universales de excelencia técnica:
@@ -69,6 +71,7 @@ flowchart TD
   - DavidAnson markdownlint.
 
 ### Nivel 2: Scaffolding Local (`<project>/.agents/`)
+
 - Reside en el directorio de cada proyecto individual.
 - Sobrescribe o extiende el comportamiento sin modificar el plugin global:
   - `<project>/.agents/rules/`: Reglas de negocio particulares, restricciones legales o tecnologías concretas.
@@ -104,17 +107,21 @@ flowchart TD
 Para iniciar cualquier nuevo proyecto (ej. en una empresa en Barcelona):
 
 ### Paso 1: Instalar el Plugin Agnóstico
+
 ```powershell
 pwsh -File C:\Workspace\projects\ecc-aecb\install.ps1 -Target agy
 ```
 
 ### Paso 2: Inicializar el Scaffolding del Proyecto
+
 Dentro de la raíz del nuevo repositorio:
+
 ```powershell
 New-Item -ItemType Directory -Path ".agents\rules" -Force
 ```
 
 ### Paso 3: Configurar los Scopes del Proyecto (`.agents/config.json`)
+
 ```json
 {
   "projectName": "empresa-bcn-core",
@@ -127,6 +134,7 @@ New-Item -ItemType Directory -Path ".agents\rules" -Force
 ```
 
 ### Paso 4: Añadir Reglas de Negocio Locales (`.agents/rules/business.md`)
+
 Cualquier restricción específica (ej. cumplimiento de RGPD, esquema bancario, estilo UI corporativo) se ubica en este archivo. Antigravity lo detecta e ingesta automáticamente con prioridad sobre el contexto.
 
 ---

@@ -151,9 +151,11 @@ Windows PowerShell:
 ```
 
 Claude setup-only value:
+
 - `off` — disables local ECC hook work through `ecc setup`; it is not a runtime hook profile.
 
 Runtime hook profiles:
+
 - `minimal` — keep essential lifecycle and safety hooks only.
 - `standard` — default; balanced quality + safety checks.
 - `strict` — enables additional reminders and stricter guardrails.
@@ -214,6 +216,7 @@ process.stdin.on('end', () => {
 ```
 
 **Exit codes:**
+
 - `0` — Success (continue execution)
 - `2` — Block the tool call (PreToolUse only)
 - Other non-zero — Error (logged but does not block)

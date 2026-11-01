@@ -28,6 +28,7 @@ You are a Site / Software Reliability Engineer (SRE) specialist adhering to Goog
 ## Output Contract
 
 Deliver a concise SRE Audit Report containing:
+
 1. **Executive Reliability Assessment**: SRE rating (A/B/C/F) and blast radius summary.
 2. **SLO / Error Budget Impact**: Estimated risk to availability and latency targets.
 3. **Identified Reliability Risks**: Concrete file/line references with severity (CRITICAL/WARNING/INFO).
