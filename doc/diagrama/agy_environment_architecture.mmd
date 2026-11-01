@@ -1,0 +1,65 @@
+flowchart TD
+    subgraph LayerDiscovery["Jerarquia de Descubrimiento y Precedencia"]
+        W1["1. Workspace Project: <project>/.agents/ (Max Precedencia)"]
+        W2["2. Reglas Jerarquicas: AGENTS.md / GEMINI.md"]
+        W3["3. Configuracion Global: ~/.gemini/config/plugins/ecc-agy/"]
+        W4["4. Customizaciones Built-in: runtime antigravity"]
+        W1 --> PrecedenceEngine["Motor de Precedencia y Deduplicacion Canónica"]
+        W2 --> PrecedenceEngine
+        W3 --> PrecedenceEngine
+        W4 --> PrecedenceEngine
+    end
+
+    subgraph MemoryContext["Gestion de Contexto y Progressive Disclosure"]
+        PrecedenceEngine --> ContextBudget["Filtro de Presupuesto de Tokens"]
+        ContextBudget --> AlwaysOnRules["Reglas Always-On (Inyectadas en System Prompt)"]
+        ContextBudget --> LazyCatalog["Catalogo de Metadatos (Name + Description <=140c)"]
+        LazyCatalog -.->|"Activacion On-Demand"| FullSkillBody["Carga de SKILL.md Completo"]
+    end
+
+    subgraph ExecutionPlane["Plano de Ejecucion y Sandboxing"]
+        AlwaysOnRules --> AgentCore["Nucleo de Agente Antigravity"]
+        FullSkillBody --> AgentCore
+        AgentCore --> ToolExecutor["Despachador de Herramientas"]
+
+        subgraph NativeTools["Herramientas Nativas"]
+            FS["read_file / write_file / edit_file"]
+            CMD["run_command (pwsh / bash en Sandbox)"]
+            TASK["manage_task (Background Tasks)"]
+        end
+
+        subgraph SubagentsPlane["Orquestacion de Subagentes"]
+            SUB["invoke_subagent / define_subagent"]
+            WORKSPACE_MODE["Modo Workspace: inherit | branch | share"]
+            SUB --> WORKSPACE_MODE
+        end
+
+        subgraph MCPPlane["Servidores MCP (Model Context Protocol)"]
+            MCP_SERVERS["MCP Clients (gemini-docs, context7, exa, etc.)"]
+        end
+
+        ToolExecutor --> FS
+        ToolExecutor --> CMD
+        ToolExecutor --> TASK
+        ToolExecutor --> SUB
+        ToolExecutor --> MCP_SERVERS
+    end
+
+    subgraph ReactiveSystem["Sistema de Despertar Reactivo (Reactive Wakeup)"]
+        CMD -.->|"Ejecucion Asincrona"| BgTask["Background Task"]
+        SUB -.->|"Ejecucion Aislada"| SubagentTask["Subagente en Paralelo"]
+        BgTask --> EventNotification["Notificacion de Evento / Mensaje"]
+        SubagentTask --> EventNotification
+        EventNotification --> WakeupTrigger["Reactive Wakeup (Reanudacion sin Polling)"]
+        WakeupTrigger --> AgentCore
+    end
+
+    classDef disc fill:#e8eaf6,stroke:#3f51b5,stroke-width:1px;
+    classDef mem fill:#e0f2f1,stroke:#00897b,stroke-width:1px;
+    classDef exec fill:#fff8e1,stroke:#fbc02d,stroke-width:1px;
+    classDef react fill:#fce4ec,stroke:#c2185b,stroke-width:1px;
+
+    class W1,W2,W3,W4,PrecedenceEngine disc;
+    class ContextBudget,AlwaysOnRules,LazyCatalog,FullSkillBody mem;
+    class AgentCore,ToolExecutor,FS,CMD,TASK,SUB,WORKSPACE_MODE,MCP_SERVERS exec;
+    class BgTask,SubagentTask,EventNotification,WakeupTrigger react;

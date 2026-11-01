@@ -1,0 +1,69 @@
+stateDiagram-v2
+    [*] --> TaskIntake: Recepcion de Requerimiento
+
+    state TaskIntake {
+        [*] --> MetaPromptTransform: Aplicar 7 Fases (Role, Context, Analysis, Strategy, Execution, Critic, Format)
+        MetaPromptTransform --> ContextAudit: Verificar Presupuesto de Tokens
+        ContextAudit --> [*]
+    }
+
+    TaskIntake --> PlanCanvas: Revision Interactiva o Aprobacion
+    PlanCanvas --> TestRedPhase: Fase TDD RED (Escribir Test Unitario)
+
+    state TestRedPhase {
+        [*] --> WriteFailingTest
+        WriteFailingTest --> RunVerificationRED: Ejecutar Test
+        RunVerificationRED --> TestAssertFails: Confirma que falla (RED)
+        TestAssertFails --> [*]
+    }
+
+    TestRedPhase --> ImplementationGreen: Fase TDD GREEN (Codigo Minimo)
+
+    state ImplementationGreen {
+        [*] --> WriteProductionCode
+        WriteProductionCode --> RunVerificationGREEN: Ejecutar Test
+        RunVerificationGREEN --> TestAssertPasses: Confirma que pasa (GREEN)
+        TestAssertPasses --> [*]
+    }
+
+    ImplementationGreen --> QualityGateEvaluation: Evaluacion de Calidad
+
+    state QualityGateEvaluation {
+        [*] --> MarkdownLinter: DavidAnson Check
+        MarkdownLinter --> SonarQubeAudit: S3776, S1192, S107, S112
+        SonarQubeAudit --> CoverageCheck: Cobertura >= 80%
+        CoverageCheck --> [*]
+    }
+
+    QualityGateEvaluation --> ErrorRecovery: Fallo en Quality Gate / Test Roto
+    QualityGateEvaluation --> RefactorAndClean: Aprobado (Rating A, 0 Violaciones)
+
+    state ErrorRecovery {
+        [*] --> ExtractDiagnosticHints: Capturar Root Cause y Stack Trace
+        ExtractDiagnosticHints --> EvaluateRetryBudget: Verificar Intentos (< 3)
+        EvaluateRetryBudget --> RetryAction: Presupuesto Disponible
+        EvaluateRetryBudget --> SREFreeze: Presupuesto Agotado
+        SREFreeze --> BlamelessPostmortem: Congelar Feature y Generar Postmortem
+    }
+
+    RetryAction --> ImplementationGreen: Correccion Asistida por Hint
+    BlamelessPostmortem --> [*]: Intervencion Humana Requerida
+
+    state RefactorAndClean {
+        [*] --> ImmutabilityEnforcement
+        ImmutabilityEnforcement --> SREAuditToil: Codificar Tareas Repetitivas
+        SREAuditToil --> PruneDeadCode
+        PruneDeadCode --> [*]
+    }
+
+    RefactorAndClean --> CommitAndPRPhase: Finalizacion de Tarea
+
+    state CommitAndPRPhase {
+        [*] --> StrictCommitValidation: format_commit.py [type]-[project]: <title>
+        StrictCommitValidation --> PushBranch: git push origin <branch>
+        PushBranch --> AutomatedPROpen: gh pr create --fill (Regla Obligatoria)
+        AutomatedPROpen --> ArchiveTODO: Mover a /TODO_DONE/
+        ArchiveTODO --> [*]
+    }
+
+    CommitAndPRPhase --> [*]: Tarea Completada con Exito
