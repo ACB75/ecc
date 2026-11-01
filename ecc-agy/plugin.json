@@ -1,0 +1,11 @@
+{
+  "name": "ecc-agy",
+  "displayName": "ECC for Antigravity (ecc-agy)",
+  "version": "2.2.3-agy.1",
+  "description": "Custom distribution of Everything Claude Code (ECC) tailored for Google Antigravity, multi-OS workflows (Windows 11, WSL Debian, Arch Linux, Debian 12 Server), and progressive module activation.",
+  "suggestedPrompts": [
+    "Plan a new feature using search-first and tdd-workflow",
+    "Run a fresh-context code review and silent-failure audit on my changes",
+    "Audit security boundaries and context budget for this repository"
+  ]
+}
