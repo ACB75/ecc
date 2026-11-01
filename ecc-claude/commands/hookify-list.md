@@ -18,4 +18,4 @@ Find and display all hookify rules in a formatted table.
 | Rule | Enabled | Event | Pattern | File |
 |------|---------|-------|---------|------|
 
-4. Show the rule count and remind the user that `/hookify-configure` can change state later.
+1. Show the rule count and remind the user that `/hookify-configure` can change state later.

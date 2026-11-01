@@ -2,17 +2,22 @@
 # ==============================================================================
 # Script: lint-markdown.sh (Debian 12 / Linux / WSL)
 # Descripción: Audita y formatea Markdown leyendo .markdownlint.json del repositorio.
+# Formatea automáticamente por defecto (--fix) e incluye TODO el repositorio y *TODO*.
+# Finales de línea estrictamente POSIX LF (\n).
 # ==============================================================================
 set -euo pipefail
 
-FIX_FLAG=""
+APPLY_FIX="1"
 TARGET=""
 ROOT_DIR=""
 
 for arg in "$@"; do
     case "$arg" in
+        --check-only|-CheckOnly|--check|-Check)
+            APPLY_FIX="0"
+            ;;
         --fix|-Fix)
-            FIX_FLAG="--fix"
+            APPLY_FIX="1"
             ;;
         --root|-Root)
             shift || true
@@ -69,17 +74,60 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
     exit 1
 fi
 
-ARGS=("-c" "$CONFIG_FILE" "--ignore" "**/TODO_DONE/**" "--ignore" "**/node_modules/**")
+IGNORE_ARGS=(
+    "--ignore" "**/node_modules/**"
+    "--ignore" "**/.git/**"
+    "--ignore" "**/.venv/**"
+    "--ignore" "**/dist/**"
+    "--ignore" "**/build/**"
+)
 
-if [[ -n "$FIX_FLAG" ]]; then
-    ARGS+=("$FIX_FLAG")
-fi
-
-if [[ -n "$TARGET" ]]; then
-    ARGS+=("$TARGET")
+TARGET_PATTERN=""
+if [[ -z "$TARGET" ]]; then
+    TARGET_PATTERN="**/*.md"
+elif [[ -d "$TARGET" ]]; then
+    TARGET_PATTERN="${TARGET%/}"'/**/*.md'
+elif [[ "$TARGET" == *"*"* || "$TARGET" == *"?"* ]]; then
+    if [[ "$TARGET" != *"/"* ]]; then
+        if [[ "$TARGET" == *".md" ]]; then
+            TARGET_PATTERN="**/*${TARGET}"
+        else
+            TARGET_PATTERN="**/*${TARGET}*.md"
+        fi
+        TARGET_PATTERN="${TARGET_PATTERN//\*\*/\*}"
+    else
+        TARGET_PATTERN="$TARGET"
+    fi
 else
-    ARGS+=("$ROOT_DIR/doc/**/*.md" "$ROOT_DIR/AGENTS.md")
+    TARGET_PATTERN="$TARGET"
 fi
 
-echo "Ejecutando markdownlint (DavidAnson) con configuración en $CONFIG_FILE..."
-npx --yes markdownlint-cli "${ARGS[@]}"
+MAX_PASSES=1
+if [[ "$APPLY_FIX" == "1" ]]; then
+    MAX_PASSES=3
+fi
+
+EXIT_CODE=0
+for ((pass=1; pass<=MAX_PASSES; pass++)); do
+    CMD_ARGS=("-c" "$CONFIG_FILE")
+    if [[ "$APPLY_FIX" == "1" ]]; then
+        CMD_ARGS+=("--fix")
+    fi
+    CMD_ARGS+=("${IGNORE_ARGS[@]}")
+    CMD_ARGS+=("$TARGET_PATTERN")
+
+    if npx --yes markdownlint-cli "${CMD_ARGS[@]}"; then
+        EXIT_CODE=0
+        break
+    else
+        EXIT_CODE=$?
+    fi
+done
+
+if [[ $EXIT_CODE -eq 0 ]]; then
+    echo "[OK] Todos los archivos Markdown cumplen con el estándar markdownlint."
+else
+    echo "[FAIL] Se detectaron errores de sintaxis o formato en Markdown."
+fi
+
+exit $EXIT_CODE

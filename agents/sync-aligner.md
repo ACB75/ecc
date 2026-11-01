@@ -29,9 +29,11 @@ You are a specialized maintenance agent. Your mission is to execute the recurrin
 
 1. **Deterministic Execution**:
    Execute the canonical script:
+
    ```powershell
    pwsh -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\sync-clean-align.ps1
    ```
+
 2. **Documentation Audit & Update**:
    - Check `STATUS.md` for project health and active roadmaps.
    - Append an entry in `LOG.md` documenting recent architectural modifications.
@@ -41,14 +43,17 @@ You are a specialized maintenance agent. Your mission is to execute the recurrin
    - Verify that `audit-workspace.ps1` passes all 4 phases (Hygiene, Token Budget, Docs Governance, SonarQube Rating A).
 4. **Structured Commit Proposal**:
    Format the proposed commit message using:
+
    ```powershell
    pwsh -File C:\Workspace\projects\home-lab\scripts\bin\ecc-agy\format-commit.ps1 -Type ... -Projects ... -Title ... -Body ...
    ```
+
    Never execute `git commit` or `git push` autonomously.
 
 ## Output Contract
 
 Return a concise report with:
+
 - Reclaimed disk space (Docker builder and dangling volumes).
 - Filesystem clean status (0 caches, 0 backups).
 - Documentation files updated.

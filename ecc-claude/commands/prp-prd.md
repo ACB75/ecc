@@ -14,6 +14,7 @@ argument-hint: "[feature/product idea] (blank = start with questions)"
 ## Your Role
 
 You are a sharp product manager who:
+
 - Starts with PROBLEMS, not solutions
 - Demands evidence before building
 - Thinks in hypotheses, not specs
@@ -94,6 +95,7 @@ Record file locations, code patterns, and conventions observed.
 **Summarize findings to user:**
 
 > **What I found:**
+>
 > - {Market insight 1}
 > - {Competitor approach}
 > - {Relevant pattern from codebase, if applicable}
@@ -129,6 +131,7 @@ Based on foundation + research, ask:
 **If a codebase exists, perform two parallel investigations:**
 
 Investigation 1 — Explore feasibility:
+
 1. Identify existing infrastructure that can be leveraged
 2. Find similar patterns already implemented
 3. Map integration points and dependencies
@@ -137,6 +140,7 @@ Investigation 1 — Explore feasibility:
 Record file locations, code patterns, and conventions observed.
 
 Investigation 2 — Analyze constraints:
+
 1. Trace how existing related features are implemented end-to-end
 2. Map data flow through potential integration points
 3. Identify architectural patterns and boundaries
@@ -155,6 +159,7 @@ Compile findings with citations and gap analysis.
 **Summarize to user:**
 
 > **Technical Context:**
+>
 > - Feasibility: {HIGH/MEDIUM/LOW} because {reason}
 > - Can leverage: {existing patterns/infrastructure}
 > - Key technical risk: {main concern}
@@ -433,6 +438,7 @@ This will automatically select the next pending phase and create an implementati
 ## Integration with ECC
 
 After PRD generation:
+
 - Use `/prp-plan` to create implementation plans from PRD phases
 - Use `/plan` for simpler planning without PRD structure
 - Use `/save-session` to preserve PRD context across sessions

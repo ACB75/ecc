@@ -38,6 +38,7 @@ If no changed files, stop: "Nothing to review."
 Read each changed file in full. Check for:
 
 **Security Issues (CRITICAL):**
+
 - Hardcoded credentials, API keys, tokens
 - SQL injection vulnerabilities
 - XSS vulnerabilities
@@ -46,6 +47,7 @@ Read each changed file in full. Check for:
 - Path traversal risks
 
 **Code Quality (HIGH):**
+
 - Functions > 50 lines
 - Files > 800 lines
 - Nesting depth > 4 levels
@@ -55,6 +57,7 @@ Read each changed file in full. Check for:
 - Missing JSDoc for public APIs
 
 **Best Practices (MEDIUM):**
+
 - Mutation patterns (use immutable instead)
 - Emoji usage in code/comments
 - Missing tests for new code
@@ -63,6 +66,7 @@ Read each changed file in full. Check for:
 ### Phase 3 — REPORT
 
 Generate report with:
+
 - Severity: CRITICAL, HIGH, MEDIUM, LOW
 - File location and line numbers
 - Issue description
@@ -108,6 +112,7 @@ Build review context:
 Read each changed file **in full** (not just the diff hunks — you need surrounding context).
 
 For PR reviews, fetch the full file contents at the PR head revision:
+
 ```bash
 gh pr diff <NUMBER> --name-only | while IFS= read -r file; do
   gh api "repos/{owner}/{repo}/contents/$file?ref=<head-branch>" --jq '.content' | base64 -d
@@ -142,6 +147,7 @@ Run available validation commands:
 Detect the project type from config files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, etc.), then run the appropriate commands:
 
 **Node.js / TypeScript** (has `package.json`):
+
 ```bash
 npm run typecheck 2>/dev/null || npx tsc --noEmit 2>/dev/null  # Type check
 npm run lint                                                    # Lint
@@ -150,6 +156,7 @@ npm run build                                                   # Build
 ```
 
 **Rust** (has `Cargo.toml`):
+
 ```bash
 cargo clippy -- -D warnings  # Lint
 cargo test                   # Tests
@@ -157,6 +164,7 @@ cargo build                  # Build
 ```
 
 **Go** (has `go.mod`):
+
 ```bash
 go vet ./...    # Lint
 go test ./...   # Tests
@@ -164,6 +172,7 @@ go build ./...  # Build
 ```
 
 **Python** (has `pyproject.toml` / `setup.py`):
+
 ```bash
 pytest  # Tests
 ```
@@ -182,6 +191,7 @@ Form recommendation based on findings:
 | Any CRITICAL issues | **BLOCK** — must fix before merge |
 
 Special cases:
+
 - Draft PR → Always use **COMMENT** (not approve/block)
 - Only docs/config changes → Lighter review, focus on correctness
 - Explicit `--approve` or `--request-changes` flag → Override decision (but still report all findings)
@@ -244,6 +254,7 @@ gh pr review <NUMBER> --comment --body "<summary>"
 ```
 
 For inline comments on specific lines, use the GitHub review comments API:
+
 ```bash
 gh api "repos/{owner}/{repo}/pulls/<NUMBER>/comments" \
   -f body="<comment>" \
@@ -254,6 +265,7 @@ gh api "repos/{owner}/{repo}/pulls/<NUMBER>/comments" \
 ```
 
 Alternatively, post a single review with multiple inline comments at once:
+
 ```bash
 gh api "repos/{owner}/{repo}/pulls/<NUMBER>/reviews" \
   -f event="COMMENT" \

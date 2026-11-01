@@ -33,10 +33,12 @@ If no argument provided:
 2. Read the matching `*-session.tmp` candidates and apply the candidate ranking below
 3. Load the highest-ranked candidate
 4. If the folder does not exist or has no eligible matching files, tell the user:
+
    ```
    No session files found in ~/.claude/session-data/
    Run /save-session at the end of a session to create one.
    ```
+
    Then stop.
 
 If an argument is provided:

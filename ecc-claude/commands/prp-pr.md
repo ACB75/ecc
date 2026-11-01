@@ -10,6 +10,7 @@ argument-hint: "[base-branch] (default: main)"
 **Input**: `$ARGUMENTS` — optional, may contain a base branch name and/or flags (e.g., `--draft`).
 
 **Parse `$ARGUMENTS`**:
+
 - Extract any recognized flags (`--draft`)
 - Treat remaining non-flag text as the base branch name
 - Default base branch to `main` if none specified
@@ -57,6 +58,7 @@ git log origin/<base>..HEAD --format="%h %s" --reverse
 ```
 
 Analyze commits to determine:
+
 - **PR title**: Use conventional commit format with type prefix — `feat: ...`, `fix: ...`, etc.
   - If multiple types, use the dominant one
   - If single commit, use its message as-is
@@ -74,6 +76,7 @@ Categorize changed files: source, tests, docs, config, migrations.
 ### PRP Artifacts
 
 Check for related PRP artifacts:
+
 - `.claude/PRPs/reports/` — Implementation reports
 - `.claude/PRPs/plans/` — Plans that were executed
 - `.claude/PRPs/prds/` — Related PRDs
@@ -89,6 +92,7 @@ git push -u origin HEAD
 ```
 
 If push fails due to divergence:
+
 ```bash
 git fetch origin
 git rebase origin/<base>

@@ -87,8 +87,10 @@ flowchart TD
 ## 4. Análisis de Costes de la Decisión Arquitectónica
 
 ### 4.1. Costes Visibles
+
 - **Esfuerzo de Implementación**: ~15 minutos.
 - **Uso de Tokens**: Aumento controlado de tokens en la fase de formulación de tareas a cambio de una precisión técnica drásticamente superior.
 
 ### 4.2. Costes Ocultos
+
 - **Mitigación de Deuda Técnica**: Erradica retrabajos causados por especificaciones ambiguas o respuestas preliminares superficiales del asistente.
