@@ -250,7 +250,7 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: playwright-report/
+          path: playwright-adr/
           retention-days: 30
 ```
 
@@ -275,7 +275,7 @@ jobs:
 **Recommended Fix:** [description]
 
 ## Artifacts
-- HTML Report: playwright-report/index.html
+- HTML Report: playwright-adr/index.html
 - Screenshots: artifacts/*.png
 - Videos: artifacts/videos/*.webm
 - Traces: artifacts/*.zip

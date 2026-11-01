@@ -2,4 +2,4 @@
 
 | ADR | Title | Status | Date |
 |-----|-------|--------|------|
-| [0001](0001-two-tier-global-plugin-and-project-scaffolding.md) | Arquitectura en dos niveles: Plugin Global (`ecc-agy`) y Scaffolding por Proyecto (`.agents/`) | accepted | 2026-10-24 |
+| [0001](ADR_ecc_agy_0001_two_tier_global_plugin_and_project_scaffolding.md) | Arquitectura en dos niveles: Plugin Global (`ecc-agy`) y Scaffolding por Proyecto (`.agents/`) | accepted | 2026-10-24 |

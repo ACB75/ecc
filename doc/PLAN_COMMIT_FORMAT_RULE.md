@@ -52,7 +52,7 @@
 - [ ] **`CA-01`**: La regla está redactada e integrada en `rules/AGENTS.md`, `AGENTS.md` (ecc-agy y home-lab) y `GEMINI.md`.
 - [ ] **`CA-02`**: La skill `skills/conventional-commit-review/SKILL.md` refleja el formato `[type]+[projects]: <title>` y cuerpo obligatorio con frontmatter $\le 140$ caracteres.
 - [ ] **`CA-03`**: El script `format_commit.py` valida y formatea mensajes de commit exitosamente con tests en `test_format_commit.py` (100% pasando).
-- [ ] **`CA-04`**: Diagrama Mermaid persistido en `doc/ecc-agy/diagrama/commit_format_standard.mmd`.
+- [ ] **`CA-04`**: Diagrama Mermaid persistido en `doc/ecc-agy/diagrams/DGRM_ecc_agy_DGRM_ecc_agy_commit_format_standard.mmd`.
 - [ ] **`CA-05`**: `audit-workspace.ps1 -Clean` aprueba las 4 fases con 0 incidencias.
 
 ---

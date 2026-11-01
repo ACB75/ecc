@@ -1,0 +1,19 @@
+flowchart TD
+    subgraph RuntimeHarness["Runtime del Harness Antigravity & Claude"]
+        UserInstruction["Instrucción del Usuario"] --> Constitution["AGENTS.md / GEMINI.md Constitution"]
+        Constitution --> SkillRegistry["Registro Dinámico de Skills (Lazy Loading)"]
+    end
+
+    subgraph AgentExecution["Ciclo de Ejecución de Agentes"]
+        SkillRegistry --> SubagentDispatch["Despacho de Subagentes Especializados"]
+        SubagentDispatch --> TddGuide["tdd-guide (RED -> GREEN -> REFACTOR)"]
+        SubagentDispatch --> SyncAlign["sync-aligner (Higiene y Alineación)"]
+        SubagentDispatch --> Evolver["system-evolver (Autodescubrimiento OCP)"]
+        SubagentDispatch --> Archiver["todo-archiver (Archivo inmutable a history)"]
+    end
+
+    subgraph QualityControl["Control de Calidad Automático"]
+        TddGuide --> WriteTimeLinter["Write-Time Markdown Linter (.markdownlint.json)"]
+        WriteTimeLinter --> SonarGate["SonarQube Quality Gate A"]
+        SonarGate --> FastFailure["Fast-Failure & Fast-Rollback Gates"]
+    end
