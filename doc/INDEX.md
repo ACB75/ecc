@@ -16,31 +16,33 @@
 ## 2. Registro de Decisiones de Arquitectura (`doc/adr/`)
 
 - 📑 **[`doc/adr/README.md`](adr/README.md)**: Índice consolidado de ADRs del ecosistema ECC.
-  - **[`ADR-0001`](adr/0001-two-tier-global-plugin-and-project-scaffolding.md)**: Arquitectura en dos niveles: Plugin Global (`ecc-agy`) y Scaffolding por Proyecto (`.agents/`).
-  - **[`ADR-0002`](adr/0002-multi-harness-architecture-and-agent-runtime-design.md)**: Arquitectura Multi-Harness y Diseño de Runtimes de Agentes Autónomos (`ecc-claude` vs `ecc-agy`).
+  - **[`ADR-0001`](adr/ADR_ecc_0001_two_tier_global_plugin_and_project_scaffolding.md)**: Arquitectura en dos niveles: Plugin Global (`ecc-agy`) y Scaffolding por Proyecto (`.agents/`).
+  - **[`ADR-0002`](adr/ADR_ecc_0002_multi_harness_architecture_and_agent_runtime_design.md)**: Arquitectura Multi-Harness y Diseño de Runtimes de Agentes Autónomos (`ecc-claude` vs `ecc-agy`).
 
 ---
 
-## 3. Informes y Planes Arquitectónicos (`doc/report/`)
+## 3. Informes y Planes Arquitectónicos (`doc/adr/`)
 
-- 📋 **[`PLAN_DOCUMENTACION_ARQUITECTURA_HARNESS.md`](report/PLAN_DOCUMENTACION_ARQUITECTURA_HARNESS.md)**: Plan de toma de requisitos, criterios de aceptación y diseño arquitectónico para la documentación integral del harness.
-- 🏢 **[`INFORME_ABSTRACCION_REUTILIZABLE_N_PROYECTOS.md`](report/INFORME_ABSTRACCION_REUTILIZABLE_N_PROYECTOS.md)**: Análisis de desacoplamiento para reutilización en $N$ proyectos o empresas externas (ej. corporativos en Barcelona).
-- 🔬 **[`INFORME_FUNCIONAMIENTO_ECC_AGY_HOMELAB.md`](report/INFORME_FUNCIONAMIENTO_ECC_AGY_HOMELAB.md)**: Especificación técnica previa del fork antes de su consolidación en `ecc-agy`.
+- 📋 **[`ADR_ecc_plan_documentacion_arquitectura_harness.md`](adr/ADR_ecc_plan_documentacion_arquitectura_harness.md)**: Plan de toma de requisitos, criterios de aceptación y diseño arquitectónico para la documentación integral del harness.
+- 🏢 **[`ADR_ecc_informe_abstraccion_reutilizable_n_proyectos.md`](adr/ADR_ecc_informe_abstraccion_reutilizable_n_proyectos.md)**: Análisis de desacoplamiento para reutilización en $N$ proyectos o empresas externas (ej. corporativos en Barcelona).
+- 🔬 **[`ADR_ecc_informe_funcionamiento_ecc_agy_homelab.md`](adr/ADR_ecc_informe_funcionamiento_ecc_agy_homelab.md)**: Especificación técnica previa del fork antes de su consolidación en `ecc-agy`.
 
 ---
 
-## 4. Diagramas de Arquitectura y Flujo (`doc/diagrama/`)
+## 4. Diagramas de Arquitectura y Flujo (`doc/diagrams/`)
 
 | Diagrama MMD | Descripción del Flujo / Arquitectura | Formato |
 | :--- | :--- | :---: |
-| **[`harness_anatomy_and_lifecycle.mmd`](diagrama/harness_anatomy_and_lifecycle.mmd)** | Anatomía completa del arnés y ciclo de vida de razonamiento/ejecución | `flowchart TD` |
-| **[`agy_environment_architecture.mmd`](diagrama/agy_environment_architecture.mmd)** | Capas de descubrimiento, progressive disclosure y reactive wakeup de AGY | `flowchart TD` |
-| **[`harness_dual_claude_vs_agy.mmd`](diagrama/harness_dual_claude_vs_agy.mmd)** | Comparativa arquitectónica entre Claude Code CLI y Google Antigravity | `flowchart LR` |
-| **[`autonomous_loop_recovery_flow.mmd`](diagrama/autonomous_loop_recovery_flow.mmd)** | Máquina de estados para bucles continuos y recuperación con error contracts | `stateDiagram-v2` |
-| **[`auto_execution_on_creation.mmd`](diagrama/auto_execution_on_creation.mmd)** | Pipeline de smoke-test inmediato al sintetizar artefactos | `flowchart TD` |
-| **[`commit_format_standard.mmd`](diagrama/commit_format_standard.mmd)** | Pipeline de validación de commits `[type]-[projects]: <title>` | `flowchart TD` |
-| **[`sonarqube_quality_gate_pipeline.mmd`](diagrama/sonarqube_quality_gate_pipeline.mmd)** | Compuertas de calidad estricta SonarQube Rating A | `flowchart TD` |
-| **[`sync_clean_align_flow.mmd`](diagrama/sync_clean_align_flow.mmd)** | Flujo de sincronización de proyectos y erradicación de deriva | `flowchart TD` |
-| **[`todo_lifecycle_pipeline.mmd`](diagrama/todo_lifecycle_pipeline.mmd)** | Ciclo de vida y archivado de tareas a `/TODO_DONE/` | `flowchart TD` |
-| **[`todo_prompt_transformation_flow.mmd`](diagrama/todo_prompt_transformation_flow.mmd)** | Transformación sistemática de prompts mediante las 7 Fases | `flowchart TD` |
-| **[`workspace_hygiene_and_optimization_pipeline.mmd`](diagrama/workspace_hygiene_and_optimization_pipeline.mmd)** | Pipeline de auditoría y optimización del workspace | `flowchart TD` |
+| **[`DGRM_ecc_harness_anatomy_and_lifecycle.mmd`](diagrams/DGRM_ecc_harness_anatomy_and_lifecycle.mmd)** | Anatomía completa del arnés y ciclo de vida de razonamiento/ejecución | `flowchart TD` |
+| **[`DGRM_ecc_agy_environment_architecture.mmd`](diagrams/DGRM_ecc_agy_environment_architecture.mmd)** | Capas de descubrimiento, progressive disclosure y reactive wakeup de AGY | `flowchart TD` |
+| **[`DGRM_ecc_harness_dual_claude_vs_agy.mmd`](diagrams/DGRM_ecc_harness_dual_claude_vs_agy.mmd)** | Comparativa arquitectónica entre Claude Code CLI y Google Antigravity | `flowchart LR` |
+| **[`DGRM_ecc_autonomous_loop_recovery_flow.mmd`](diagrams/DGRM_ecc_autonomous_loop_recovery_flow.mmd)** | Máquina de estados para bucles continuos y recuperación con error contracts | `stateDiagram-v2` |
+| **[`DGRM_ecc_auto_execution_on_creation.mmd`](diagrams/DGRM_ecc_auto_execution_on_creation.mmd)** | Pipeline de smoke-test inmediato al sintetizar artefactos | `flowchart TD` |
+| **[`DGRM_ecc_commit_format_standard.mmd`](diagrams/DGRM_ecc_commit_format_standard.mmd)** | Pipeline de validación de commits `[type]-[projects]: <title>` | `flowchart TD` |
+| **[`DGRM_ecc_sonarqube_quality_gate_pipeline.mmd`](diagrams/DGRM_ecc_sonarqube_quality_gate_pipeline.mmd)** | Compuertas de calidad estricta SonarQube Rating A | `flowchart TD` |
+| **[`DGRM_ecc_sync_clean_align_flow.mmd`](diagrams/DGRM_ecc_sync_clean_align_flow.mmd)** | Flujo de sincronización de proyectos y erradicación de deriva | `flowchart TD` |
+| **[`DGRM_ecc_todo_lifecycle_pipeline.mmd`](diagrams/DGRM_ecc_todo_lifecycle_pipeline.mmd)** | Ciclo de vida y archivado de tareas a `/TODO_DONE/` | `flowchart TD` |
+| **[`DGRM_ecc_todo_prompt_transformation_flow.mmd`](diagrams/DGRM_ecc_todo_prompt_transformation_flow.mmd)** | Transformación sistemática de prompts mediante las 7 Fases | `flowchart TD` |
+| **[`DGRM_ecc_workspace_hygiene_and_optimization_pipeline.mmd`](diagrams/DGRM_ecc_workspace_hygiene_and_optimization_pipeline.mmd)** | Pipeline de auditoría y optimización del workspace | `flowchart TD` |
+| **[DGRM_ecc_business_flow.mmd](diagrams/DGRM_ecc_business_flow.mmd)** | Flujo de negocio y ciclo de vida de desarrollo de arneses y skills | lowchart TD |
+| **[DGRM_ecc_actors.mmd](diagrams/DGRM_ecc_actors.mmd)** | Mapa de actores y límites del sistema ECC-AGY | lowchart LR |

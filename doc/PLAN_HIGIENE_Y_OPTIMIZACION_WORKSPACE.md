@@ -70,7 +70,7 @@
 
 ### 4.1. Diseño Arquitectónico
 
-Consulte el diagrama de flujo detallado en [workspace_hygiene_and_optimization_pipeline.mmd](file:///C:/Workspace/projects/home-lab/doc/ecc-agy/diagrama/workspace_hygiene_and_optimization_pipeline.mmd).
+Consulte el diagrama de flujo detallado en [DGRM_ecc_agy_DGRM_ecc_agy_workspace_hygiene_and_optimization_pipeline.mmd](file:///C:/Workspace/projects/home-lab/doc/ecc-agy/diagrams/DGRM_ecc_agy_DGRM_ecc_agy_workspace_hygiene_and_optimization_pipeline.mmd).
 
 ### 4.2. Patrones de Diseño Aplicados
 

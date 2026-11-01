@@ -72,7 +72,7 @@
 
 ### 4.1. Flujo de Datos del Ciclo de Vida de Tareas
 
-El flujo operativo completo está diagramado y persistido en [`doc/ecc-agy/diagrama/todo_lifecycle_pipeline.mmd`](file:///C:/Workspace/projects/home-lab/doc/ecc-agy/diagrama/todo_lifecycle_pipeline.mmd):
+El flujo operativo completo está diagramado y persistido en [`doc/ecc-agy/diagrams/DGRM_ecc_agy_DGRM_ecc_agy_todo_lifecycle_pipeline.mmd`](file:///C:/Workspace/projects/home-lab/doc/ecc-agy/diagrams/DGRM_ecc_agy_DGRM_ecc_agy_todo_lifecycle_pipeline.mmd):
 
 ```mermaid
 flowchart TD
@@ -120,7 +120,7 @@ flowchart TD
 
 ## 7. Plan de Implementación y Verificación (`TDD: RED -> GREEN -> REFACTOR`)
 
-1. **Fase 1 — Diagrama Mermaid**: Persistir `todo_lifecycle_pipeline.mmd` en `doc/ecc-agy/diagrama/`.
+1. **Fase 1 — Diagrama Mermaid**: Persistir `DGRM_ecc_agy_DGRM_ecc_agy_todo_lifecycle_pipeline.mmd` en `doc/ecc-agy/diagrams/`.
 2. **Fase 2 — Script Determinista en Python (`archive_todo.py`)**: Implementar en `scripts/ecc-agy/archive_todo.py` con tests asociados.
 3. **Fase 3 — Wrappers Multi-OS**: Crear `scripts/bin/ecc-agy/archive-todo.ps1` y `archive-todo.sh`.
 4. **Fase 4 — Skill y Subagente en `ecc-agy`**: Crear `skills/todo-lifecycle/SKILL.md` y `agents/todo-archiver.md` y sincronizar en el plugin global.

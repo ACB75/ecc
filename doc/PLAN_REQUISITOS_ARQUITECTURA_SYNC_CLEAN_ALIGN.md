@@ -58,7 +58,7 @@
 - [ ] **`CA-02`**: La versión POSIX LF `scripts/bin/ecc-agy/sync-clean-align.sh` está creada y parametrizada con finales de línea `\n`.
 - [ ] **`CA-03`**: La skill `skills/sync-clean-align/SKILL.md` está registrada con frontmatter $\le 140$ chars.
 - [ ] **`CA-04`**: El subagente `agents/sync-aligner.md` está registrado con frontmatter $\le 120$ chars y modelo `flash`.
-- [ ] **`CA-05`**: El diagrama de flujo Mermaid está persistido en `doc/ecc-agy/diagrama/sync_clean_align_flow.mmd`.
+- [ ] **`CA-05`**: El diagrama de flujo Mermaid está persistido en `doc/ecc-agy/diagrams/DGRM_ecc_agy_DGRM_ecc_agy_sync_clean_align_flow.mmd`.
 - [ ] **`CA-06`**: `audit-workspace.ps1` pasa las 4 fases con 0 incidencias.
 
 ---

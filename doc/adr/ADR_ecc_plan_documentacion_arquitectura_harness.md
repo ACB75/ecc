@@ -29,12 +29,12 @@
   6. Casos de uso de referencia (Agnóstico corporativo en Barcelona, Monorepo políglota, Bucles continuos autónomos).
   7. Comportamientos esperados, contratos de error y autorrecuperación.
   8. Propuestas concretas de ingeniería para mejorar el diseño de harnesses de próxima generación.
-- **`RF-02` (Diagramas Mermaid Persistidos)**: Diseñar y persistir diagramas Mermaid formalizados en `doc/diagrama/`:
-  - `harness_anatomy_and_lifecycle.mmd`: Ciclo de vida y componentes del arnés.
-  - `agy_environment_architecture.mmd`: Capas de configuración, descubrimiento y sandboxing de AGY.
-  - `harness_dual_claude_vs_agy.mmd`: Comparativa estructural Claude Code vs Antigravity.
-  - `autonomous_loop_recovery_flow.mmd`: Máquina de estados para bucle continuo y recuperación de fallos.
-- **`RF-03` (Registro de Decisión Arquitectónica ADR-0002)**: Formalizar el ADR-0002 en `doc/adr/0002-multi-harness-architecture-and-agent-runtime-design.md` estableciendo la separación y el gobierno entre el arnés de Claude y el de Antigravity.
+- **`RF-02` (Diagramas Mermaid Persistidos)**: Diseñar y persistir diagramas Mermaid formalizados en `doc/diagrams/`:
+  - `DGRM_ecc_harness_anatomy_and_lifecycle.mmd`: Ciclo de vida y componentes del arnés.
+  - `DGRM_ecc_agy_environment_architecture.mmd`: Capas de configuración, descubrimiento y sandboxing de AGY.
+  - `DGRM_ecc_harness_dual_claude_vs_agy.mmd`: Comparativa estructural Claude Code vs Antigravity.
+  - `DGRM_ecc_autonomous_loop_recovery_flow.mmd`: Máquina de estados para bucle continuo y recuperación de fallos.
+- **`RF-03` (Registro de Decisión Arquitectónica ADR-0002)**: Formalizar el ADR-0002 en `doc/adr/ADR_ecc_0002_multi_harness_architecture_and_agent_runtime_design.md` estableciendo la separación y el gobierno entre el arnés de Claude y el de Antigravity.
 - **`RF-04` (Índice Maestro de Gobernanza)**: Consolidar `doc/INDEX.md` mapeando la documentación, diagramas, informes y ADRs del repositorio `ecc`.
 
 ### 2.2. Requisitos No Funcionales (`RNF`)
@@ -46,7 +46,7 @@
 ### 2.3. Criterios de Aceptación (`CA`)
 
 - [x] **`CA-01`**: Manual técnico completo publicado en `doc/manual/GUIA_ARQUITECTURA_HARNESS_Y_ENTORNO_AGY.md`.
-- [x] **`CA-02`**: 4 diagramas Mermaid persistidos en `doc/diagrama/` y renderizables sin errores sintácticos.
+- [x] **`CA-02`**: 4 diagramas Mermaid persistidos en `doc/diagrams/` y renderizables sin errores sintácticos.
 - [x] **`CA-03`**: ADR-0002 redactado e indexado en `doc/adr/README.md` y `doc/INDEX.md`.
 - [x] **`CA-04`**: Verificación de Markdownlint con exit code 0 en todo el repositorio.
 
@@ -103,7 +103,7 @@ flowchart TD
 
 ## 6. Plan de Implementación
 
-1. Crear los diagramas Mermaid en `doc/diagrama/`.
+1. Crear los diagramas Mermaid en `doc/diagrams/`.
 2. Redactar el ADR-0002 en `doc/adr/`.
 3. Redactar el manual maestro exhaustivo en `doc/manual/GUIA_ARQUITECTURA_HARNESS_Y_ENTORNO_AGY.md`.
 4. Crear y sincronizar `doc/INDEX.md` y `doc/adr/README.md`.

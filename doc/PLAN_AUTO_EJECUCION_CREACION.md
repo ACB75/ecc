@@ -47,7 +47,7 @@
 - [ ] **`CA-01`**: La regla de auto-ejecución en creación está documentada y formalizada en `AGENTS.md` y `GEMINI.md`.
 - [ ] **`CA-02`**: La skill `verification-loop/SKILL.md` incorpora la Fase 0 de autoejecución de artefactos nuevos con descripción $\le 140$ caracteres.
 - [ ] **`CA-03`**: El subagente `tdd-guide.md` incorpora la directiva de auto-ejecución inmediata con descripción $\le 120$ caracteres y modelo permitido.
-- [ ] **`CA-04`**: Diagrama Mermaid persistido en `doc/ecc-agy/diagrama/auto_execution_on_creation.mmd`.
+- [ ] **`CA-04`**: Diagrama Mermaid persistido en `doc/ecc-agy/diagrams/DGRM_ecc_agy_DGRM_ecc_agy_auto_execution_on_creation.mmd`.
 - [ ] **`CA-05`**: La ejecución de `audit-workspace.ps1 -Clean` aprueba las 4 fases sin incidencias de higiene, presupuesto de tokens ni calidad SonarQube.
 
 ---

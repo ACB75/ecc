@@ -1,0 +1,18 @@
+sequenceDiagram
+    autonumber
+    actor Human as Usuario Desarrollador
+    participant AGY as Agente Antigravity Runtime
+    participant Skills as Catálogo de Skills (Lazy-Loaded)
+    participant Harness as Sandbox de Comandos y Herramientas
+    participant Gate as Quality Gate (Sonar + Lint)
+
+    Human->>AGY: Enviar requerimiento de alta complejidad
+    AGY->>Skills: Cargar skill bajo demanda (0 coste base de tokens)
+    Skills-->>AGY: Protocolo de trabajo específico
+    AGY->>Harness: Ejecutar inspección no destructiva de entorno
+    Harness-->>AGY: Estado del sistema
+    AGY->>Harness: Escribir artefacto o código siguiendo TDD
+    Harness-->>AGY: Tests ejecutados (código 0)
+    AGY->>Gate: Auditar formato markdown y métricas Sonar
+    Gate-->>AGY: Calidad A aprobada
+    AGY-->>Human: Respuesta concisa con enlaces y pruebas verificadas
