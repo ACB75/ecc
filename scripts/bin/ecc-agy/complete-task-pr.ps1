@@ -51,9 +51,15 @@ $RepoRoot = (Resolve-Path "$ScriptDir\..\..\..").Path
 Push-Location $RepoRoot
 
 try {
-    # 2. Verificar rama actual
+    # 2. Verificar rama actual mediante validador canónico de gobernanza
     $currentBranch = (git branch --show-current).Trim()
-    if ($currentBranch -in @("main", "sandbox", "live", "")) {
+    $validateScript = Join-Path $RepoRoot "scripts\ecc-agy\validate_branch.py"
+    if (Test-Path $validateScript) {
+        $valOutput = python $validateScript --branch $currentBranch 2>&1
+        if ($LASTEXITCODE -ne 0) {
+            throw "Validación de gobernanza de ramas rechazada: $valOutput"
+        }
+    } elseif ($currentBranch -in @("main", "sandbox", "live", "")) {
         throw "No se puede ejecutar el ciclo completo de PR en la rama protegida o vacía '$currentBranch'. Debe estar en una rama de tarea (feat/*, fix/*, refactor/*, etc.)."
     }
 
