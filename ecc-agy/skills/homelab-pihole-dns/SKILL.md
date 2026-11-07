@@ -1,6 +1,6 @@
 ---
 name: homelab-pihole-dns
-description: Local Split-DNS, CoreDNS, and Pi-hole upstream/zone configuration and troubleshooting. Not for public DNS registrars.
+description: "Local Split-DNS, CoreDNS, and Pi-hole upstream/zone configuration and troubleshooting. Not for public DNS registrars."
 metadata:
   origin: community
 ---

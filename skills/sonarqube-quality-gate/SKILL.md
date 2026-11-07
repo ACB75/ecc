@@ -1,6 +1,6 @@
 ---
 name: sonarqube-quality-gate
-description: Enforce SonarQube Quality Gate (S3776, S1192, S107, S112, S1452) via scripts/bin/ecc-agy/sonar-audit.ps1. Not for style formatting.
+description: "Enforce SonarQube Quality Gate (S3776, S1192, S107, S112, S1452) via scripts/bin/ecc-agy/sonar-audit.ps1. Not for style formatting."
 metadata:
   origin: ECC-AGY
 ---

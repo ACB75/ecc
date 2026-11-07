@@ -1,6 +1,6 @@
 ---
 name: java-coding-standards
-description: Java 25 standards enforcing records, immutability, sealed types, pattern matching, and Optional return types only.
+description: "Java 25 standards enforcing records, immutability, sealed types, pattern matching, and Optional return types only."
 metadata:
   origin: ECC
 ---

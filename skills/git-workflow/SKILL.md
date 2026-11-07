@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Git branching, rebase/merge, PR hygiene, and history cleanup workflow. Use conventional-commit-review for commit messages.
+description: "Git branching, rebase/merge, PR hygiene, and history cleanup workflow. Use conventional-commit-review for commit messages."
 ---
 
 # Git Workflow Patterns

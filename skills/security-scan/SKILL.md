@@ -1,6 +1,6 @@
 ---
 name: security-scan
-description: Audit agent configs, hooks, MCPs, and repo boundaries for prompt injection and secret exposure.
+description: "Audit agent configs, hooks, MCPs, and repo boundaries for prompt injection and secret exposure."
 metadata:
   origin: ECC
 ---

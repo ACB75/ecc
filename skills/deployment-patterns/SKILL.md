@@ -1,6 +1,6 @@
 ---
 name: deployment-patterns
-description: Zero-downtime deployment, health checks, rollback, and CI/CD release pipelines. Not for local dev scripting.
+description: "Zero-downtime deployment, health checks, rollback, and CI/CD release pipelines. Not for local dev scripting."
 metadata:
   origin: ECC
 ---

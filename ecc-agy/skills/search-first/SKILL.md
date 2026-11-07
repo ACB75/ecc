@@ -1,6 +1,6 @@
 ---
 name: search-first
-description: Search existing code, packages, MCPs, and skills before writing net-new code. Skip for trivial local edits.
+description: "Search existing code, packages, MCPs, and skills before writing net-new code. Skip for trivial local edits."
 ---
 
 # /search-first — Research Before You Code

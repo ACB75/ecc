@@ -1,6 +1,6 @@
 ---
 name: context-budget
-description: Audit always-on context token budget across rules, skills, and subagents. Only scan files when explicitly requested.
+description: "Audit always-on context token budget across rules, skills, and subagents. Only scan files when explicitly requested."
 metadata:
   origin: ECC
 ---

@@ -1,6 +1,6 @@
 ---
 name: postgres-patterns
-description: PostgreSQL 16/18 schema design, JSONB indexing, query optimization, and connection pooling. Parameterize all SQL.
+description: "PostgreSQL 16/18 schema design, JSONB indexing, query optimization, and connection pooling. Parameterize all SQL."
 metadata:
   origin: ECC
 ---

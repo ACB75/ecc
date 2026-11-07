@@ -1,6 +1,6 @@
 ---
 name: homelab-network-setup
-description: Staged homelab network setup for subnets, DHCP, DNS, and firewall rules with rollback guards. Not for cloud VPCs.
+description: "Staged homelab network setup for subnets, DHCP, DNS, and firewall rules with rollback guards. Not for cloud VPCs."
 metadata:
   origin: community
 ---

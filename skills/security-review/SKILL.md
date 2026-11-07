@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: Security audit checklist for secrets, injection, auth, SSRF/XSS/CSRF, and boundaries. Not for style linting.
+description: "Security audit checklist for secrets, injection, auth, SSRF/XSS/CSRF, and boundaries. Not for style linting."
 ---
 
 # Security Review Skill

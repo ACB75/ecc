@@ -1,6 +1,6 @@
 ---
 name: error-handling
-description: Typed error hierarchies, retries, circuit breakers, and boundary sanitization. Never swallow exceptions.
+description: "Typed error hierarchies, retries, circuit breakers, and boundary sanitization. Never swallow exceptions."
 ---
 
 # Error Handling Patterns

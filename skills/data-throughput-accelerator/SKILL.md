@@ -1,6 +1,6 @@
 ---
 name: data-throughput-accelerator
-description: High-throughput batching, Kafka streaming, and bulk DB ingestion with row/timestamp verification.
+description: "High-throughput batching, Kafka streaming, and bulk DB ingestion with row/timestamp verification."
 license: MIT
 metadata:
   origin: ECC

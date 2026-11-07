@@ -1,6 +1,6 @@
 ---
 name: springboot-patterns
-description: Spring Boot 4 architecture with thin controllers, services, JdbcClient/repositories, and records. Not for legacy XML.
+description: "Spring Boot 4 architecture with thin controllers, services, JdbcClient/repositories, and records. Not for legacy XML."
 metadata:
   origin: ECC
 ---

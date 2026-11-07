@@ -1,6 +1,6 @@
 ---
 name: strategic-compact
-description: Guidance on manual context compaction at task milestones to preserve state. Not for automated code changes.
+description: "Guidance on manual context compaction at task milestones to preserve state. Not for automated code changes."
 metadata:
   origin: ECC
 ---

@@ -1,6 +1,6 @@
 ---
 name: sre-reliability
-description: Google SRE practices: SLI/SLO error budgets, blast radius control, circuit breakers, graceful degradation, and blameless audits.
+description: "Google SRE practices: SLI/SLO error budgets, blast radius control, circuit breakers, graceful degradation, and blameless audits."
 ---
 
 # Software Reliability Engineering (SRE) & Operational Resilience

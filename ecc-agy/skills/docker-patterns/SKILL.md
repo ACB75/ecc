@@ -1,6 +1,6 @@
 ---
 name: docker-patterns
-description: Docker & Compose best practices for multi-stage builds, non-root containers, healthchecks, and networking. Not for K8s.
+description: "Docker & Compose best practices for multi-stage builds, non-root containers, healthchecks, and networking. Not for K8s."
 ---
 
 # Docker Patterns

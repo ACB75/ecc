@@ -1,6 +1,6 @@
 ---
 name: network-config-validation
-description: Validate router, firewall, DNS, and portproxy configs before applying changes. Use before network mutations.
+description: "Validate router, firewall, DNS, and portproxy configs before applying changes. Use before network mutations."
 metadata:
   origin: community
 ---

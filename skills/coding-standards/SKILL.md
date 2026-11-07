@@ -1,6 +1,6 @@
 ---
 name: coding-standards
-description: Clean Code conventions for naming, immutability, KISS/DRY/YAGNI, and modularity. Defer to stack rules on conflicts.
+description: "Clean Code conventions for naming, immutability, KISS/DRY/YAGNI, and modularity. Defer to stack rules on conflicts."
 ---
 
 # Coding Standards & Best Practices
