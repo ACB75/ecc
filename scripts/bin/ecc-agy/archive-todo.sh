@@ -15,3 +15,8 @@ if [[ ! -f "${PY_SCRIPT}" ]]; then
 fi
 
 python3 "${PY_SCRIPT}" --todo "${WORKSPACE_ROOT}/doc/TODO.md" --done-dir "${WORKSPACE_ROOT}/doc/TODO_DONE" "$@"
+
+if [[ -f "${SCRIPT_DIR}/lint-markdown.sh" ]]; then
+    bash "${SCRIPT_DIR}/lint-markdown.sh" --fix "${WORKSPACE_ROOT}/doc/TODO_DONE" >/dev/null 2>&1 || true
+    bash "${SCRIPT_DIR}/lint-markdown.sh" --fix "${WORKSPACE_ROOT}/doc/TODO.md" >/dev/null 2>&1 || true
+fi

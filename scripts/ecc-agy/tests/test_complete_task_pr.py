@@ -60,13 +60,23 @@ def test_scripts_bin_permissions_and_existence():
 
 
 def test_preflight_review_mode_dryrun():
-    """Verifica que el modo -ReviewOnly no altere el árbol de trabajo."""
+    """Verifica que complete-task-pr proteja main o ejecute -ReviewOnly en rama de tarea."""
     ps1_script = REPO_ROOT / "scripts" / "bin" / "ecc-agy" / "complete-task-pr.ps1"
     res = subprocess.run(
         ["pwsh", "-NoProfile", "-File", str(ps1_script), "-ReviewOnly"],
         capture_output=True,
         text=True,
     )
-    assert res.returncode == 0
-    assert "AVISO DE" in res.stdout
-    assert "Modo -ReviewOnly" in res.stdout
+    current_branch = subprocess.run(
+        ["git", "branch", "--show-current"],
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+    if current_branch in ("main", "master"):
+        assert res.returncode != 0
+        assert "gobernanza" in res.stderr.lower() or "rama" in res.stderr.lower()
+    else:
+        assert res.returncode == 0
+        assert "AVISO DE" in res.stdout
+        assert "Modo -ReviewOnly" in res.stdout
