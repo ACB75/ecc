@@ -1,7 +1,7 @@
 # Ecosistema ECC (`ecc`)
 
 > **Distribución Maestra Multi-Harness: Claude Code + Google Antigravity & Gemini**  
-> Repositorio Principal: [`ACB75/ecc`](https://github.com/ACB75/ecc)
+> Repositorio Principal: [`ACB75/ecc`](https://github.com/ACB75/ecc)  
 
 ---
 
@@ -17,7 +17,7 @@ flowchart TD
 
     subgraph Flavors["Distribuciones Especializadas"]
         Claude["1. ecc-claude<br/>(Boilerplates Oficiales para Claude Code)"]
-        AGY["2. ecc-agy<br/>(Distribución Unificada Google Antigravity & Gemini)"]
+        AGY["2. ecc-agy / aagy<br/>(Distribución Unificada Google Antigravity & Gemini)"]
     end
 
     subgraph Targets["Entornos y Destinos de Uso"]
@@ -44,16 +44,16 @@ flowchart TD
 
 ---
 
-## 2. Catálogo de Distribuciones
+## 2. Catálogo de Distribuciones y Arquitectura Two-Tier
 
 | Distribución | Harness | Propósito | Estado de Acoplamiento |
-| ------------ | ------- | --------- | ---------------------- |
+| :--- | :--- | :--- | :--- |
 | **[`ecc-claude`](ecc-claude/)** | Claude Code | Boilerplates nativos de Claude Code (`CLAUDE.md`, `.claude/`, hooks y comandos slash). | Totalmente agnóstico, estándar oficial de ECC. |
-| **[`ecc-agy`](ecc-agy/)** | Google Antigravity | Distribución unificada para Antigravity & Gemini con 315+ skills, 73+ subagentes, comandos, esquemas y SRE baseline. | **Unificado y Modular**: Apto para $N$ proyectos, empresas externas y laboratorios con control estricto de gobernanza. |
+| **`ecc-agy` (Root)** | Google Antigravity & Gemini | Plugin universal (`aagy` / `ecc-agy`) con arquitectura en dos niveles (Two-Tier): Tier 1 Global Plugin con 21 skills nucleares (~701 tokens, reducción 98.25%) y Tier 2 con 169 skills y 48 subagentes canónicos en repositorio. | **Unificado y Agnóstico**: Apto para $N$ proyectos, clientes y monorepos con compuertas estrictas de calidad y gobernanza. |
 
 ---
 
-## 3. Instalador Rápido (`install.ps1` / `install.sh`)
+## 3. Instalador Multiplataforma (`install.ps1` / `install.sh`)
 
 Instalación rápida mediante un único comando según el objetivo deseado:
 
@@ -61,12 +61,27 @@ Instalación rápida mediante un único comando según el objetivo deseado:
 # 1. Para usar en un proyecto nuevo con Claude Code
 pwsh -File install.ps1 -Target claude -Destination C:\Ruta\A\MiProyecto
 
-# 2. Para desplegar el plugin unificado en Google Antigravity
-pwsh -File install.ps1 -Target agy
+# 2. Para desplegar el plugin unificado en Google Antigravity (Tier 1 Global recomendado)
+pwsh -File install.ps1 -Target agy -Profile minimal
+```
+
+En entornos Linux / WSL / macOS (POSIX LF):
+
+```bash
+# 1. Boilerplates Claude Code
+./install.sh claude /ruta/a/mi-proyecto
+
+# 2. Plugin unificado Antigravity (Tier 1)
+./install.sh agy
 ```
 
 ---
 
-## 4. Repositorios GitHub Asociados
+## 4. Documentación y Gobernanza
 
-- **Repositorio Principal**: [`https://github.com/ACB75/ecc`](https://github.com/ACB75/ecc)
+- 📑 **[`doc/INDEX.md`](doc/INDEX.md)**: Índice maestro de manuales, diagramas Mermaid, ADRs y gobernanza.
+- 🚦 **[`doc/STATUS.md`](doc/STATUS.md)**: Estado actual de salud, SonarQube Rating A y métricas operacionales.
+- 📜 **[`doc/LOG.md`](doc/LOG.md)**: Registro histórico de decisiones materiales y cambios arquitectónicos.
+- 🏛️ **[`doc/adr/`](doc/adr/README.md)**: Registro formal de Decisiones de Arquitectura (ADR-0001, ADR-0002).
+- 🩺 **[`doc/post-mortem/`](doc/post-mortem/TEMPLATE_POSTMORTEM_5W.md)**: Marco de autopsias SRE 5W (*blameless*).
+- ⚙️ **[`.governance/docs-map.json`](.governance/docs-map.json)**: Contrato canónico de roles de documentación.

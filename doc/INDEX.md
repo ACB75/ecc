@@ -1,31 +1,37 @@
 # Índice Maestro de Documentación y Gobernanza del Ecosistema ECC (`doc/INDEX.md`)
 
 > **Espina Dorsal de Gobernanza Documental**: Repositorio [`ACB75/ecc`](https://github.com/ACB75/ecc)  
-> Versión: `3.0.0` | Última Actualización: 2026-11-01
+> **Versión**: `3.0.0` | **Última Actualización**: 2026-11-08  
 
 ---
 
-## 1. Manuales Técnicos y Guías de Arquitectura (`doc/manual/`)
+## 1. Gobernanza Operativa y Espina Dorsal
 
-- 📘 **[`GUIA_ARQUITECTURA_HARNESS_Y_ENTORNO_AGY.md`](manual/GUIA_ARQUITECTURA_HARNESS_Y_ENTORNO_AGY.md)**: Manual maestro exhaustivo sobre el funcionamiento de los arneses de IA, el runtime de Google Antigravity & Gemini, flujos de trabajo de ingeniería, espacios de acción/observación y principios de diseño para agentes autónomos.
+- 🚦 **[`STATUS.md`](STATUS.md)**: Métricas de calidad, SonarQube Rating A, presupuesto de tokens Two-Tier y estado de salud general.
+- 📜 **[`LOG.md`](LOG.md)**: Registro histórico de decisiones materiales, evolución arquitectónica e incidentes.
+- 📋 **[`TODO.md`](TODO.md)**: Backlog activo y tareas pendientes bajo protocolo de 7 fases.
+- 🗄️ **[`TODO_DONE/`](TODO_DONE/)**: Histórico de tareas finalizadas y archivadas atómicamente.
+- ⚙️ **[`.governance/docs-map.json`](../.governance/docs-map.json)**: Mapeo formal de roles documentales del repositorio.
+
+---
+
+## 2. Manuales Técnicos y Guías de Arquitectura (`doc/manual/`)
+
+- 📘 **[`GUIA_ARQUITECTURA_HARNESS_Y_ENTORNO_AGY.md`](manual/GUIA_ARQUITECTURA_HARNESS_Y_ENTORNO_AGY.md)**: Manual maestro exhaustivo sobre el funcionamiento de los arneses de IA, runtime de Google Antigravity & Gemini, flujos de ingeniería, espacios de acción/observación y principios de diseño para agentes autónomos.
 - 🛡️ **[`the-security-guide.md`](the-security-guide.md)**: Guía exhaustiva de seguridad, bastionado de límites y prevención de ataques en entornos asistidos por agentes.
 - 🏛️ **[`STACK_MODERNO_GOOGLE.md`](STACK_MODERNO_GOOGLE.md)**: Especificación de alineación con los 5 Pilares de Ingeniería de Google.
+- 💡 **[`IDEAS.md`](IDEAS.md)**: Registro estructurado de ideas candidatas para ingesta automatizada a TODO.
 
 ---
 
-## 2. Registro de Decisiones de Arquitectura (`doc/adr/`)
+## 3. Registro de Decisiones de Arquitectura (`doc/adr/`)
 
 - 📑 **[`doc/adr/README.md`](adr/README.md)**: Índice consolidado de ADRs del ecosistema ECC.
   - **[`ADR-0001`](adr/ADR_ecc_0001_two_tier_global_plugin_and_project_scaffolding.md)**: Arquitectura en dos niveles: Plugin Global (`ecc-agy`) y Scaffolding por Proyecto (`.agents/`).
   - **[`ADR-0002`](adr/ADR_ecc_0002_multi_harness_architecture_and_agent_runtime_design.md)**: Arquitectura Multi-Harness y Diseño de Runtimes de Agentes Autónomos (`ecc-claude` vs `ecc-agy`).
-
----
-
-## 3. Informes y Planes Arquitectónicos (`doc/adr/`)
-
-- 📋 **[`ADR_ecc_plan_documentacion_arquitectura_harness.md`](adr/ADR_ecc_plan_documentacion_arquitectura_harness.md)**: Plan de toma de requisitos, criterios de aceptación y diseño arquitectónico para la documentación integral del harness.
-- 🏢 **[`ADR_ecc_informe_abstraccion_reutilizable_n_proyectos.md`](adr/ADR_ecc_informe_abstraccion_reutilizable_n_proyectos.md)**: Análisis de desacoplamiento para reutilización en $N$ proyectos o empresas externas (ej. corporativos en Barcelona).
-- 🔬 **[`ADR_ecc_informe_funcionamiento_ecc_agy_homelab.md`](adr/ADR_ecc_informe_funcionamiento_ecc_agy_homelab.md)**: Especificación técnica previa del fork antes de su consolidación en `ecc-agy`.
+  - **[`ADR_ecc_plan_documentacion_arquitectura_harness.md`](adr/ADR_ecc_plan_documentacion_arquitectura_harness.md)**: Plan de toma de requisitos y diseño arquitectónico para la documentación integral del harness.
+  - **[`ADR_ecc_informe_abstraccion_reutilizable_n_proyectos.md`](adr/ADR_ecc_informe_abstraccion_reutilizable_n_proyectos.md)**: Análisis de desacoplamiento para reutilización en $N$ proyectos o empresas externas.
+  - **[`ADR_ecc_informe_funcionamiento_ecc_agy_homelab.md`](adr/ADR_ecc_informe_funcionamiento_ecc_agy_homelab.md)**: Especificación técnica previa del fork antes de su consolidación en `ecc-agy`.
 
 ---
 
@@ -44,5 +50,24 @@
 | **[`DGRM_ecc_todo_lifecycle_pipeline.mmd`](diagrams/DGRM_ecc_todo_lifecycle_pipeline.mmd)** | Ciclo de vida y archivado de tareas a `/TODO_DONE/` | `flowchart TD` |
 | **[`DGRM_ecc_todo_prompt_transformation_flow.mmd`](diagrams/DGRM_ecc_todo_prompt_transformation_flow.mmd)** | Transformación sistemática de prompts mediante las 7 Fases | `flowchart TD` |
 | **[`DGRM_ecc_workspace_hygiene_and_optimization_pipeline.mmd`](diagrams/DGRM_ecc_workspace_hygiene_and_optimization_pipeline.mmd)** | Pipeline de auditoría y optimización del workspace | `flowchart TD` |
-| **[DGRM_ecc_business_flow.mmd](diagrams/DGRM_ecc_business_flow.mmd)** | Flujo de negocio y ciclo de vida de desarrollo de arneses y skills | lowchart TD |
-| **[DGRM_ecc_actors.mmd](diagrams/DGRM_ecc_actors.mmd)** | Mapa de actores y límites del sistema ECC-AGY | lowchart LR |
+| **[`DGRM_ecc_business_flow.mmd`](diagrams/DGRM_ecc_business_flow.mmd)** | Flujo de negocio y ciclo de vida de desarrollo de arneses y skills | `flowchart TD` |
+| **[`DGRM_ecc_actors.mmd`](diagrams/DGRM_ecc_actors.mmd)** | Mapa de actores y límites del sistema ECC-AGY | `flowchart LR` |
+
+---
+
+## 5. Planes de Ingeniería e Intervenciones (`doc/plan/`)
+
+Todos los planes de diseño previos a implementación residen centralizados en [`doc/plan/`](plan/):
+
+- **[`PLAN_BARRIDO_OPTIMIZACION_SKILLS.md`](plan/PLAN_BARRIDO_OPTIMIZACION_SKILLS.md)**: Plan maestro del barrido y purga de skills/agentes.
+- **[`PLAN_TAREA_1_1_DESACOPLAMIENTO_AAGY.md`](plan/PLAN_TAREA_1_1_DESACOPLAMIENTO_AAGY.md)**: Desacoplamiento agnóstico y purga de `ecc-agy/`.
+- **[`PLAN_TAREA_1_2_SYNC_IDEAS_MAP_DOCS.md`](plan/PLAN_TAREA_1_2_SYNC_IDEAS_MAP_DOCS.md)**: Pipeline de ingesta IDEAS -> TODO y `map-docs`.
+- **[`PLAN_TAREA_1_3_POLITICA_RAMAS_FIX.md`](plan/PLAN_TAREA_1_3_POLITICA_RAMAS_FIX.md)**: Guardrails de ramas y convención `fix/<id>`.
+- **[`PLAN_TAREA_1_4_POSTMORTEM_5W.md`](plan/PLAN_TAREA_1_4_POSTMORTEM_5W.md)**: Generador automatizado de autopsias SRE 5W.
+- **[`PLAN_TAREA_1_5_CONSOLIDATE_COMPLETE_TASK_PR.md`](plan/PLAN_TAREA_1_5_CONSOLIDATE_COMPLETE_TASK_PR.md)**: Consolidación y auditoría de `complete-task-pr`.
+
+---
+
+## 6. Post-Mortem e Incidentes SRE (`doc/post-mortem/`)
+
+- 🩺 **[`TEMPLATE_POSTMORTEM_5W.md`](post-mortem/TEMPLATE_POSTMORTEM_5W.md)**: Plantilla canónica para autopsias post-incidencia 5W (*blameless*).

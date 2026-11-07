@@ -2,6 +2,7 @@
 # ==============================================================================
 # ECC Multi-Distribution Installer (Linux / WSL / macOS)
 # Targets: claude | agy | homelab (alias to agy)
+# Finales de línea estrictamente POSIX LF (\n).
 # ==============================================================================
 
 set -euo pipefail
@@ -30,11 +31,15 @@ case "${TARGET}" in
     echo "[✓] Claude Code boilerplates installed successfully."
     ;;
   agy)
-    SOURCE_DIR="${SCRIPT_DIR}/ecc-agy"
     DEST="${DESTINATION:-${HOME}/.gemini/config/plugins/ecc-agy}"
-    echo "[+] Deploying unified Antigravity plugin to: ${DEST}"
-    mkdir -p "${DEST}"
-    cp -rf "${SOURCE_DIR}"/* "${DEST}/"
+    echo "[+] Deploying unified Antigravity plugin (Tier 1) to: ${DEST}"
+    if [ -f "${SCRIPT_DIR}/ecc-agy-sync.sh" ]; then
+      bash "${SCRIPT_DIR}/ecc-agy-sync.sh" generic "${DEST}"
+    else
+      mkdir -p "${DEST}/skills" "${DEST}/agents" "${DEST}/rules"
+      cp -f "${SCRIPT_DIR}/plugin.json" "${DEST}/"
+      cp -f "${SCRIPT_DIR}/rules/AGENTS.md" "${DEST}/rules/"
+    fi
     echo "[✓] Unified ecc-agy plugin installed successfully."
     ;;
   *)
