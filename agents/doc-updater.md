@@ -1,8 +1,8 @@
 ---
 name: doc-updater
-description: Fast documentation, ADR index, and codemap synchronizer for workspace docs.
+description: "Fast documentation, ADR index, and codemap synchronizer for workspace docs."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: haiku
+model: flash
 ---
 
 ## Prompt Defense Baseline

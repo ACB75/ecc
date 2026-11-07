@@ -1,8 +1,8 @@
 ---
 name: fastapi-reviewer
-description: Read-only FastAPI reviewer checking Pydantic v2 schemas, Depends() DI, async I/O, and security.
+description: "Read-only FastAPI reviewer checking Pydantic v2 schemas, Depends() DI, async I/O, and security."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

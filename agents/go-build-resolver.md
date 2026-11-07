@@ -1,6 +1,6 @@
 ---
 name: go-build-resolver
-description: Surgical Go build, vet, and compilation error resolver applying minimal code diffs (<5% change).
+description: "Surgical Go build, vet, and compilation error resolver applying minimal code diffs (<5% change)."
 tools: Read, Write, Edit, Bash, Grep, Glob
 model: inherit
 ---

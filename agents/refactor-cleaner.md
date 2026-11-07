@@ -1,8 +1,8 @@
 ---
 name: refactor-cleaner
-description: Dead code, unused dependency, and duplication cleaner preserving 100% test compatibility.
+description: "Dead code, unused dependency, and duplication cleaner preserving 100% test compatibility."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

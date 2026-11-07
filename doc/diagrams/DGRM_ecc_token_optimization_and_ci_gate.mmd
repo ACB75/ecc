@@ -1,0 +1,61 @@
+flowchart TD
+    subgraph Input["1. Trigger & Context Ingestion"]
+        PR["PR / Push Event\n(main, feat/*, fix/*, refactor/*)"]
+        LocalDev["Developer / Agent\n(Pre-Flight Review)"]
+    end
+
+    subgraph TokenOptimization["2. Token Budget & Context Audit (Tarea 2.1)"]
+        Scan["Audit Context & Frontmatter"]
+        SkillBudget{"Skills Desc\n<= 140 chars?"}
+        AgentBudget{"Agents Desc\n<= 120 chars?"}
+        ModelCheck{"Agent Model in\n{flash, inherit}?"}
+        PrivilegeCheck{"Read-Only Agent has\nzero write tools?"}
+        
+        Scan --> SkillBudget
+        Scan --> AgentBudget
+        Scan --> ModelCheck
+        Scan --> PrivilegeCheck
+    end
+
+    subgraph QualityGate["3. Harness CI Quality Gate (Tarea 2.2)"]
+        GHAction[".github/workflows/ci-quality-gate.yml"]
+        MDLint["Markdown Linter\n(.markdownlint.json)"]
+        SonarCheck["SonarQube Quality Gate A\n(Cognitive Complexity <= 15)"]
+        SecCheck["Security Audit\n(Secrets, Injection, Hardening)"]
+        PyTests["Unit Tests\n(pytest scripts/ecc-agy/tests/)"]
+        
+        GHAction --> MDLint
+        GHAction --> Scan
+        GHAction --> SonarCheck
+        GHAction --> SecCheck
+        GHAction --> PyTests
+    end
+
+    subgraph Outcome["4. Decision & Gate Resolution"]
+        Pass["Quality Gate PASSED (Code 0)\nEligible for Merge"]
+        Fail["Quality Gate FAILED (Fail-Closed)\nBlock PR / Local Abort"]
+    end
+
+    PR --> GHAction
+    LocalDev --> Scan
+    LocalDev --> SonarCheck
+    LocalDev --> MDLint
+    LocalDev --> PyTests
+
+    SkillBudget -- Yes --> Pass
+    AgentBudget -- Yes --> Pass
+    ModelCheck -- Yes --> Pass
+    PrivilegeCheck -- Yes --> Pass
+    MDLint -- Pass --> Pass
+    SonarCheck -- Pass --> Pass
+    SecCheck -- Pass --> Pass
+    PyTests -- Pass --> Pass
+
+    SkillBudget -- No --> Fail
+    AgentBudget -- No --> Fail
+    ModelCheck -- No --> Fail
+    PrivilegeCheck -- No --> Fail
+    MDLint -- Fail --> Fail
+    SonarCheck -- Fail --> Fail
+    SecCheck -- Fail --> Fail
+    PyTests -- Fail --> Fail

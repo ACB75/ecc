@@ -1,6 +1,6 @@
 ---
 name: master-agreement-generator
-description: Generate review drafts of counterparty master agreements from one template plus a JSON spec, with role-selected clauses and a Schedule A workflow limited to the executed agreement's notice authority. Use when you need reproducible drafting and separately reviewed execution preparation.
+description: "Generate review drafts of counterparty master agreem. Use when you need reproducible drafting and separately reviewed execution preparation."
 ---
 
 # Master Agreement Generator

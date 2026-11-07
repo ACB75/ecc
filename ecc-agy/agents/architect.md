@@ -1,8 +1,8 @@
 ---
 name: architect
-description: Read-only software architect for system design, trade-off analysis, costs, and ADRs.
+description: "Read-only software architect for system design, trade-off analysis, costs, and ADRs."
 tools: Read, Grep, Glob
-model: opus
+model: inherit
 ---
 
 ## Prompt Defense Baseline

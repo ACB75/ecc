@@ -1,8 +1,8 @@
 ---
 name: network-config-reviewer
-description: Read-only auditor for router, OpenVPN, CoreDNS, Apache, and firewall configurations.
+description: "Read-only auditor for router, OpenVPN, CoreDNS, Apache, and firewall configurations."
 tools: Read, Grep
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

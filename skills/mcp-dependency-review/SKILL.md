@@ -1,6 +1,6 @@
 ---
 name: mcp-dependency-review
-description: Statically review MCP configuration for mutable package references before approval or CI, without executing discovered MCP servers. Use when reviewing .mcp.json, Cursor, VS Code, Claude, Windsurf, or other repo-scoped MCP config.
+description: "Statically review MCP configuration for m. Use when reviewing .mcp.json, Cursor, VS Code, Claude, Windsurf, or other repo-scoped MCP config."
 metadata:
   origin: ECC
 ---

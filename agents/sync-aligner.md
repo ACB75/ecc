@@ -1,6 +1,6 @@
 ---
 name: sync-aligner
-description: Workspace maintenance subagent running sync-clean-align.ps1, updating docs, and ensuring zero drift.
+description: "Workspace maintenance subagent running sync-clean-align.ps1, updating docs, and ensuring zero drift."
 tools:
   - view_file
   - write_to_file

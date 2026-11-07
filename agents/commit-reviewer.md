@@ -1,8 +1,8 @@
 ---
 name: commit-reviewer
-description: Reviews a staged diff and drafts a Conventional Commits-compliant message matching the repository's actual history norms. Use before committing, or when asked to write or check a commit message.
+description: "Reviews a staged diff and drafts a Conventional Commits-compliant message matching the repository's actual history no..."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

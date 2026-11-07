@@ -1,6 +1,6 @@
 ---
 name: eval-harness
-description: Eval-driven development (EDD) framework for AI coding sessions — define capability and regression evals before coding, grade with code-based, model-based, rule, or human graders, and track pass@k and pass^k reliability. Use when defining pass/fail criteria for agent tasks, measuring agent reliability, building regression suites for prompt or agent changes, or benchmarking across model versions.
+description: "Eval-driven development (EDD) framework for AI coding sessions — define capability and regression evals before coding, grade with..."
 metadata:
   origin: ECC
 tools: Read, Write, Edit, Bash, Grep, Glob

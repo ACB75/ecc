@@ -1,7 +1,7 @@
 ---
 name: silent-failure-hunter
-description: Read-only auditor hunting empty catch blocks, swallowed errors, and unsafe fallbacks.
-model: sonnet
+description: "Read-only auditor hunting empty catch blocks, swallowed errors, and unsafe fallbacks."
+model: flash
 tools: Read, Grep, Glob, Bash
 ---
 

@@ -1,8 +1,8 @@
 ---
 name: typescript-reviewer
-description: Read-only Angular 21+ & TypeScript reviewer enforcing OnPush, Signals, inject(), and zero any.
+description: "Read-only Angular 21+ & TypeScript reviewer enforcing OnPush, Signals, inject(), and zero any."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

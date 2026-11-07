@@ -1,6 +1,6 @@
 ---
 name: todo-archiver
-description: Archives completed TODO items to /TODO_DONE/ and enforces 7-phase meta-prompt compliance on active tasks.
+description: "Archives completed TODO items to /TODO_DONE/ and enforces 7-phase meta-prompt compliance on active tasks."
 model: flash
 tools:
   - read_file

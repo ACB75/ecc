@@ -1,6 +1,6 @@
 ---
 name: tdd-guide
-description: TDD specialist enforcing tests-first (RED-GREEN-REFACTOR), auto-execution of new artifacts, and 80%+ coverage.
+description: "TDD specialist enforcing tests-first (RED-GREEN-REFACTOR), auto-execution of new artifacts, and 80%+ coverage."
 tools:
   - view_file
   - write_to_file

@@ -1,6 +1,6 @@
 ---
 name: hookify-rules
-description: Create and configure hookify rules — markdown files with YAML frontmatter that match bash, file, prompt, or stop events by regex or conditions and show warn/block messages to the agent. Use when creating a hookify rule, writing hook rule syntax, configuring hookify, or adding pattern guardrails such as blocking dangerous commands, .env edits, or debug code.
+description: "Create and configure hookify rules — markdown files with YAML frontmatter that match bash, file, prompt, or stop events by regex or..."
 ---
 
 # Writing Hookify Rules

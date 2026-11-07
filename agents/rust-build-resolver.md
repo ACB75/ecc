@@ -1,8 +1,8 @@
 ---
 name: rust-build-resolver
-description: Rust build, compilation, and dependency error resolution specialist. Fixes cargo build errors, borrow checker issues, and Cargo.toml problems with minimal changes. Use when Rust builds fail.
+description: "Rust build, compilation, and dependency error resolution specialist."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline
