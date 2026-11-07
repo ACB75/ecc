@@ -40,8 +40,8 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $EccRoot = (Resolve-Path "$ScriptDir").Path
 $GlobalPluginDir = Join-Path $HOME ".gemini\config\plugins\ecc-agy"
 
-$SkillsSource = if (Test-Path (Join-Path $EccRoot "skills")) { Join-Path $EccRoot "skills" } else { Join-Path $EccRoot "ecc-agy\skills" }
-$AgentsSource = if (Test-Path (Join-Path $EccRoot "agents")) { Join-Path $EccRoot "agents" } else { Join-Path $EccRoot "ecc-agy\agents" }
+$SkillsSource = Join-Path $EccRoot "skills"
+$AgentsSource = Join-Path $EccRoot "agents"
 
 $PhaseConfig = @{
     "generic" = @{
@@ -145,9 +145,6 @@ if (-not $TargetProject) {
         Write-Host "[+] Regla global sincronizada: AGENTS.md -> $GlobalPluginDir\rules\AGENTS.md" -ForegroundColor Cyan
     }
     $pluginJsonSrc = Join-Path $EccRoot "plugin.json"
-    if (-not (Test-Path $pluginJsonSrc)) {
-        $pluginJsonSrc = Join-Path $EccRoot "ecc-agy\plugin.json"
-    }
     if (Test-Path $pluginJsonSrc) {
         Copy-Item -Path $pluginJsonSrc -Destination "$GlobalPluginDir\plugin.json" -Force
     }

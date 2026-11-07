@@ -9,7 +9,6 @@ import os
 import shutil
 from typing import Tuple, List
 
-DIR_ECC_AGY = "ecc-agy"
 DIR_SKILLS = "skills"
 DIR_AGENTS = "agents"
 
@@ -180,10 +179,7 @@ def run_sweep() -> Tuple[int, int]:
     """Ejecuta el barrido y retorna total de skills y agentes resultantes."""
     purge_skills(".")
     purge_agents(".")
-    purge_skills(DIR_ECC_AGY)
-    purge_agents(DIR_ECC_AGY)
     optimize_skills(".")
-    optimize_skills(DIR_ECC_AGY)
 
     total_skills = len([d for d in os.listdir(DIR_SKILLS) if os.path.isdir(os.path.join(DIR_SKILLS, d))])
     total_agents = len([f for f in os.listdir(DIR_AGENTS) if f.endswith(".md")])

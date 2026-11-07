@@ -12,10 +12,10 @@
       "description": "Official ECC boilerplates and artifacts directly optimized for Anthropic Claude Code."
     },
     "ecc-agy": {
-      "path": "ecc-agy",
+      "path": ".",
       "target": "antigravity",
       "harness": "Google Antigravity / Gemini",
-      "description": "Unified Google Antigravity distribution with 315+ skills, 73+ agents, commands, schemas, and SRE baseline."
+      "description": "Unified Google Antigravity & Gemini plugin harness (aagy / ecc-agy) with skills, agents, commands, schemas, and SRE baseline."
     }
   }
 }

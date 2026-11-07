@@ -10,8 +10,7 @@
     "doctor": "node scripts/doctor.js"
   },
   "workspaces": [
-    "ecc-claude",
-    "ecc-agy"
+    "ecc-claude"
   ],
   "engines": {
     "node": ">=18"
