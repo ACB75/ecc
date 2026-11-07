@@ -1,0 +1,11 @@
+{
+  "name": "ecc-agy",
+  "displayName": "ECC for Antigravity (aagy)",
+  "version": "3.0.0",
+  "description": "Universal agnostic plugin harness for Google Antigravity & Gemini CLI (aagy / ecc-agy) with progressive skill activation and SRE baseline.",
+  "suggestedPrompts": [
+    "Plan a new feature using search-first and tdd-workflow",
+    "Run a fresh-context code review and silent-failure audit on my changes",
+    "Audit security boundaries and context budget for this repository"
+  ]
+}
