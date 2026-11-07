@@ -1,6 +1,6 @@
 ---
 name: repo-scan
-description: Bootstrap pointer for external cross-stack repo-scan skill installation. Does not execute source audits directly.
+description: "Bootstrap pointer for external cross-stack repo-scan skill installation. Does not execute source audits directly."
 metadata:
   origin: community
 ---

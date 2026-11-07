@@ -1,6 +1,6 @@
 ---
 name: python-patterns
-description: Python 3.11+ PEP 8, explicit type hints, frozen dataclasses/Pydantic v2, and structured logging. No print() in prod.
+description: "Python 3.11+ PEP 8, explicit type hints, frozen dataclasses/Pydantic v2, and structured logging. No print() in prod."
 metadata:
   origin: ECC
 ---

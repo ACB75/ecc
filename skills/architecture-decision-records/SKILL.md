@@ -1,6 +1,6 @@
 ---
 name: architecture-decision-records
-description: Write numbered ADRs (ADR-NNNN) and index tables in <project>/doc/adr/ or doc/adr/. Only create ADRs for significant architectural decisions.
+description: "Write numbered ADRs (ADR-NNNN) and index tables in <project>/doc/adr/ or doc/adr/. Only create ADRs for significant architectural decisions."
 ---
 
 # Architecture Decision Records

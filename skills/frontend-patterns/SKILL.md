@@ -1,6 +1,6 @@
 ---
 name: frontend-patterns
-description: Component composition, state immutability, and rendering performance patterns. Defer to angular-developer in Angular.
+description: "Component composition, state immutability, and rendering performance patterns. Defer to angular-developer in Angular."
 metadata:
   origin: ECC
 ---

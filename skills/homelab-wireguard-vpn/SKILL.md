@@ -1,6 +1,6 @@
 ---
 name: homelab-wireguard-vpn
-description: WireGuard and OpenVPN tunnel setup, split-tunnel routing, and peer key hygiene. Never commit private keys.
+description: "WireGuard and OpenVPN tunnel setup, split-tunnel routing, and peer key hygiene. Never commit private keys."
 metadata:
   origin: community
 ---

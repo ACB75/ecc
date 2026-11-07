@@ -1,6 +1,6 @@
 ---
 name: latency-critical-systems
-description: Low-latency hot-path optimization, p50/p95/p99 tracking, caching (Ignite), and non-blocking I/O.
+description: "Low-latency hot-path optimization, p50/p95/p99 tracking, caching (Ignite), and non-blocking I/O."
 license: MIT
 metadata:
   origin: ECC

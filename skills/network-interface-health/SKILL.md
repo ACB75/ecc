@@ -1,6 +1,6 @@
 ---
 name: network-interface-health
-description: Inspect NIC link state, MTU, IP bindings, and packet drops across Windows/Linux hosts. Read-only diagnostics.
+description: "Inspect NIC link state, MTU, IP bindings, and packet drops across Windows/Linux hosts. Read-only diagnostics."
 metadata:
   origin: community
 ---

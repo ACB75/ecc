@@ -1,6 +1,6 @@
 ---
 name: prompt-caching-strategy
-description: >-
+description: ">-"
   Optimize LLM prompt caching hit rate to reduce API costs and improve latency.
   Analyzes prompt structure, identifies cacheable vs non-cacheable content,
   and recommends restructuring to maximize cache reuse.

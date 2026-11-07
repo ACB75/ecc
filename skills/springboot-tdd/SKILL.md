@@ -1,6 +1,6 @@
 ---
 name: springboot-tdd
-description: Spring Boot TDD with JUnit 5, AssertJ, Mockito, MockMvc, and Testcontainers (80%+ JaCoCo coverage).
+description: "Spring Boot TDD with JUnit 5, AssertJ, Mockito, MockMvc, and Testcontainers (80%+ JaCoCo coverage)."
 metadata:
   origin: ECC
 ---

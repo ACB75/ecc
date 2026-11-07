@@ -1,6 +1,6 @@
 ---
 name: e2e-testing
-description: Playwright E2E testing with Page Object Model, stable locators, and CI artifact capture. Not for unit tests.
+description: "Playwright E2E testing with Page Object Model, stable locators, and CI artifact capture. Not for unit tests."
 metadata:
   origin: ECC
 ---

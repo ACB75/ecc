@@ -1,6 +1,6 @@
 ---
 name: springboot-verification
-description: Spring Boot verification loop covering Maven build, JaCoCo 80%+ check, secret scan, and actuator hardening.
+description: "Spring Boot verification loop covering Maven build, JaCoCo 80%+ check, secret scan, and actuator hardening."
 metadata:
   origin: ECC
 ---

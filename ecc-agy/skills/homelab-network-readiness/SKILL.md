@@ -1,6 +1,6 @@
 ---
 name: homelab-network-readiness
-description: Pre-deployment homelab network readiness checks (DNS, ports, subnets, routing). Read-only diagnostic workflow.
+description: "Pre-deployment homelab network readiness checks (DNS, ports, subnets, routing). Read-only diagnostic workflow."
 metadata:
   origin: community
 ---

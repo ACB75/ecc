@@ -1,6 +1,6 @@
 ---
 name: fastapi-patterns
-description: FastAPI async routes, Pydantic v2 response_model schemas, Depends() DI, and lifespan pooling. No sync blocking I/O.
+description: "FastAPI async routes, Pydantic v2 response_model schemas, Depends() DI, and lifespan pooling. No sync blocking I/O."
 metadata:
   origin: ECC
 ---

@@ -1,6 +1,6 @@
 ---
 name: iterative-retrieval
-description: Progressive multi-pass context retrieval pattern for subagents. Skip when target files are already known.
+description: "Progressive multi-pass context retrieval pattern for subagents. Skip when target files are already known."
 metadata:
   origin: ECC
 ---

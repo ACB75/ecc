@@ -1,6 +1,6 @@
 ---
 name: homelab-vlan-segmentation
-description: VLAN segmentation, trunk/access ports, and inter-VLAN firewall ACLs for homelab networks. Not for app-layer auth.
+description: "VLAN segmentation, trunk/access ports, and inter-VLAN firewall ACLs for homelab networks. Not for app-layer auth."
 metadata:
   origin: community
 ---
