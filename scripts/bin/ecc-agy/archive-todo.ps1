@@ -56,4 +56,14 @@ if ($DryRun) {
 }
 
 python @ArgsList
-exit $LASTEXITCODE
+$pyExit = $LASTEXITCODE
+
+if ($pyExit -eq 0 -and -not $DryRun) {
+    $lintScript = Join-Path $ScriptDir "lint-markdown.ps1"
+    if (Test-Path $lintScript) {
+        pwsh -NoProfile -File $lintScript -Target $ResolvedDone -Fix >$null 2>&1
+        pwsh -NoProfile -File $lintScript -Target $ResolvedTodo -Fix >$null 2>&1
+    }
+}
+
+exit $pyExit

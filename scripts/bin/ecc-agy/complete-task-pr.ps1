@@ -64,11 +64,11 @@ try {
     }
 
     # 3. Inspeccionar estado de cambios
-    $statusLines = git status --short
+    $statusLines = @(git status --short)
     $stagedDiffStat = git diff --cached --stat
     $workingDiffStat = git diff --stat
 
-    if (-not $statusLines -and -not (git log origin/$TargetBranch..$currentBranch --oneline 2>$null)) {
+    if ($statusLines.Length -eq 0 -and -not (git log origin/$TargetBranch..$currentBranch --oneline 2>$null)) {
         Write-Host "[INFO] No hay cambios pendientes ni commits por fusionar en '$currentBranch'." -ForegroundColor Yellow
         exit 0
     }
@@ -153,36 +153,7 @@ Estrategia Fast-Rollback:
         }
     }
 
-    # 6. Pre-merge Quality Gate: Markdown linter, tests y SonarQube
-    Write-Host "[+] Ejecutando auditoría de calidad previa..." -ForegroundColor Cyan
-    $lintScript = Join-Path $PSScriptRoot "lint-markdown.ps1"
-    if (Test-Path $lintScript) {
-        pwsh -NoProfile -File $lintScript -CheckOnly
-        if ($LASTEXITCODE -ne 0) {
-            throw "El Quality Gate de Markdown falló. Corrija los errores antes de continuar."
-        }
-    }
-
-    # 6.1. Tests unitarios
-    $testsDir = Join-Path $RepoRoot "scripts\ecc-agy\tests"
-    if (Test-Path $testsDir) {
-        Write-Host "[+] Ejecutando suite de pruebas unitarias (pytest)..." -ForegroundColor Cyan
-        python -m pytest $testsDir -q
-        if ($LASTEXITCODE -ne 0) {
-            throw "La suite de pruebas unitarias falló. No se puede proceder con el merge."
-        }
-    }
-
-    # 6.2. Auditoría SonarQube
-    $sonarScript = Join-Path $PSScriptRoot "sonar-audit.ps1"
-    if (Test-Path $sonarScript) {
-        pwsh -NoProfile -File $sonarScript
-        if ($LASTEXITCODE -ne 0) {
-            throw "La auditoría SonarQube no alcanzó el Rating A. Corrija las violaciones antes de continuar."
-        }
-    }
-
-    # 6.3. Sincronizar y archivar tareas completadas en doc/TODO.md
+    # 6. Sincronizar y archivar tareas completadas en doc/TODO.md si existen
     if ($hasCompletedTodos) {
         Write-Host "[+] Archivando tareas completadas en doc/TODO_DONE/..." -ForegroundColor Cyan
         $archiveScript = Join-Path $PSScriptRoot "archive-todo.ps1"
@@ -200,6 +171,35 @@ Estrategia Fast-Rollback:
         $pmScript = Join-Path $RepoRoot "scripts\ecc-agy\generate_postmortem.py"
         if (Test-Path $pmScript) {
             python $pmScript --branch $currentBranch
+        }
+    }
+
+    # 7. Pre-merge Quality Gate: Markdown linter, tests unitarios y SonarQube
+    Write-Host "[+] Ejecutando auditoría de calidad previa..." -ForegroundColor Cyan
+    $lintScript = Join-Path $PSScriptRoot "lint-markdown.ps1"
+    if (Test-Path $lintScript) {
+        pwsh -NoProfile -File $lintScript -CheckOnly
+        if ($LASTEXITCODE -ne 0) {
+            throw "El Quality Gate de Markdown falló. Corrija los errores antes de continuar."
+        }
+    }
+
+    # 7.1. Tests unitarios
+    $testsDir = Join-Path $RepoRoot "scripts\ecc-agy\tests"
+    if (Test-Path $testsDir) {
+        Write-Host "[+] Ejecutando suite de pruebas unitarias (pytest)..." -ForegroundColor Cyan
+        python -m pytest $testsDir -q
+        if ($LASTEXITCODE -ne 0) {
+            throw "La suite de pruebas unitarias falló. No se puede proceder con el merge."
+        }
+    }
+
+    # 7.2. Auditoría SonarQube
+    $sonarScript = Join-Path $PSScriptRoot "sonar-audit.ps1"
+    if (Test-Path $sonarScript) {
+        pwsh -NoProfile -File $sonarScript
+        if ($LASTEXITCODE -ne 0) {
+            throw "La auditoría SonarQube no alcanzó el Rating A. Corrija las violaciones antes de continuar."
         }
     }
 
@@ -229,10 +229,10 @@ Estrategia Fast-Rollback:
     }
 
     Write-Host "[+] Comprobando Pull Request en GitHub..." -ForegroundColor Cyan
-    $existingPrJson = (gh pr list --head $currentBranch --base $TargetBranch --json number,url 2>$null | ConvertFrom-Json)
+    $existingPrJson = @(gh pr list --head $currentBranch --base $TargetBranch --json number,url 2>$null | ConvertFrom-Json)
     $prNumber = $null
 
-    if ($existingPrJson -and $existingPrJson.Count -gt 0) {
+    if ($existingPrJson -and $existingPrJson.Length -gt 0) {
         $prNumber = $existingPrJson[0].number
         Write-Host "[INFO] Pull Request existente detectada: #$prNumber ($($existingPrJson[0].url))" -ForegroundColor Green
     } else {
@@ -240,8 +240,8 @@ Estrategia Fast-Rollback:
         $prCreateOut = (gh pr create --base $TargetBranch --head $currentBranch --title $Title --body $Body 2>&1)
         Write-Host $prCreateOut -ForegroundColor Green
         # Re-obtener número de PR
-        $existingPrJson = (gh pr list --head $currentBranch --base $TargetBranch --json number,url 2>$null | ConvertFrom-Json)
-        if ($existingPrJson -and $existingPrJson.Count -gt 0) {
+        $existingPrJson = @(gh pr list --head $currentBranch --base $TargetBranch --json number,url 2>$null | ConvertFrom-Json)
+        if ($existingPrJson -and $existingPrJson.Length -gt 0) {
             $prNumber = $existingPrJson[0].number
         }
     }
@@ -255,9 +255,9 @@ Estrategia Fast-Rollback:
     if ($mergeBase -ne $targetSha) {
         Write-Host "[+] La rama diverge de 'origin/$TargetBranch'. Comprobando fusión local..." -ForegroundColor Cyan
         $mergeAttempt = (git merge "origin/$TargetBranch" --no-commit --no-ff 2>&1)
-        $hasConflicts = (git diff --name-only --diff-filter=U)
+        $hasConflicts = @(git diff --name-only --diff-filter=U)
 
-        if ($hasConflicts) {
+        if ($hasConflicts.Length -gt 0) {
             Write-Host "[!] Se detectaron conflictos en los siguientes archivos:" -ForegroundColor Yellow
             $hasConflicts | ForEach-Object { Write-Host "   - $_" -ForegroundColor Yellow }
             Write-Host "[+] Autoresolviendo conflictos favoreciendo cambios de la rama de tarea..." -ForegroundColor Cyan
