@@ -1,8 +1,8 @@
 ---
 name: mle-reviewer
-description: Production machine-learning engineering reviewer for data contracts, feature pipelines, training reproducibility, offline/online evaluation, model serving, monitoring, and rollback. Use when ML, MLOps, model training, inference, feature store, or evaluation code changes.
+description: "Production machine-learning engineering reviewer for data contracts, feature pipelines, training reproducibility, off..."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

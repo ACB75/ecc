@@ -1,6 +1,6 @@
 ---
 name: sdk-synchronizer
-description: Synchronizes home-lab-sdk clients, types, and tests when microservices modify public contracts or APIs.
+description: "Synchronizes home-lab-sdk clients, types, and tests when microservices modify public contracts or APIs."
 model: inherit
 tools:
   - read_file

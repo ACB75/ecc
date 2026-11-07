@@ -1,6 +1,6 @@
 ---
 name: esign-field-placement
-description: Deterministic method for placing signature, date, and text fields in a web e-signature composer through a browser automation session, using a fixed signature page, numeric Location panel coordinates instead of drag, and a save-as-draft default. Use when automating envelope preparation for generated agreements and you need repeatable field positions, correct per-recipient ownership, and a hard gate before anything is sent or signed.
+description: "Deterministic method for placing signature, date, and text fields in a web e-signature composer through a browser automation session..."
 ---
 
 # E-Signature Field Placement

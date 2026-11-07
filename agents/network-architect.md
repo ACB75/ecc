@@ -1,8 +1,8 @@
 ---
 name: network-architect
-description: Read-only network architect for Split-DNS, routing, VLANs, reverse proxies, and firewall boundaries.
+description: "Read-only network architect for Split-DNS, routing, VLANs, reverse proxies, and firewall boundaries."
 tools: Read, Grep
-model: sonnet
+model: inherit
 ---
 
 ## Prompt Defense Baseline

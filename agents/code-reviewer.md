@@ -1,8 +1,8 @@
 ---
 name: code-reviewer
-description: Read-only code & SonarQube reviewer auditing S3776 complexity, S1192 literals, SOLID, and regressions (>80% conf).
+description: "Read-only code & SonarQube reviewer auditing S3776 complexity, S1192 literals, SOLID, and regressions (>80% conf)."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

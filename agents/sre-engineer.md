@@ -1,6 +1,6 @@
 ---
 name: sre-engineer
-description: Read-only SRE auditor evaluating SLIs/SLOs, error budgets, cascading failures, timeouts, health probes, and resilience.
+description: "Read-only SRE auditor evaluating SLIs/SLOs, error budgets, cascading failures, timeouts, health probes, and resilience."
 tools: Read, Grep, Glob
 model: flash
 ---

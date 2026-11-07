@@ -28,13 +28,13 @@ from typing import List, Optional, Sequence, Tuple
 if hasattr(sys.stdout, "reconfigure"):
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    except Exception:
-        pass
+    except (AttributeError, ValueError) as exc:
+        logger.debug("sys.stdout reconfigure skipped: %s", exc)
 if hasattr(sys.stderr, "reconfigure"):
     try:
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
-    except Exception:
-        pass
+    except (AttributeError, ValueError) as exc:
+        logger.debug("sys.stderr reconfigure skipped: %s", exc)
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger: logging.Logger = logging.getLogger("format-commit")
@@ -106,20 +106,8 @@ def parse_commit_header(first_line: str) -> Tuple[Optional[str], List[str], str]
     return None, [], line
 
 
-def validate_commit_message(message: str, strict: bool = False) -> CommitValidationResult:
-    """Valida un mensaje de commit permitiendo tanto commits estructurados como interactivos."""
-    raw = message.strip()
-    if not raw:
-        return CommitValidationResult(False, "", (), "", 0, ("El mensaje de commit esta vacio.",))
-
-    # Filtrar comentarios de git (lineas que empiezan con #)
-    lines = [line for line in raw.splitlines() if not line.strip().startswith("#")]
-    if not lines:
-        return CommitValidationResult(False, "", (), "", 0, ("El mensaje de commit solo contiene comentarios.",))
-
-    first_line = lines[0].strip()
+def _validate_header(first_line: str) -> Tuple[Optional[str], Sequence[str], str, List[str]]:
     errors: List[str] = []
-
     commit_type, projects, title = parse_commit_header(first_line)
 
     if commit_type is None:
@@ -132,22 +120,23 @@ def validate_commit_message(message: str, strict: bool = False) -> CommitValidat
             f"    - feat: <titulo>                  (Conventional Commits simple)\n"
             f"  Tipos permitidos: {', '.join(sorted(ALLOWED_TYPES))}"
         )
-    else:
-        if commit_type not in ALLOWED_TYPES:
-            errors.append(
-                f"Tipo '{commit_type}' no reconocido. Tipos permitidos: {', '.join(sorted(ALLOWED_TYPES))}"
-            )
+        return None, (), "", errors
 
-        for proj in projects:
-            if proj not in ALLOWED_PROJECTS:
-                errors.append(
-                    f"Proyecto '[{proj}]' no reconocido. Proyectos permitidos: {', '.join(sorted(ALLOWED_PROJECTS))}"
-                )
+    if commit_type not in ALLOWED_TYPES:
+        errors.append(f"Tipo '{commit_type}' no reconocido. Tipos permitidos: {', '.join(sorted(ALLOWED_TYPES))}")
 
-        if not title:
-            errors.append("El titulo del commit no puede estar vacio.")
+    for proj in projects:
+        if proj not in ALLOWED_PROJECTS:
+            errors.append(f"Proyecto '[{proj}]' no reconocido. Proyectos permitidos: {', '.join(sorted(ALLOWED_PROJECTS))}")
 
-    # Analizar cuerpo explicativo
+    if not title:
+        errors.append("El titulo del commit no puede estar vacio.")
+
+    return commit_type, tuple(projects), title, errors
+
+
+def _validate_body(lines: Sequence[str], strict: bool) -> Tuple[int, List[str]]:
+    errors: List[str] = []
     body_lines = lines[1:]
     if body_lines and not body_lines[0].strip():
         body_lines = body_lines[1:]
@@ -155,20 +144,35 @@ def validate_commit_message(message: str, strict: bool = False) -> CommitValidat
     body_text = "\n".join(body_lines).strip()
     body_length = len(body_text)
 
-    # Validacion estricta solo si se solicita explicitamente (--strict para CI o PR gates)
     if strict and body_length < 20:
         errors.append(
             "Cuerpo explicativo (msg comment) insuficiente o ausente bajo modo estricto. "
             "Debe detallar motivacion, modulos afectados y verificaciones realizadas."
         )
+    return body_length, errors
 
+
+def validate_commit_message(message: str, strict: bool = False) -> CommitValidationResult:
+    """Valida un mensaje de commit permitiendo tanto commits estructurados como interactivos."""
+    raw = message.strip()
+    if not raw:
+        return CommitValidationResult(False, "", (), "", 0, ("El mensaje de commit esta vacio.",))
+
+    lines = [line for line in raw.splitlines() if not line.strip().startswith("#")]
+    if not lines:
+        return CommitValidationResult(False, "", (), "", 0, ("El mensaje de commit solo contiene comentarios.",))
+
+    commit_type, projects, title, header_errors = _validate_header(lines[0].strip())
+    body_length, body_errors = _validate_body(lines, strict)
+
+    all_errors = header_errors + body_errors
     return CommitValidationResult(
-        is_valid=len(errors) == 0,
+        is_valid=len(all_errors) == 0,
         commit_type=commit_type or "",
         projects=tuple(projects),
         title=title,
         body_length=body_length,
-        errors=tuple(errors),
+        errors=tuple(all_errors),
     )
 
 
@@ -190,6 +194,36 @@ def format_commit_message(
     return header
 
 
+def _handle_validation_output(result: CommitValidationResult, is_json: bool) -> int:
+    if is_json:
+        print(json.dumps(asdict(result), indent=2))
+        return 0 if result.is_valid else 1
+
+    if result.is_valid:
+        projs_str = f"+[{','.join(result.projects)}]" if result.projects else ""
+        logger.info("[OK] Mensaje de commit VALIDO: %s%s: %s", result.commit_type, projs_str, result.title)
+        if result.body_length > 0:
+            logger.info("     Cuerpo explicativo: %d caracteres.", result.body_length)
+        else:
+            logger.info("     (Modo interactivo: commit de una sola linea aceptado).")
+    else:
+        logger.error("[FAIL] El mensaje de commit NO cumple las reglas:")
+        for err in result.errors:
+            logger.error("  [X] %s", err)
+    return 0 if result.is_valid else 1
+
+
+def _extract_msg_to_validate(args: argparse.Namespace) -> Optional[str]:
+    if args.validate:
+        return args.validate
+    if args.validate_file:
+        if not args.validate_file.is_file():
+            logger.error("[ERROR] Archivo %s no encontrado.", args.validate_file)
+            return None
+        return args.validate_file.read_text(encoding="utf-8", errors="replace")
+    return None
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description="Validador y Generador de Commits Conventional flexibles (soporta type-project: <title>, type+[projects]: <title>)."
@@ -205,32 +239,13 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     args = parser.parse_args(argv)
 
-    msg_to_validate: Optional[str] = None
-    if args.validate:
-        msg_to_validate = args.validate
-    elif args.validate_file:
-        if not args.validate_file.is_file():
-            logger.error("[ERROR] Archivo %s no encontrado.", args.validate_file)
-            return 1
-        msg_to_validate = args.validate_file.read_text(encoding="utf-8", errors="replace")
-
+    msg_to_validate = _extract_msg_to_validate(args)
     if msg_to_validate is not None:
         result = validate_commit_message(msg_to_validate, strict=args.strict)
-        if args.json:
-            print(json.dumps(asdict(result), indent=2))
-        else:
-            if result.is_valid:
-                projs_str = f"+[{','.join(result.projects)}]" if result.projects else ""
-                logger.info("[OK] Mensaje de commit VALIDO: %s%s: %s", result.commit_type, projs_str, result.title)
-                if result.body_length > 0:
-                    logger.info("     Cuerpo explicativo: %d caracteres.", result.body_length)
-                else:
-                    logger.info("     (Modo interactivo: commit de una sola linea aceptado).")
-            else:
-                logger.error("[FAIL] El mensaje de commit NO cumple las reglas:")
-                for err in result.errors:
-                    logger.error("  [X] %s", err)
-        return 0 if result.is_valid else 1
+        return _handle_validation_output(result, args.json)
+
+    if args.validate_file and msg_to_validate is None:
+        return 1
 
     if args.type and args.title:
         projs = [p.strip() for p in args.projects.split(",") if p.strip()] if args.projects else []
@@ -238,6 +253,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         formatted = format_commit_message(args.type, projs, args.title, body)
         print(formatted)
         return 0
+
+    parser.print_help()
+    return 1
 
     parser.print_help()
     return 0

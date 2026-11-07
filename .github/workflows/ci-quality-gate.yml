@@ -1,0 +1,59 @@
+name: CI Quality Gate & Trunk Verification
+
+on:
+  push:
+    branches:
+      - main
+      - 'feat/**'
+      - 'fix/**'
+      - 'refactor/**'
+      - 'chore/**'
+      - 'infra/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  quality-gate:
+    name: Verify Linters, Quality Gate A & Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          npm install -g markdownlint-cli
+          python -m pip install --upgrade pip pytest
+
+      - name: Verify Markdown Linting (.markdownlint.json)
+        run: |
+          markdownlint --config .markdownlint.json "doc/**/*.md" "README.md"
+
+      - name: Run Unit Tests (Pytest)
+        run: |
+          python -m pytest scripts/ecc-agy/tests/ -v
+
+      - name: Audit Workspace & Token Budget (<=140c / <=120c)
+        run: |
+          python scripts/ecc-agy/workspace_audit.py --skip-sonar --skip-security
+
+      - name: Audit SonarQube Quality Gate A (S3776, S107, S1192, S108)
+        run: |
+          python scripts/ecc-agy/sonar_audit.py
+
+      - name: Audit Security & Secrets Exposure
+        run: |
+          python scripts/ecc-agy/security_audit.py

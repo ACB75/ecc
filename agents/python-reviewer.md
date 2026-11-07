@@ -1,8 +1,8 @@
 ---
 name: python-reviewer
-description: Read-only Python 3.11+ reviewer enforcing PEP 8, type hints, frozen models, and logging.
+description: "Read-only Python 3.11+ reviewer enforcing PEP 8, type hints, frozen models, and logging."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

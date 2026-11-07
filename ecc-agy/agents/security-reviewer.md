@@ -1,8 +1,8 @@
 ---
 name: security-reviewer
-description: Read-only security auditor for secrets, injection, SSRF/XSS/CSRF, AuthN/AuthZ, and OWASP Top 10.
+description: "Read-only security auditor for secrets, injection, SSRF/XSS/CSRF, AuthN/AuthZ, and OWASP Top 10."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

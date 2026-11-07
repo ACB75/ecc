@@ -1,6 +1,6 @@
 ---
 name: ecc-recipes
-description: Map a described workflow to the right ECC command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only — never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list ECC pipelines; not for executing the task (route to the command itself), single-command docs (use ecc-guide), or prompt rewrites (use prompt-optimizer).
+description: "Map a described workflow to the right ECC command group with run-order and stop condition, or browse all command-group recipe families..."
 argument-hint: <workflow description | empty=list all>
 origin: community
 author: KyawZinLatt

@@ -1,8 +1,8 @@
 ---
 name: database-reviewer
-description: Read-only PostgreSQL reviewer for SQL parameterization, JSONB indexing, pooling, and migrations.
+description: "Read-only PostgreSQL reviewer for SQL parameterization, JSONB indexing, pooling, and migrations."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

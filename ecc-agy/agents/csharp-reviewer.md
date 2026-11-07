@@ -1,8 +1,8 @@
 ---
 name: csharp-reviewer
-description: Expert C# code reviewer specializing in .NET conventions, async patterns, security, nullable reference types, and performance. Use for all C# code changes. MUST BE USED for C# projects.
+description: "Expert C# code reviewer specializing in .NET conventions, async patterns, security, nullable reference types, and per..."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

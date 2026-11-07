@@ -1,8 +1,8 @@
 ---
 name: performance-optimizer
-description: Read-only performance profiler identifying latency bottlenecks, N+1 queries, and memory leaks.
+description: "Read-only performance profiler identifying latency bottlenecks, N+1 queries, and memory leaks."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

@@ -1,8 +1,8 @@
 ---
 name: java-build-resolver
-description: Surgical Maven, Java 25, and Spring Boot 4 build and dependency error resolver.
+description: "Surgical Maven, Java 25, and Spring Boot 4 build and dependency error resolver."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

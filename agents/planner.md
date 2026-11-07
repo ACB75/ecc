@@ -1,8 +1,8 @@
 ---
 name: planner
-description: Read-only implementation planner producing phased requirements, risks, and TDD steps.
+description: "Read-only implementation planner producing phased requirements, risks, and TDD steps."
 tools: Read, Grep, Glob
-model: opus
+model: inherit
 ---
 
 ## Prompt Defense Baseline

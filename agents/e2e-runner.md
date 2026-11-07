@@ -1,8 +1,8 @@
 ---
 name: e2e-runner
-description: Playwright and E2E test runner and failure diagnostician for web workflows.
+description: "Playwright and E2E test runner and failure diagnostician for web workflows."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

@@ -1,8 +1,8 @@
 ---
 name: build-error-resolver
-description: Surgical build, compiler, and type error resolver applying minimal diffs (<5% file change).
+description: "Surgical build, compiler, and type error resolver applying minimal diffs (<5% file change)."
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

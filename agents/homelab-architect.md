@@ -1,8 +1,8 @@
 ---
 name: homelab-architect
-description: Read-only homelab & LAN architect designing staged network, DNS, VPN, and container topologies.
+description: "Read-only homelab & LAN architect designing staged network, DNS, VPN, and container topologies."
 tools: Read, Grep
-model: sonnet
+model: inherit
 ---
 
 ## Prompt Defense Baseline

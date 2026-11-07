@@ -1,8 +1,8 @@
 ---
 name: java-reviewer
-description: Read-only Java 25 & Spring Boot 4 reviewer enforcing records, immutability, DI, and security.
+description: "Read-only Java 25 & Spring Boot 4 reviewer enforcing records, immutability, DI, and security."
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline

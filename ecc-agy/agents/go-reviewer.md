@@ -1,6 +1,6 @@
 ---
 name: go-reviewer
-description: Read-only Go code reviewer auditing concurrency, error handling, clean architecture, and performance.
+description: "Read-only Go code reviewer auditing concurrency, error handling, clean architecture, and performance."
 tools: Read, Grep, Glob
 model: inherit
 ---

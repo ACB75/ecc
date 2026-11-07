@@ -1,6 +1,6 @@
 ---
 name: team-agent-orchestration
-description: "Run team-based orchestration for agent squads: work items with owners and scope, agent Kanban state, branch isolation, control pane visibility, and merge gates. Use when coordinating multiple agents in parallel across branches or worktrees — multi-agent fan-out, agent Kanban, squad coordination, or merging agent output into one product."
+description: "Run team-based orchestration for agent squads: work items with owners and scope, agent Kanban state, branch isolation, control pane..."
 metadata:
   origin: ECC
 ---

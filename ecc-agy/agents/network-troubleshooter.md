@@ -1,8 +1,8 @@
 ---
 name: network-troubleshooter
-description: Read-only OSI-layer network, DNS, portproxy, and container connectivity troubleshooter.
+description: "Read-only OSI-layer network, DNS, portproxy, and container connectivity troubleshooter."
 tools: Read, Bash, Grep
-model: sonnet
+model: flash
 ---
 
 ## Prompt Defense Baseline
