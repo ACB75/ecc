@@ -150,6 +150,15 @@ Estrategia Fast-Rollback:
         }
     }
 
+    # 6.5. Si es rama de incidencia (fix/*), generar Post-Mortem 5W automáticamente
+    if ($currentBranch -like "fix/*") {
+        Write-Host "[+] Rama de incidencia detectada ('$currentBranch'). Generando Post-Mortem 5W..." -ForegroundColor Cyan
+        $pmScript = Join-Path $RepoRoot "scripts\ecc-agy\generate_postmortem.py"
+        if (Test-Path $pmScript) {
+            python $pmScript --branch $currentBranch
+        }
+    }
+
     # 7. Commit si hay cambios staged o unstaged
     $dirty = (git status --porcelain)
     if ($dirty) {
