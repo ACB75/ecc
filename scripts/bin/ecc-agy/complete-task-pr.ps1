@@ -87,6 +87,16 @@ try {
         }
     }
 
+    # Detectar tareas completadas en doc/TODO.md
+    $todoPath = Join-Path $RepoRoot "doc\TODO.md"
+    $hasCompletedTodos = $false
+    if (Test-Path $todoPath) {
+        $todoContent = Get-Content -Raw -Path $todoPath -ErrorAction SilentlyContinue
+        if ($todoContent -match "(?m)^[\s*\-]*\[x\]") {
+            $hasCompletedTodos = $true
+        }
+    }
+
     if (-not $Body) {
         $Body = @"
 Motivación y Contexto:
@@ -112,6 +122,9 @@ Estrategia Fast-Rollback:
     Write-Host "Rama Origen:        " -NoNewline; Write-Host $currentBranch -ForegroundColor Yellow
     Write-Host "Rama Destino:       " -NoNewline; Write-Host $TargetBranch -ForegroundColor Yellow
     Write-Host "Título de PR/Commit:" -NoNewline; Write-Host " $Title" -ForegroundColor Green
+    if ($hasCompletedTodos) {
+        Write-Host "Tareas a Archivar:  " -NoNewline; Write-Host "Tareas completadas detectadas en doc/TODO.md (se archivarán automáticamente a doc/TODO_DONE/)" -ForegroundColor Magenta
+    }
     Write-Host "`nResumen de Cambios:" -ForegroundColor Cyan
     if ($statusLines) {
         $statusLines | Select-Object -First 15 | ForEach-Object { Write-Host "  $_" -ForegroundColor Gray }
@@ -140,13 +153,44 @@ Estrategia Fast-Rollback:
         }
     }
 
-    # 6. Pre-merge Quality Gate: Markdown linter y tests
+    # 6. Pre-merge Quality Gate: Markdown linter, tests y SonarQube
     Write-Host "[+] Ejecutando auditoría de calidad previa..." -ForegroundColor Cyan
     $lintScript = Join-Path $PSScriptRoot "lint-markdown.ps1"
     if (Test-Path $lintScript) {
         pwsh -NoProfile -File $lintScript -CheckOnly
         if ($LASTEXITCODE -ne 0) {
             throw "El Quality Gate de Markdown falló. Corrija los errores antes de continuar."
+        }
+    }
+
+    # 6.1. Tests unitarios
+    $testsDir = Join-Path $RepoRoot "scripts\ecc-agy\tests"
+    if (Test-Path $testsDir) {
+        Write-Host "[+] Ejecutando suite de pruebas unitarias (pytest)..." -ForegroundColor Cyan
+        python -m pytest $testsDir -q
+        if ($LASTEXITCODE -ne 0) {
+            throw "La suite de pruebas unitarias falló. No se puede proceder con el merge."
+        }
+    }
+
+    # 6.2. Auditoría SonarQube
+    $sonarScript = Join-Path $PSScriptRoot "sonar-audit.ps1"
+    if (Test-Path $sonarScript) {
+        pwsh -NoProfile -File $sonarScript
+        if ($LASTEXITCODE -ne 0) {
+            throw "La auditoría SonarQube no alcanzó el Rating A. Corrija las violaciones antes de continuar."
+        }
+    }
+
+    # 6.3. Sincronizar y archivar tareas completadas en doc/TODO.md
+    if ($hasCompletedTodos) {
+        Write-Host "[+] Archivando tareas completadas en doc/TODO_DONE/..." -ForegroundColor Cyan
+        $archiveScript = Join-Path $PSScriptRoot "archive-todo.ps1"
+        if (Test-Path $archiveScript) {
+            pwsh -NoProfile -File $archiveScript
+            if ($LASTEXITCODE -ne 0) {
+                throw "Error al archivar tareas completadas de doc/TODO.md."
+            }
         }
     }
 

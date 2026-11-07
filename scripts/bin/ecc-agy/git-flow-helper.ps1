@@ -38,7 +38,11 @@ param(
 
     [string]$Title,
 
-    [string]$Body
+    [string]$Body,
+
+    [switch]$ReviewOnly,
+
+    [switch]$Yes
 )
 
 $ErrorActionPreference = "Stop"
@@ -138,6 +142,8 @@ $Title
             $cmdArgs = @()
             if ($Title) { $cmdArgs += @("-Title", $Title) }
             if ($Body) { $cmdArgs += @("-Body", $Body) }
+            if ($ReviewOnly) { $cmdArgs += "-ReviewOnly" }
+            if ($Yes) { $cmdArgs += "-Yes" }
             pwsh -NoProfile -File $completeScript @cmdArgs
         }
     }
