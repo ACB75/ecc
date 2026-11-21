@@ -117,3 +117,6 @@ aagy-ecc/.aagy-install.json
 
 # Local runtime observations / project-level instincts
 .agents/
+
+# Instintos y observaciones locales de self-improve (por workspace, no se versionan)
+.agents/
